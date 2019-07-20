@@ -1,2 +1,2 @@
 # SteelX  
-Unity version 2018.3.0b12
+Unity 2018.3.6f1
