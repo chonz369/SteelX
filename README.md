@@ -19,11 +19,12 @@ Unity version 2018.3.6f1 (Not Important for Backend Services)
   - LeftHand
   - RightHand
   - Is Weapon TwoHanded?
-- **Weapon.cs:** struct for weapon loadout (Left hand slot, and right slot combined make one weapon struct).
+- **Weapon.cs:** abstract class for weapon loadout (Left hand slot, and right slot combined make one weapon struct).
   - Name Weapon
   - Name of Set 
 Name of the theme that this weapon is a part of
-  - Description
+  - Description 
+  - Unique Id
   - Durability
   - Weight
   - Damage
@@ -47,6 +48,7 @@ Doubles as magazine clip size for non-energy type weapons. (Doesnt go down unles
   - Range
   - Name
   - Description
+  - Unique Id
   - ~~Type~~ Weapons Needed   
 *Weapons needed and type are two different things?*
   - CoolDown Timer
@@ -61,8 +63,14 @@ Can only add skills compatible with weapons selected
     - Skills (x4 Slots)
   - Mech
     - Parts  
-Loadable from Mech Struct
-    - Color
+*Loadable from Mech Struct*   
+A collection/Array of parts and IDs that come together to assemble a single mech unit. 
+    - Color   
+*maybe a new class here, too load and store value for everything that can change color on active loadout?*   
+If null or empty, default values are used
+      - Mech Parts
+      - Weapons
+      - Booster Energy glow
     - Durability Remaining
     - Stats
       - HP
@@ -84,10 +92,14 @@ Loadable from Mech Struct
       - Marksmanship
   - ~~Name~~ Mech Unique Id
 - **Player.cs:** Player profile and public record
+  - Username (Account Name)
+  - Unique ID 
   - Active/Current/Primary
-    - Mechanaught (+ Mech Name)
+    - Mechanaught (+ Mech Name)   
+Unique ID for mech (loads the parts, colors, and expiration)
     - Pilot
-    - Rank 
+    - Level/Rank  
+Level and rank are two different values
     - Clan/Guild
     - Bonuses  
 Players were allowed to buy double experience and money for set amount of time
@@ -112,6 +124,7 @@ When you gained enough experience points to level up… you earned a mastery poi
 
 
 ## SERVICES
+- **Settings**
 - **Operator.cs**
   - Manage Mastery Points
   - Change Pilot
