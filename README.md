@@ -46,8 +46,12 @@ Doubles as magazine clip size for non-energy type weapons. (Doesnt go down unles
   - Damage
   - Range
   - Name
-  - Type
   - Description
+  - ~~Type~~ Weapons Needed   
+*Weapons needed and type are two different things?*
+  - CoolDown Timer
+  - Mastery Rank?
+  - Price...
 - **Mechanaught.cs:** class where it contains both the Mech struct, and Weapon/Skill loadouts; the durability and hp remaining on the different parts or overall mech. Also has name of build
   - WeaponLoadout (1 and 2)
     - LeftHand
