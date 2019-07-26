@@ -12,11 +12,33 @@ Unity version 2018.3.6f1 (Not Important for Backend Services)
   - Head
   - Booster
   - Core
+  - WeaponSet (LeftHand/RightHand) x2
+  - SkillSet (4 Skill Slots) x2  
+*Should skills follow mech struct? Mech struct should really only be used when passing mech data in large quantities between services, so is skills needed?*
+- **MechWeapons.cs :** struct is a breakdown on weapon loadout used in above class as a value for what weapons the mech has equiped.
+  - LeftHand
+  - RightHand
+  - Is Weapon TwoHanded?
 - **Weapon.cs:** struct for weapon loadout (Left hand slot, and right slot combined make one weapon struct).
-  - Name
+  - Name Weapon
+  - Name of Set 
+Name of the theme that this weapon is a part of
+  - Description
+  - Durability
+  - Weight
   - Damage
   - Range
-  - Type
+  - Size
+  - Accuracy
+  - Reload
+  - Overheat
+  - Rank required for purchase
+  - Price 
+    - Buy Regular Currency
+    - Buy Premium Currency
+    - Sell
+  - Type (Category; i.e. rifle, sword, smg...)
+  - Icon for UI
 - **Skill.cs:** struct for skill info
   - SP
   - Damage
@@ -28,18 +50,33 @@ Unity version 2018.3.6f1 (Not Important for Backend Services)
   - WeaponLoadout (1 and 2)
     - LeftHand
     - RightHand
-  - SkillLoadout (1-4)  
+  - SkillLoadout (1 and 2)  
 Can only add skills compatible with weapons selected
-    - Skills
+    - Skills (x4 Slots)
   - Mech
-    - Parts
+    - Parts  
+Loadable from Mech Struct
     - Color
-    - Durability
+    - Durability Remaining
     - Stats
       - HP
       - EN
       - SP
-  - Name
+      - MPU
+      - Weight
+      - Size
+      - MoveSpd
+      - EN Recovery
+      - Min EN Required 
+      - Total Durability
+      - Jump EN Drain
+      - Dash EN Drain
+      - EN Output Rate
+      - Max Heat
+      - Cooldown Rate
+      - Scan Range
+      - Marksmanship
+  - ~~Name~~ Mech Unique Id
 - **Player.cs:** Player profile and public record
   - Active/Current/Primary
     - Mechanaught (+ Mech Name)
@@ -109,7 +146,13 @@ By default when match begins all players can load onto map as connections are in
   - Match Stats
     - Duration
     - Score
-    - Map Objectives
+    - Map Selected
+    - Map Objectives/Game Mode
+    - # of Players 
+    - Game Status
+      - Started
+      - Finished
+    - Is Team Game Mode?
   - Respawn Window
     - Load Hanger
     - Change Active Mech
@@ -134,7 +177,10 @@ If player is idle for too long, they should get some sort of punishment?
 Active amount of time spent playing, for end game reward
     - Minimap/Radar   
 was there a radar in the game?...
-    - Mech HP  
+    - Mech Data
+      - HP
+      - EN
+      - SP
     - Revive/Spawn location  
 Player will continue to respawn at last selected location they previously chose
     - Track Stats  
@@ -146,6 +192,8 @@ With weapons for broadcast display, weapon mastery, and competitive profile trac
 I think you can get mastery points for amount of damage given per weapon type...
       - Duration  
 Players are rewarded experience points based on how long they played for
+    - *Map/Environmental Hazards*
+*Different maps had different gravity and move spd influences (Space Maps let you jump and fly higher)*
     - ~~Manage~~ Get Connections (Room/Server)  
       - Assign Network_Id to Player
       - Load/Join Chat (Room/Server)
@@ -159,7 +207,7 @@ Players are rewarded experience points based on how long they played for
     - Report/Flag Player
     - Invite Player [to Match]
          
-
-
-
-ResourceManager.cs : class, manages all resources that need to be loaded in game (like prefabs
+- **ResourceManager.cs:** class, manages all resources that need to be loaded in game (like prefabs
+  - Audio Manager
+    - Music 
+    - Sound Effects (Menu Bleeps)
