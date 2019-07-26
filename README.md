@@ -31,7 +31,9 @@ Name of the theme that this weapon is a part of
   - Size
   - Accuracy
   - Reload
-  - Overheat
+  - Overheat  
+Doubles as magazine clip size for non-energy type weapons. (Doesnt go down unless weapon is reloaded manually)
+    - Is Energy Weapon? 
   - Rank required for purchase
   - Price 
     - Buy Regular Currency
