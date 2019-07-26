@@ -39,7 +39,7 @@ Can only add skills compatible with weapons selected
       - HP
       - EN
       - SP
-Name
+  - Name
 - **Player.cs:** Player profile and public record
   - Active/Current/Primary
     - Mechanaught (+ Mech Name)
