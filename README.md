@@ -167,7 +167,7 @@ By default when match begins all players can load onto map as connections are in
     - Score
     - Map Selected
     - Map Objectives/Game Mode
-    - # of Players 
+    - Number of Players 
     - Game Status
       - Started
       - Finished
@@ -225,6 +225,7 @@ Players are rewarded experience points based on how long they played for
     - Change Host (change room admin) 
     - Report/Flag Player
     - Invite Player [to Match]
+    - Whisper Player
          
 - **ResourceManager.cs:** class, manages all resources that need to be loaded in game (like prefabs
   - Audio Manager
