@@ -14,6 +14,12 @@ WS/
 UnityVS/
 Assets/AssetStoreTools*
 node_modules/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -29,6 +35,7 @@ ExportedObj/
 *.booproj
 .vs/
 .vscode/
+/.vs/
 #*.sln
 *.tmp
 *.pdb
@@ -53,6 +60,11 @@ Assets/Infinita*
 UnityPackageManager/
 Demo/
 Demo.rar
+/Assets/StreamingAssets/*
+!/Assets/StreamingAssets/.gitkeep
+/ProjectSettings/ProjectVersion.txt
+/Packages/*
+/UnityPackageManager/*
 
 # ============ #
 # Builds       #
