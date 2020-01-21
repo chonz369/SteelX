@@ -329,6 +329,38 @@
 	}
 	#endregion
 
+	public enum Operators
+	{
+
+	}
+
+	public enum OperatorStats
+	{
+		HP,
+		EN,
+		SP,
+		MPU,
+		Size,
+		Weight,
+		ENOutputRate,
+		MinEN_Required,
+		DashENDrain,
+		JumpENDrain,
+		MaxHeat,
+		CooldownRate,
+		ScanRange,
+		Marksmanship
+	}
+
+	public enum MechSlots
+	{
+		Booster,
+		Core,
+		Head,
+		Arm,
+		Leg
+	}	
+
 	public enum WeightClass
 	{
 		Light,
