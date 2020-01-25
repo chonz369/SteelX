@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteelX.Shared", "..\SteelX.Shared\SteelX.Shared.csproj", "{C4BD7AC0-1333-4D62-A6CD-881A1806FFAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteelX.UnitTest", "..\SteelX.UnitTest\SteelX.UnitTest.csproj", "{CC299590-AF12-4A25-B265-907D9570BDAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C4BD7AC0-1333-4D62-A6CD-881A1806FFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4BD7AC0-1333-4D62-A6CD-881A1806FFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4BD7AC0-1333-4D62-A6CD-881A1806FFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC299590-AF12-4A25-B265-907D9570BDAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC299590-AF12-4A25-B265-907D9570BDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC299590-AF12-4A25-B265-907D9570BDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC299590-AF12-4A25-B265-907D9570BDAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
