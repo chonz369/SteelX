@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da38339b25349a4c8938f6165d4cc58, type: 3}
+  m_Name: ReplicatedEntityRegistry
+  m_EditorClassIdentifier: 
+  entries:
+  - guid:
+      val0: -1370606622
+      val1: 1150568031
+      val2: 161333049
+      val3: 949819249
+    prefab:
+      val0: -1370606622
+      val1: 1150568031
+      val2: 161333049
+      val3: 949819249
+    factory: {fileID: 0}
+  - guid:
+      val0: -1415895362
+      val1: 821302306
+      val2: 1746847130
+      val3: 1290797049
+    prefab:
+      val0: -1415895362
+      val1: 821302306
+      val2: 1746847130
+      val3: 1290797049
+    factory: {fileID: 0}
+  - guid:
+      val0: -1872304369
+      val1: 1746151618
+      val2: 1370963112
+      val3: -1579036902
+    prefab:
+      val0: -1872304369
+      val1: 1746151618
+      val2: 1370963112
+      val3: -1579036902
+    factory: {fileID: 0}
+  - guid:
+      val0: 187516681
+      val1: 480539257
+      val2: -2100057813
+      val3: -1818532451
+    prefab:
+      val0: 0
+      val1: 0
+      val2: 0
+      val3: 0
+    factory: {fileID: 11400000, guid: 0b2d470972791ca42ba9d3829d659b93, type: 2}

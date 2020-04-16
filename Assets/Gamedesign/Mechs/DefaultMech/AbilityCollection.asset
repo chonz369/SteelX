@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0c59eef2e5a404da3c76b5451c1c26, type: 3}
+  m_Name: AbilityCollection
+  m_EditorClassIdentifier: 
+  guid:
+    val0: 187516681
+    val1: 480539257
+    val2: -2100057813
+    val3: -1818532451
+  abilities:
+  - factory: {fileID: 11400000, guid: f358e95e45169d546afe54ac7f482fae, type: 2}
+    canRunWith: []
+    canInterruptAll: 0
+    canInterrupt: []
+  - factory: {fileID: 11400000, guid: 1ef9073defc78d046bba9200dbb1f339, type: 2}
+    canRunWith:
+    - {fileID: 11400000, guid: f358e95e45169d546afe54ac7f482fae, type: 2}
+    canInterruptAll: 0
+    canInterrupt: []

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8ec73243a65c14fa48dccd2d4beafc, type: 3}
+  m_Name: Run
+  m_EditorClassIdentifier: 
+  animMovePlaySpeed: 1
+  damping: 0.1
+  maxStep: 15
+  stateResetWindow: 0
+  blendSpaceNodes:
+  - clip: {fileID: 7400000, guid: ad707bd22522df0458ad16441c1abd0a, type: 2}
+    position: {x: 0, y: 1}
+    speed: 1
+    weight: 0.8888471
+    clipLength: 0.7666667
+  - clip: {fileID: 7400000, guid: 013fbe5c0f5b10c42a6d2a13980317c7, type: 2}
+    position: {x: -1, y: 0}
+    speed: 1
+    weight: 0
+    clipLength: 0.7666667
+  - clip: {fileID: 7400000, guid: 1e3fc26a01ed4ae4cbe35e5069f1323a, type: 2}
+    position: {x: 1, y: 0}
+    speed: 1
+    weight: 0.11115283
+    clipLength: 0.7666667
+  - clip: {fileID: 7400000, guid: 16b3a411035c04d44a54a8d8c24e18d9, type: 2}
+    position: {x: 0, y: -1}
+    speed: 1
+    weight: 0
+    clipLength: 1.2666668
+  - clip: {fileID: 7400000, guid: 2ef1fa3e350740d4a863988ff231454f, type: 2}
+    position: {x: -1, y: -1}
+    speed: 1
+    weight: 0
+    clipLength: 1.2666668
+  - clip: {fileID: 7400000, guid: d1c291fdce8d2024899777bea6a70eb5, type: 2}
+    position: {x: 1, y: -1}
+    speed: 1
+    weight: 0
+    clipLength: 1.2666668
+  enableIK: 0
+  useVariableMoveSpeed: 0
+  actionAnimations: []
