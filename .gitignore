@@ -24,6 +24,7 @@ node_modules/
 # ===================================== #
 ExportedObj/
 .consulo/
+.vs/
 *.csproj
 *.unityproj
 *.sln
