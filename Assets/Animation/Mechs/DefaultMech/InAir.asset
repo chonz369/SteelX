@@ -12,9 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f940f2891949944bc83eb473b03b2b, type: 3}
   m_Name: InAir
   m_EditorClassIdentifier: 
-  animInAir: {fileID: 7400000, guid: 30d72e531fe14294f911d1d4554eb190, type: 3}
-  animLandAntic: {fileID: 7400000, guid: bcd68b7edf6493545ac3e67e789fe3d6, type: 3}
-  landAnticStartHeight: 0.3
+  inAirBlendSpaceNodes:
+  - clip: {fileID: 7400000, guid: 30d72e531fe14294f911d1d4554eb190, type: 3}
+    position: {x: 0, y: 1}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.73333335
+  - clip: {fileID: 7400000, guid: 2a2f0facd200f0240943b6e0456d2838, type: 2}
+    position: {x: -1, y: 0}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.73333335
+  - clip: {fileID: 7400000, guid: 57ba76abea67119479354492096c6090, type: 2}
+    position: {x: 1, y: 0}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.73333335
+  - clip: {fileID: 7400000, guid: d101631b81db9eb489c01cfd9370f66c, type: 2}
+    position: {x: -1, y: -1}
+    speed: 1
+    weight: 0.7299085
+    clipLength: 0.73333335
+  - clip: {fileID: 7400000, guid: ab797dd4c47127b44860451a94b61542, type: 2}
+    position: {x: 1, y: -1}
+    speed: 1
+    weight: 0.16531143
+    clipLength: 0.73333335
+  landAnticBlendSpaceNodes:
+  - clip: {fileID: 7400000, guid: bcd68b7edf6493545ac3e67e789fe3d6, type: 3}
+    position: {x: 0, y: 1}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.70000005
+  - clip: {fileID: 7400000, guid: d73fc57f95ca07e41ae3a42d7692625b, type: 2}
+    position: {x: -1, y: 0}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.70000005
+  - clip: {fileID: 7400000, guid: 1e7bf1058eca9274eaf963140a9b4a61, type: 2}
+    position: {x: 1, y: 0}
+    speed: 1
+    weight: 0.03492669
+    clipLength: 0.70000005
+  - clip: {fileID: 7400000, guid: f82445d8bb15f6b41b0efd25acae37bb, type: 2}
+    position: {x: -1, y: -1}
+    speed: 1
+    weight: 0.7299085
+    clipLength: 0.70000005
+  - clip: {fileID: 7400000, guid: e554a42866bff6347ab8fdd8466b98af, type: 2}
+    position: {x: 1, y: -1}
+    speed: 1
+    weight: 0.16531143
+    clipLength: 0.70000005
+  landAnticStartHeight: 0.8
   blendDuration: 0.1
+  damping: 0.1
+  maxStep: 15
+  stateResetWindow: 0
   animAimDownToUp: {fileID: 0}
   actionAnimations: []
