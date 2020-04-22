@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: -5114437592078485966}
   - component: {fileID: 5282488056999784730}
   - component: {fileID: 153263647092684480}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MechFrame
   m_TagString: Player
   m_Icon: {fileID: 0}

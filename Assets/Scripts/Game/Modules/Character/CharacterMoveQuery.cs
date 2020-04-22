@@ -79,12 +79,15 @@ class HandleMovementQueries : BaseComponentSystem
 
             float3 currentControllerPos = charController.transform.position;
             if (math.distance(currentControllerPos, query.moveQueryStart) > 0.01f) {
+                charController.enabled = false;//disable to set position, otherwise charController does not go to the right point
                 currentControllerPos = query.moveQueryStart;
                 charController.transform.position = currentControllerPos;
+                charController.enabled = true;
             }
 
             var deltaPos = query.moveQueryEnd - currentControllerPos;
             charController.Move(deltaPos);
+
             query.moveQueryResult = charController.transform.position;
             query.isGrounded = charController.isGrounded;
         }

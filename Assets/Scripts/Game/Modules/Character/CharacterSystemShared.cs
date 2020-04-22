@@ -140,7 +140,7 @@ public class UpdateCharPresentationState : BaseComponentSystem
             // TODO: Move this into the network
             animState.position = charPredictedState.position;
             animState.charLocoTick = charPredictedState.locoStartTick;
-            animState.sprinting = charPredictedState.boosting;
+            animState.boosting = charPredictedState.boosting;
             animState.charAction = charPredictedState.action;
             animState.charActionTick = charPredictedState.actionStartTick;
             animState.aimYaw = userCommand.lookYaw;

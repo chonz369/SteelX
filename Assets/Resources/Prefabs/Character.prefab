@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336937637921779019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.817833, y: 0.08631706, z: 0.24040098}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
       val1: 821302306
       val2: 1746847130
       val3: 1290797049
-  netID: 65361869ad562948862696881fab7726
+  netID: cab0f05cac4afc42bf025f70afc4cdef
 --- !u!114 &3127962712601630217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
     action: 0
     actionStartTick: 0
     boostingInAirCount: 0
+    releasedJump: 0
     boosting: 0
     cameraProfile: 0
     damageTick: 0
@@ -155,20 +156,16 @@ MonoBehaviour:
     charActionTick: 0
     damageTick: 0
     damageDirection: 0
-    sprinting: 0
-    sprintWeight: 0
+    boosting: 0
     previousCharLocoState: 0
     lastGroundMoveTick: 0
     moveAngleLocal: 0
     shootPoseWeight: 0
     locomotionVector: {x: 0, y: 0}
     locomotionPhase: 0
-    banking: 0
     landAnticWeight: 0
     turnStartAngle: 0
     turnDirection: 0
-    squashTime: 0
-    squashWeight: 0
     inAirTime: 0
     jumpTime: 0
     simpleTime: 0

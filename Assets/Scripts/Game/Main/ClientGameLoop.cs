@@ -13,6 +13,10 @@ public class ClientGameWorld{
         get { return m_RenderTime; }
     }
 
+    public ReplicatedEntityModuleClient ReplicatedEntityModule {
+        get { return m_ReplicatedEntityModule; }
+    }
+
     public ClientGameWorld(GameWorld world, NetworkClient networkClient, NetworkStatisticsClient _networkStatistics, BundledResourceManager resourceSystem) {
         _gameWorld = world;
         _networkClient = networkClient;
@@ -42,7 +46,7 @@ public class ClientGameWorld{
         m_PlayerModule.HandleSpawn();
 
         // Update movement of scene objects. Projectiles and grenades can also start update as they use collision data from last frame
-
+        m_CharacterModule.Interpolate();
         m_ReplicatedEntityModule.Interpolate(m_RenderTime);
 
         // Handle controlled entity changed
@@ -76,9 +80,9 @@ public class ClientGameWorld{
             if (_gameWorld.WorldTime.tickDuration > 0.008f) {
                 PredictionUpdate();
             }
-            //#if UNITY_EDITOR                 
-            //            m_ReplicatedEntityModule.StorePredictedState(m_PredictedTime.tick, m_PredictedTime.tick);
-            //#endif                
+#if UNITY_EDITOR
+            m_ReplicatedEntityModule.StorePredictedState(m_PredictedTime.tick, m_PredictedTime.tick);
+#endif
         }
 
         //update presentation
@@ -90,13 +94,24 @@ public class ClientGameWorld{
         //Handle despawns
         m_CharacterModule.HandleDespawns();
         _gameWorld.ProcessDespawns();
+
+#if UNITY_EDITOR
+        if (_gameWorld.GetEntityManager().Exists(m_localPlayer.controlledEntity) &&
+            _gameWorld.GetEntityManager().HasComponent<UserCommandComponentData>(m_localPlayer.controlledEntity)) {
+            var userCommand = _gameWorld.GetEntityManager().GetComponentData<UserCommandComponentData>(m_localPlayer.controlledEntity);
+            m_ReplicatedEntityModule.FinalizedStateHistory(m_PredictedTime.tick - 1, _networkClient.serverTime, ref userCommand.command);
+        }
+#endif 
     }
 
     public void LateUpdate(float delta) {
+        _gameWorld.WorldTime = m_RenderTime;
         m_CharacterModule.CameraUpdate();
         m_PlayerModule.CameraUpdate();
 
         m_CharacterModule.LateUpdate();
+
+        _gameWorld.WorldTime = m_PredictedTime;
     }
 
     private void HandleTime(float frameDuration) {
@@ -246,8 +261,8 @@ public class ClientGameWorld{
 
         m_CharacterModule.AbilityRequestUpdate();
 
-        //m_CharacterModule.MovementStart();
-        //m_CharacterModule.MovementResolve();
+        m_CharacterModule.MovementStart();
+        m_CharacterModule.MovementResolve();
 
         m_CharacterModule.AbilityStart();
         m_CharacterModule.AbilityResolve();
@@ -425,6 +440,10 @@ public class ClientGameLoop : Game.IGameLoop, INetworkClientCallbacks
         _networkClient.Disconnect();
 
         _gameWorld.Shutdown();
+    }
+
+    public ClientGameWorld GetClientGameWorld() {
+        return _clientGameWorld;
     }
 
     public void OnMapUpdate(ref NetworkReader reader) {

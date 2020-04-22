@@ -30,6 +30,8 @@ unsafe public class NetworkServer
 
     [ConfigVar(Name = "server.network_prediction", DefaultValue = "0", Description = "Predict snapshots data to improve compression and minimize bandwidth")]
     public static ConfigVar network_prediction;
+    [ConfigVar(Name = "server.debug_hashing", DefaultValue = "1", Description = "Send entity hashes to clients for debugging.")]
+    public static ConfigVar debug_hashing;
 
     // Each client needs to receive this on connect and when any of the values changes
     public class ServerInfo
@@ -639,7 +641,7 @@ unsafe public class NetworkServer
             AddMessageContentFlag(NetworkMessage.Snapshot);
 
             bool enableNetworkPrediction = network_prediction.IntValue != 0;
-            //bool enableHashing = debug_hashing.IntValue != 0;
+            bool enableHashing = debug_hashing.IntValue != 0;
 
             // Check if the baseline from the client is too old. We keep N number of snapshots on the server 
             // so if the client baseline is older than that we cannot generate the snapshot. Furthermore, we require
@@ -654,7 +656,6 @@ unsafe public class NetworkServer
                 haveBaseline = false;
             }
             var baseline = haveBaseline ? maxSnapshotAck : 0;
-
             int snapshot0Baseline = baseline;
             int snapshot1Baseline = baseline;
             int snapshot2Baseline = baseline;
@@ -694,7 +695,7 @@ unsafe public class NetworkServer
             output.WriteRawBits(haveBaseline ? 1u : 0, 1);
             output.WritePackedIntDelta(snapshot0BaselineClient, outSequence - 1, NetworkConfig.baseSequenceContext);
             output.WriteRawBits(enableNetworkPrediction ? 1u : 0u, 1);
-            //output.WriteRawBits(enableHashing ? 1u : 0u, 1);
+            output.WriteRawBits(enableHashing ? 1u : 0u, 1);
             if (enableNetworkPrediction) {
                 output.WritePackedIntDelta(haveBaseline ? snapshot1BaselineClient : 0, snapshot0BaselineClient - 1, NetworkConfig.baseSequence1Context);
                 output.WritePackedIntDelta(haveBaseline ? snapshot2BaselineClient : 0, snapshot1BaselineClient - 1, NetworkConfig.baseSequence2Context);
@@ -919,6 +920,9 @@ unsafe public class NetworkServer
                 // delta relative to 0 as we cannot know if we have a valid baseline on the client or not
                 uint entity_hash = 0;
                 DeltaWriter.Write(ref output, entityType.schema, snapshotInfo.start, prediction, entity.fieldsChangedPrediction, entity.GetFieldMask(ConnectionId), ref entity_hash);
+
+                if (enableHashing)
+                    output.WriteRawBits(entity_hash, 32);
             }
 
             if (!haveBaseline && serverDebug.IntValue > 0) {
@@ -926,6 +930,10 @@ unsafe public class NetworkServer
                 //foreach (var c in _server.m_EntityTypes) {
                 //    Debug.Log(c.Value.name + " " + c.Key + " #" + (c.Value.stats_count) + " " + (c.Value.stats_bits / 8) + " bytes");
                 //}
+            }
+
+            if (enableHashing) {
+                output.WriteRawBits(_server.m_LastEntityCount, 32);
             }
 
             snapshotSeqs[outSequence % NetworkConfig.clientAckCacheSize] = _server.m_ServerSequence;

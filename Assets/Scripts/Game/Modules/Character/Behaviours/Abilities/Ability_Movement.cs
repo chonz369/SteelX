@@ -81,7 +81,7 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
         var command = EntityManager.GetComponentData<UserCommandComponentData>(charAbility.character).command;
         var predictedState = EntityManager.GetComponentData<CharacterPredictedData>(charAbility.character);
         var character = EntityManager.GetComponentObject<Character>(charAbility.character);
-
+        
         var newPhase = CharacterPredictedData.LocoState.MaxValue;
 
         var phaseDuration = time.DurationSinceTick(predictedState.locoStartTick);
@@ -145,7 +145,6 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
                 predictedState.position.y = posY;
             }
         }
-
         // Calculate movement and move character
         var deltaPos = Vector3.zero;
         CalculateMovement(ref time, ref predictedState, ref command, ref deltaPos);
@@ -160,6 +159,7 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
 
     void CalculateMovement(ref GameTime gameTime, ref CharacterPredictedData predicted, ref UserCommand command, ref Vector3 deltaPos) {
         var velocity = predicted.velocity;
+
         switch (predicted.locoState) {
             case CharacterPredictedData.LocoState.Jump:
 
@@ -179,7 +179,7 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
             velocity += Vector3.down * gravity * gameTime.tickDuration;
             velocity = CalculateGroundVelocity(velocity, ref command, Game.config.playerSpeed, Game.config.playerAirFriction, Game.config.playerAiracceleration, gameTime.tickDuration);
 
-            if(predicted.boosting == 1) {
+            if (predicted.boosting == 1) {
                 velocity.y = Game.config.playerInAirBoostingSpeed;
             } else {
                 if (velocity.y < -Game.config.maxFallVelocity)
@@ -194,10 +194,8 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
         var playerSpeed = predicted.boosting == 1 ? Game.config.playerGroundBoostingSpeed : Game.config.playerSpeed;
 
         velocity = CalculateGroundVelocity(velocity, ref command, playerSpeed, Game.config.playerFriction, Game.config.playerAcceleration, gameTime.tickDuration);
-        
         // Simple follow ground code so character sticks to ground when running down hill
         velocity.y = -400.0f * gameTime.tickDuration;
-        
         deltaPos = velocity * gameTime.tickDuration;
     }
 
@@ -214,7 +212,6 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
             newGroundSpeed = 0;
         if (groundSpeed > 0)
             groundVelocity *= (newGroundSpeed / groundSpeed);
-
         // Doing actual movement (q2 style)
         var wantedGroundVelocity = moveVec * playerSpeed;
         var wantedGroundDir = wantedGroundVelocity.normalized;
@@ -226,6 +223,7 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
             var speed_adjustment = Mathf.Clamp(accel, 0.0f, deltaSpeed) * wantedGroundDir;
             groundVelocity += speed_adjustment;
         }
+
 
         velocity.x = groundVelocity.x;
         velocity.z = groundVelocity.z;
@@ -244,12 +242,11 @@ class Movement_HandleCollision : BaseComponentDataSystem<CharBehaviour, AbilityC
     protected override void Update(Entity abilityEntity, CharBehaviour charAbility, AbilityControl abilityCtrl, Ability_Movement.Settings settings) {
         if (abilityCtrl.active == 0)
             return;
-
+        
         var time = m_world.WorldTime;
         var predictedState = EntityManager.GetComponentData<CharacterPredictedData>(charAbility.character);
         var query = EntityManager.GetComponentObject<CharacterMoveQuery>(charAbility.character);
         var command = EntityManager.GetComponentData<UserCommandComponentData>(charAbility.character).command;
-
         // Check for ground change (hitting ground or leaving ground)  
         var isOnGround = predictedState.IsOnGround();
         if (isOnGround != query.isGrounded) {
@@ -273,7 +270,6 @@ class Movement_HandleCollision : BaseComponentDataSystem<CharBehaviour, AbilityC
 
         predictedState.velocity = velocity;
         predictedState.position = query.moveQueryResult;
-
         EntityManager.SetComponentData(charAbility.character, predictedState);
     }
 }

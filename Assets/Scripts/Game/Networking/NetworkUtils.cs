@@ -41,6 +41,14 @@ public static class NetworkUtils
         return 0;
     }
 
+    public static uint SimpleHash(uint[] array, int count) {
+        uint hash = 0;
+        for (int i = 0; i < count; i++) {
+            hash = hash * 179 + array[i] + 1;
+        }
+        return hash;
+    }
+
     public static uint SimpleHashStreaming(uint old_hash, uint value) {
         return old_hash * 179 + value + 1;
     }

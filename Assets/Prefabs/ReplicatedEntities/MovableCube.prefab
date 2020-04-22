@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4609166844797355048}
   - component: {fileID: 8587983922651019843}
   - component: {fileID: 7059167876948917530}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MovableCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
       val1: 1150568031
       val2: 161333049
       val3: 949819249
-  netID: b863ac389467b74d85c75a1ae7c79126
+  netID: 29aafc80c6b73c4d9e8c4ee53dfddf50
 --- !u!33 &33120486762848624
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

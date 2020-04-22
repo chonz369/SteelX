@@ -152,7 +152,6 @@ class PredictedComponentSerializer<T> : IPredictedSerializer
     }
 
     public void Rollback() {
-        //        GameDebug.Log("Rollback:" + m_lastServerState); 
         context.entityManager.SetComponentData(context.entity, m_lastServerState);
     }
 

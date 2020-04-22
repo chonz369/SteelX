@@ -1,4 +1,7 @@
-﻿class CharacterModuleClient : CharacterModuleShared
+﻿using System.Collections.Generic;
+using Unity.Entities;
+
+class CharacterModuleClient : CharacterModuleShared
 {
     public CharacterModuleClient(GameWorld world, BundledResourceManager resourceSystem) : base(world) {
         // Handle spawn

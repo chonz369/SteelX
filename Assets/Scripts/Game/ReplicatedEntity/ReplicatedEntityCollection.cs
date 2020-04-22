@@ -43,7 +43,7 @@ public class ReplicatedEntityCollection : IEntityReferenceSerializer
     [ConfigVar(Name = "replicatedentity.showcollectioninfo", DefaultValue = "0", Description = "Show replicated system info")]
     static ConfigVar m_showInfo;
 
-    public static bool SampleHistory;
+    public static bool SampleHistory ;
 
     public static int HistorySize = 128;
     public static int PredictionSize = 32;
@@ -55,7 +55,7 @@ public class ReplicatedEntityCollection : IEntityReferenceSerializer
 
 
 #if UNITY_EDITOR
-        //historyCommands = new UserCommand[HistorySize];
+        historyCommands = new UserCommand[HistorySize];
         hitstoryTicks = new int[HistorySize];
         hitstoryLastServerTick = new int[HistorySize];
 #endif        
@@ -388,21 +388,21 @@ public class ReplicatedEntityCollection : IEntityReferenceSerializer
     }
 
 
-    //public void FinalizedStateHistory(int tick, int lastServerTick, ref UserCommand command) {
-    //    if (!SampleHistory)
-    //        return;
+    public void FinalizedStateHistory(int tick, int lastServerTick, ref UserCommand command) {
+        if (!SampleHistory)
+            return;
 
-    //    var sampleIndex = (historyFirstIndex + historyCount) % hitstoryTicks.Length;
+        var sampleIndex = (historyFirstIndex + historyCount) % hitstoryTicks.Length;
 
-    //    hitstoryTicks[sampleIndex] = tick;
-    //    historyCommands[sampleIndex] = command;
-    //    hitstoryLastServerTick[sampleIndex] = lastServerTick;
+        hitstoryTicks[sampleIndex] = tick;
+        historyCommands[sampleIndex] = command;
+        hitstoryLastServerTick[sampleIndex] = lastServerTick;
 
-    //    if (historyCount < hitstoryTicks.Length)
-    //        historyCount++;
-    //    else
-    //        historyFirstIndex = (historyFirstIndex + 1) % hitstoryTicks.Length;
-    //}
+        if (historyCount < hitstoryTicks.Length)
+            historyCount++;
+        else
+            historyFirstIndex = (historyFirstIndex + 1) % hitstoryTicks.Length;
+    }
 
     int GetSampleIndex() {
         return (historyFirstIndex + historyCount) % hitstoryTicks.Length;
@@ -420,6 +420,7 @@ public class ReplicatedEntityCollection : IEntityReferenceSerializer
 
     //UserCommand[] historyCommands;
     int[] hitstoryTicks;
+    UserCommand[] historyCommands;
     int[] hitstoryLastServerTick;
     int historyFirstIndex;
     int historyCount;

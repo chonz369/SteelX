@@ -269,7 +269,7 @@ public class NetworkClient
                 // Make sure the callback actually picked up the snapshot data. It is important that
                 // every snapshot gets processed by the game so that the spawns, despawns and updates lists
                 // does not end up containing stuff from different snapshots
-                //GameDebug.Assert(spawns.Count == 0 && despawns.Count == 0 && updates.Count == 0, "Game did not consume snapshots");
+                GameDebug.Assert(spawns.Count == 0 && despawns.Count == 0 && updates.Count == 0, "Game did not consume snapshots");
             }
 
             if ((content & NetworkMessage.Events) != 0)
@@ -311,6 +311,7 @@ public class NetworkClient
             var baseSequence = (int)input.ReadPackedIntDelta(sequence - 1, NetworkConfig.baseSequenceContext);
 
             bool enableNetworkPrediction = input.ReadRawBits(1) != 0;
+            bool enableHashing = input.ReadRawBits(1) != 0;
 
             int baseSequence1 = 0;
             int baseSequence2 = 0;
@@ -321,8 +322,7 @@ public class NetworkClient
 
             var snapshotInfo = snapshots.Acquire(sequence);
             snapshotInfo.serverTime = (int)input.ReadPackedIntDelta(haveBaseline ? snapshots[baseSequence].serverTime : 0, NetworkConfig.serverTimeContext);
-            //GameDebug.Log("baseSequence : " + baseSequence + "server time:" + (haveBaseline ? snapshots[baseSequence].serverTime.ToString() : ""));
-
+            
             var temp = (int)input.ReadRawBits(8);
             serverSimTime = temp * 0.1f;
 
@@ -526,6 +526,17 @@ public class NetworkClient
                     tempSnapshotBuffer[i] = info.prediction[i];
 
                 DeltaReader.Read(ref input, info.type.schema, info.prediction, tempSnapshotBuffer, info.fieldsChangedPrediction, info.fieldMask, ref hash);
+                if (enableHashing) {
+                    uint hashCheck = input.ReadRawBits(32);
+
+                    if (hash != hashCheck) {
+                        GameDebug.Log("Hash check fail for entity " + id);
+                        if (enableNetworkPrediction)
+                            GameDebug.Assert(false, "Snapshot (" + snapshotInfo.serverTime + ") " + (haveBaseline ? "Snap [BL]" : "Snap [  ]") + "  " + baseSequence + " - " + baseSequence1 + " - " + baseSequence2 + ". Sche: " + schemaCount + " Spwns: " + spawnCount + " Desp: " + despawnCount + " Upd: " + updateCount);
+                        else
+                            GameDebug.Assert(false, "Snapshot (" + snapshotInfo.serverTime + ") " + (haveBaseline ? "Snap [BL]" : "Snap [  ]") + "  " + baseSequence + ". Sche: " + schemaCount + " Spwns: " + spawnCount + " Desp: " + despawnCount + " Upd: " + updateCount);
+                    }
+                }
             }
 
             //if (enableNetworkPrediction)
@@ -563,10 +574,10 @@ public class NetworkClient
                     }
                 }
 
-                //if (enableHashing && info.despawnSequence == 0) {
-                //    snapshotHash += NetworkUtils.SimpleHash(info.prediction, schemaSize);
-                //    numEnts++;
-                //}
+                if (enableHashing && info.despawnSequence == 0) {
+                    snapshotHash += NetworkUtils.SimpleHash(info.prediction, schemaSize);
+                    numEnts++;
+                }
             }
 
 
@@ -588,13 +599,13 @@ public class NetworkClient
                 }
             }
 
-            //if (enableHashing) {
-            //    uint numEntsCheck = input.ReadRawBits(32);
-            //    if (numEntsCheck != numEnts) {
-            //        GameDebug.Log("SYNC PROBLEM: server num ents: " + numEntsCheck + " us:" + numEnts);
-            //        GameDebug.Assert(false);
-            //    }
-            //}
+            if (enableHashing) {
+                uint numEntsCheck = input.ReadRawBits(32);
+                if (numEntsCheck != numEnts) {
+                    GameDebug.Log("SYNC PROBLEM: server num ents: " + numEntsCheck + " us:" + numEnts);
+                    GameDebug.Assert(false);
+                }
+            }
 
             //counters.AddSectionStats("snapShotChecksum", input.GetBitPosition2(), new Color(0.2f, 0.2f, 0.2f));
 

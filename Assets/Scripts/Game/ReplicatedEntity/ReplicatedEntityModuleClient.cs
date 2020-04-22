@@ -139,9 +139,9 @@ public class ReplicatedEntityModuleClient : ISnapshotConsumer
         m_entityCollection.StorePredictedState(predictedTick, finalTick);
     }
 
-    //public void FinalizedStateHistory(int tick, int lastServerTick, ref UserCommand command) {
-    //    m_entityCollection.FinalizedStateHistory(tick, lastServerTick, ref command);
-    //}
+    public void FinalizedStateHistory(int tick, int lastServerTick, ref UserCommand command) {
+        m_entityCollection.FinalizedStateHistory(tick, lastServerTick, ref command);
+    }
 
     public int FindSampleIndexForTick(int tick) {
         return m_entityCollection.FindSampleIndexForTick(tick);
