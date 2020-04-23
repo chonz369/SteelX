@@ -80,7 +80,7 @@ MonoBehaviour:
       val1: 821302306
       val2: 1746847130
       val3: 1290797049
-  netID: cab0f05cac4afc42bf025f70afc4cdef
+  netID: 5ae83d6e8e398348ba8966555fab1ff5
 --- !u!114 &3127962712601630217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     tick: 0
-    position: {x: 1.86, y: 0, z: 0}
+    position: {x: 0, y: 0, z: 0}
     velocity: {x: 0, y: 0, z: 0}
     locoState: 0
     locoStartTick: 0
