@@ -63,6 +63,7 @@ Assets/Infinita*
 UnityPackageManager/
 Demo/
 Demo.rar
+Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
 
 # ============ #
 # Builds       #
