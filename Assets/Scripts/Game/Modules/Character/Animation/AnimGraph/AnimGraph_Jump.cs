@@ -7,7 +7,7 @@ using UnityEngine.Profiling;
 [CreateAssetMenu(fileName = "Jump", menuName = "SteelX/Animation/AnimGraph/Jump")]
 public class AnimGraph_Jump : AnimGraphAsset
 {
-    public AnimationClip animJump;
+    public AnimationClip[] animJumps = new AnimationClip[3];
 
     [Tooltip("Jump height in animation. NOT actual ingame jump height")]
     public float jumpHeight = 1.7f; // Jump height of character in last frame of animation
@@ -28,16 +28,33 @@ public class AnimGraph_Jump : AnimGraphAsset
 
             m_additiveMixer = AnimationLayerMixerPlayable.Create(graph);
 
-            m_animJump = AnimationClipPlayable.Create(graph, settings.animJump);
-            m_animJump.SetApplyFootIK(true);
-            m_animJump.SetDuration(settings.animJump.length);
-            m_animJump.Pause();
-            int port = m_additiveMixer.AddInput(m_animJump, 0);
+            mainMixer = AnimationMixerPlayable.Create(graph, settings.animJumps.Length);
+
+            animJumpPlayables = new AnimationClipPlayable[settings.animJumps.Length];
+            animJumpLengths = new float[settings.animJumps.Length];
+            for (int i = 0; i < settings.animJumps.Length; i++) {
+                var animJump = AnimationClipPlayable.Create(graph, settings.animJumps[i]);
+                animJump.SetApplyFootIK(false);
+                animJump.SetDuration(settings.animJumps[i].length);
+                animJump.Pause();
+                animJumpPlayables[i] = animJump;
+                totalJumpLength += settings.animJumps[i].length;
+                animJumpLengths[i] = settings.animJumps[i].length;
+                mainMixer.SetInputWeight(i, i == 0 ? 1 : 0);
+
+                graph.Connect(animJump, 0, mainMixer, i);
+            }
+
+            //m_animJump = AnimationClipPlayable.Create(graph, settings.animJumps);
+            //m_animJump.SetApplyFootIK(true);
+            //m_animJump.SetDuration(settings.animJumps.length);
+            //m_animJump.Pause();
+            int port = m_additiveMixer.AddInput(mainMixer, 0);
             m_additiveMixer.SetLayerAdditive((uint)port, false);
             m_additiveMixer.SetInputWeight(port, 1);
 
             // Adjust play speed so vertical velocity in animation is matched with character velocity (so feet doesnt penetrate ground)
-            var animJumpVel = settings.jumpHeight / settings.animJump.length;
+            var animJumpVel = settings.jumpHeight / totalJumpLength;
             var characterJumpVel = Game.config != null ? Game.config.jumpAscentHeight / Game.config.jumpAscentDuration : animJumpVel;
             playSpeed = characterJumpVel / animJumpVel;
 
@@ -63,8 +80,26 @@ public class AnimGraph_Jump : AnimGraphAsset
             var animState = m_EntityManager.GetComponentData<CharacterInterpolatedData>(m_AnimStateOwner);
             animState.rotation = animState.aimYaw;
 
-            if (firstUpdate)
+            if (firstUpdate) {
                 animState.jumpTime = 0;
+
+                total = 0;
+                phase = 0;
+                for(int i=phase;i< animJumpLengths.Length; i++) {
+                    if(animState.jumpTime > total + animJumpLengths[i]) {
+                        total += animJumpLengths[i];
+                        phase++;
+                        if(phase >= animJumpLengths.Length) {
+                            phase--;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < animJumpPlayables.Length; i++) {
+                    mainMixer.SetInputWeight(i, i==phase ? 1 : 0);
+                }
+                mainMixer.SetTime(animState.jumpTime - total);
+            }
             else
                 animState.jumpTime += playSpeed * deltaTime;
             m_EntityManager.SetComponentData(m_AnimStateOwner, animState);
@@ -77,7 +112,24 @@ public class AnimGraph_Jump : AnimGraphAsset
 
             var animState = m_EntityManager.GetComponentData<CharacterInterpolatedData>(m_AnimStateOwner);
             //m_aimHandler.SetAngle(animState.aimPitch);
-            m_animJump.SetTime(animState.jumpTime);
+
+            if(phase < animJumpPlayables.Length - 1) {
+                if (animState.jumpTime > total + animJumpLengths[phase]) {
+                    total += animJumpLengths[phase];
+                    mainMixer.SetInputWeight(phase, 0);
+                    phase++;
+                    mainMixer.SetInputWeight(phase, 1);
+                }
+            }
+
+            var t = Mathf.Min((animState.jumpTime - total) / (animJumpLengths[phase] * 0.75f), 1);
+            if (phase > 0) {
+                mainMixer.SetInputWeight(phase-1, 1 -t);
+            }
+            mainMixer.SetInputWeight(phase, t);
+
+            animJumpPlayables[phase].SetTime(animState.jumpTime - total);
+            //m_animJump.SetTime(animState.jumpTime);
 
             Profiler.EndSample();
         }
@@ -87,8 +139,16 @@ public class AnimGraph_Jump : AnimGraphAsset
         Entity m_Owner;
         Entity m_AnimStateOwner;
         AnimationLayerMixerPlayable m_additiveMixer;
+        AnimationMixerPlayable mainMixer;
         AnimationClipPlayable m_animJump;
+        AnimationClipPlayable[] animJumpPlayables;
+        float[] animJumpLengths;
+        float totalJumpLength;
+        int currentJumpPhase;
         //AimVerticalHandler m_aimHandler;
+
+        float total;
+        int phase;
 
         float playSpeed;
     }
