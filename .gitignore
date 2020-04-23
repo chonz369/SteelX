@@ -64,6 +64,7 @@ UnityPackageManager/
 Demo/
 Demo.rar
 Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
+Assets/BundledResources/
 
 # ============ #
 # Builds       #

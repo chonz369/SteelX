@@ -40,7 +40,8 @@ public struct CharacterPredictedData : IComponentData, IPredictedComponent<Chara
     public int locoStartTick;
     public Action action;
     public int actionStartTick;
-    public int boostingInAirCount;
+    public int verticalBoostingCount;
+    public float verticalBoostingStartPosY;
     public int releasedJump;
     public int boosting;
 
@@ -68,7 +69,8 @@ public struct CharacterPredictedData : IComponentData, IPredictedComponent<Chara
         writer.WriteInt32("phase", (int)locoState);
         writer.WriteInt32("phaseStartTick", locoStartTick);
         writer.WriteVector3Q("position", position, 2);
-        writer.WriteInt32("boostingInAirCount", boostingInAirCount);
+        writer.WriteInt32("boostingInAirCount", verticalBoostingCount);
+        writer.WriteFloatQ("verticalBoostingStartPosY", verticalBoostingStartPosY, 3);
         writer.WriteBoolean("releasedJumpInAir", releasedJump == 1);
         writer.WriteBoolean("boosting", boosting == 1);
         writer.WriteByte("cameraProfile", (byte)cameraProfile);
@@ -84,7 +86,8 @@ public struct CharacterPredictedData : IComponentData, IPredictedComponent<Chara
         locoState = (LocoState)reader.ReadInt32();
         locoStartTick = reader.ReadInt32();
         position = reader.ReadVector3Q();
-        boostingInAirCount = reader.ReadInt32();
+        verticalBoostingCount = reader.ReadInt32();
+        verticalBoostingStartPosY = reader.ReadFloatQ();
         releasedJump = reader.ReadBoolean() ? 1 : 0;
         boosting = reader.ReadBoolean() ? 1 : 0;
         cameraProfile = (CameraProfile)reader.ReadByte();
@@ -105,7 +108,8 @@ public struct CharacterPredictedData : IComponentData, IPredictedComponent<Chara
                && action == state.action
                && actionStartTick == state.actionStartTick
                && releasedJump == state.releasedJump
-               && boostingInAirCount == state.boostingInAirCount
+               && verticalBoostingCount == state.verticalBoostingCount
+               && Math.Abs(verticalBoostingStartPosY - state.verticalBoostingStartPosY) < 0.1f
                && boosting == state.boosting
                && damageTick == state.damageTick;
     }
@@ -119,7 +123,7 @@ public struct CharacterPredictedData : IComponentData, IPredictedComponent<Chara
         strBuilder.AppendLine("loco:" + locoState);
         strBuilder.AppendLine("phaseStartTick:" + locoStartTick);
         strBuilder.AppendLine("position:" + position);
-        strBuilder.AppendLine("jumpCount:" + boostingInAirCount);
+        strBuilder.AppendLine("jumpCount:" + verticalBoostingCount);
         strBuilder.AppendLine("sprinting:" + boosting);
         strBuilder.AppendLine("damageTick:" + damageTick);
         strBuilder.AppendLine("damageDirection:" + damageDirection);

@@ -79,13 +79,14 @@ class Boost_RequestActive : BaseComponentDataSystem<CharBehaviour, AbilityContro
         abilityCtrl.behaviorState = AbilityControl.State.Idle;
 
         if (charPredictedState.IsOnGround()) {
-            charPredictedState.boostingInAirCount = 0;
+            charPredictedState.verticalBoostingCount = 0;
 
             if (command.buttons.IsSet(UserCommand.Button.Boost)) {
                 abilityCtrl.behaviorState = AbilityControl.State.RequestActive;
             }
         } else if(charPredictedState.releasedJump == 1 && 
-            command.buttons.IsSet(UserCommand.Button.Jump) && charPredictedState.boostingInAirCount == 0) {
+            command.buttons.IsSet(UserCommand.Button.Jump) && charPredictedState.verticalBoostingCount == 0) {
+            charPredictedState.verticalBoostingStartPosY = charPredictedState.position.y;
             abilityCtrl.behaviorState = AbilityControl.State.RequestActive;
         }
 
@@ -120,12 +121,15 @@ class Boost_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, Abil
         //todo : check energy
 
         var boostRequested = charPredictedState.IsOnGround() ? command.buttons.IsSet(UserCommand.Button.Boost) :
-            (command.buttons.IsSet(UserCommand.Button.Jump) && charPredictedState.releasedJump == 1 && charPredictedState.boostingInAirCount == 0);
+            (command.buttons.IsSet(UserCommand.Button.Jump) && charPredictedState.releasedJump == 1 && charPredictedState.verticalBoostingCount == 0);
 
         if (boostRequested && boostAllowed && predictedState.active == 0) {
             abilityCtrl.behaviorState = AbilityControl.State.Active;
-            if(!charPredictedState.IsOnGround())
-                charPredictedState.boostingInAirCount = 1;
+            if (!charPredictedState.IsOnGround()) {
+                charPredictedState.verticalBoostingCount = 1;
+                charPredictedState.verticalBoostingStartPosY = charPredictedState.position.y;
+            }
+            
             predictedState.active = 1;
             predictedState.terminating = 0;
         }

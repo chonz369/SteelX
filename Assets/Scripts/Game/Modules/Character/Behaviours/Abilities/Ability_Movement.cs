@@ -106,9 +106,13 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
             if (phaseDuration >= Game.config.jumpAscentDuration && predictedState.boosting == 0) {
                 newPhase = CharacterPredictedData.LocoState.InAir;
             }
+
+            if (predictedState.boosting == 1) {
+                newPhase = CharacterPredictedData.LocoState.InAir;
+            }
         }
 
-        if(predictedState.boostingInAirCount >= 1 && predictedState.boosting == 0) {//in air boosting ended
+        if(predictedState.verticalBoostingCount >= 1 && predictedState.boosting == 0) {//in air boosting ended
             if (!isOnGround)
                 newPhase = CharacterPredictedData.LocoState.InAir;
         }
@@ -169,7 +173,7 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
                 velocity *= Game.config.playerSpeed / speed;
             }
             velocity = CalculateGroundVelocity(velocity, ref command, Game.config.playerSpeed, Game.config.playerAirFriction, Game.config.playerAiracceleration, gameTime.tickDuration);
-            velocity.y = (predicted.boosting == 1) ? Game.config.playerInAirBoostingSpeed : Game.config.jumpAscentHeight / Game.config.jumpAscentDuration;
+            velocity.y = Game.config.jumpAscentHeight / Game.config.jumpAscentDuration;
             deltaPos += velocity * gameTime.tickDuration;
 
             return;
@@ -180,7 +184,11 @@ class Movement_Update : BaseComponentDataSystem<CharBehaviour, AbilityControl, A
             velocity = CalculateGroundVelocity(velocity, ref command, Game.config.playerSpeed, Game.config.playerAirFriction, Game.config.playerAiracceleration, gameTime.tickDuration);
 
             if (predicted.boosting == 1) {
-                velocity.y = Game.config.playerInAirBoostingSpeed;
+                if(predicted.position.y - predicted.verticalBoostingStartPosY >= Game.config.verticalBoostingHeight) {
+                    velocity.y = 0;
+                } else {
+                    velocity.y = Game.config.playerInAirBoostingSpeed;
+                }
             } else {
                 if (velocity.y < -Game.config.maxFallVelocity)
                     velocity.y = -Game.config.maxFallVelocity;

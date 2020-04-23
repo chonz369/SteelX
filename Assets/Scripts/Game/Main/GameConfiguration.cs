@@ -14,5 +14,6 @@ public class GameConfiguration : ScriptableObject
     public float playerGravity = 9.82f;
     public float jumpAscentDuration = 0.2f;
     public float jumpAscentHeight = 1f;
+    public float verticalBoostingHeight = 10;
     public float maxFallVelocity = 10;
 }
