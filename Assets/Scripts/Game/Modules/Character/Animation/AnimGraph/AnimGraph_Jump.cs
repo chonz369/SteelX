@@ -9,6 +9,8 @@ public class AnimGraph_Jump : AnimGraphAsset
 {
     public AnimationClip[] animJumps = new AnimationClip[3];
 
+    [Tooltip("The previous jump phase finished transition after the ratio part of the next phase has played.")]
+    public float PhaseTransitionDurationRatio = 0.75f;
     [Tooltip("Jump height in animation. NOT actual ingame jump height")]
     public float jumpHeight = 1.7f; // Jump height of character in last frame of animation
     //public AnimationClip animAimDownToUp;
@@ -25,13 +27,15 @@ public class AnimGraph_Jump : AnimGraphAsset
             m_EntityManager = entityManager;
             m_Owner = owner;
             m_AnimStateOwner = animStateOwner;
-
+            phaseTransitionDurationRatio = settings.PhaseTransitionDurationRatio;
             m_additiveMixer = AnimationLayerMixerPlayable.Create(graph);
 
             mainMixer = AnimationMixerPlayable.Create(graph, settings.animJumps.Length);
 
             animJumpPlayables = new AnimationClipPlayable[settings.animJumps.Length];
             animJumpLengths = new float[settings.animJumps.Length];
+
+            float totalJumpLength = 0;
             for (int i = 0; i < settings.animJumps.Length; i++) {
                 var animJump = AnimationClipPlayable.Create(graph, settings.animJumps[i]);
                 animJump.SetApplyFootIK(false);
@@ -45,10 +49,6 @@ public class AnimGraph_Jump : AnimGraphAsset
                 graph.Connect(animJump, 0, mainMixer, i);
             }
 
-            //m_animJump = AnimationClipPlayable.Create(graph, settings.animJumps);
-            //m_animJump.SetApplyFootIK(true);
-            //m_animJump.SetDuration(settings.animJumps.length);
-            //m_animJump.Pause();
             int port = m_additiveMixer.AddInput(mainMixer, 0);
             m_additiveMixer.SetLayerAdditive((uint)port, false);
             m_additiveMixer.SetInputWeight(port, 1);
@@ -82,26 +82,34 @@ public class AnimGraph_Jump : AnimGraphAsset
 
             if (firstUpdate) {
                 animState.jumpTime = 0;
+                totalPlayedClipLength = 0;
+                currentJumpPhase = 0;
 
-                total = 0;
-                phase = 0;
-                for(int i=phase;i< animJumpLengths.Length; i++) {
-                    if(animState.jumpTime > total + animJumpLengths[i]) {
-                        total += animJumpLengths[i];
-                        phase++;
-                        if(phase >= animJumpLengths.Length) {
-                            phase--;
+                //transform jump time to the right jump phase
+                for (int i = 0;i< animJumpLengths.Length; i++) {
+                    if(animState.jumpTime > totalPlayedClipLength + animJumpLengths[i]) {
+                        totalPlayedClipLength += animJumpLengths[i];
+                        if(currentJumpPhase < animJumpLengths.Length - 1) {
+                            currentJumpPhase++;
                         }
                     }
                 }
 
                 for (int i = 0; i < animJumpPlayables.Length; i++) {
-                    mainMixer.SetInputWeight(i, i==phase ? 1 : 0);
+                    mainMixer.SetInputWeight(i, i==currentJumpPhase ? 1 : 0);
                 }
-                mainMixer.SetTime(animState.jumpTime - total);
+                mainMixer.SetTime(animState.jumpTime - totalPlayedClipLength);
             }
             else
                 animState.jumpTime += playSpeed * deltaTime;
+
+            if (currentJumpPhase < animJumpPlayables.Length - 1) {
+                if (animState.jumpTime > totalPlayedClipLength + animJumpLengths[currentJumpPhase]) {
+                    totalPlayedClipLength += animJumpLengths[currentJumpPhase];
+                    currentJumpPhase++;
+                }
+            }
+
             m_EntityManager.SetComponentData(m_AnimStateOwner, animState);
 
             Profiler.EndSample();
@@ -111,44 +119,34 @@ public class AnimGraph_Jump : AnimGraphAsset
             Profiler.BeginSample("Jump.Apply");
 
             var animState = m_EntityManager.GetComponentData<CharacterInterpolatedData>(m_AnimStateOwner);
-            //m_aimHandler.SetAngle(animState.aimPitch);
+            //m_aimHandler.SetAngle(animState.aimPitch);            
 
-            if(phase < animJumpPlayables.Length - 1) {
-                if (animState.jumpTime > total + animJumpLengths[phase]) {
-                    total += animJumpLengths[phase];
-                    mainMixer.SetInputWeight(phase, 0);
-                    phase++;
-                    mainMixer.SetInputWeight(phase, 1);
+            var t = Mathf.Min((animState.jumpTime - totalPlayedClipLength) / (animJumpLengths[currentJumpPhase] * phaseTransitionDurationRatio), 1);
+
+            if((animState.jumpTime - totalPlayedClipLength) < animJumpLengths[currentJumpPhase] * phaseTransitionDurationRatio) {
+                if (currentJumpPhase > 0) {
+                    mainMixer.SetInputWeight(currentJumpPhase - 1, 1 - t);
+                    animJumpPlayables[currentJumpPhase-1].SetTime(animJumpLengths[currentJumpPhase - 1] * (1- phaseTransitionDurationRatio) 
+                        + animJumpLengths[currentJumpPhase - 1] * phaseTransitionDurationRatio * t);
                 }
+                mainMixer.SetInputWeight(currentJumpPhase, t);
             }
 
-            var t = Mathf.Min((animState.jumpTime - total) / (animJumpLengths[phase] * 0.75f), 1);
-            if (phase > 0) {
-                mainMixer.SetInputWeight(phase-1, 1 -t);
-            }
-            mainMixer.SetInputWeight(phase, t);
-
-            animJumpPlayables[phase].SetTime(animState.jumpTime - total);
-            //m_animJump.SetTime(animState.jumpTime);
-
+            animJumpPlayables[currentJumpPhase].SetTime(animState.jumpTime - totalPlayedClipLength);
             Profiler.EndSample();
         }
-
 
         EntityManager m_EntityManager;
         Entity m_Owner;
         Entity m_AnimStateOwner;
         AnimationLayerMixerPlayable m_additiveMixer;
         AnimationMixerPlayable mainMixer;
-        AnimationClipPlayable m_animJump;
         AnimationClipPlayable[] animJumpPlayables;
         float[] animJumpLengths;
-        float totalJumpLength;
-        int currentJumpPhase;
         //AimVerticalHandler m_aimHandler;
-
-        float total;
-        int phase;
+        float phaseTransitionDurationRatio;
+        float totalPlayedClipLength;
+        int currentJumpPhase;
 
         float playSpeed;
     }

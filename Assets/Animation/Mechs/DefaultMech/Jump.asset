@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8818f9bf166631468771a4905bb2c97, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  animJump: {fileID: 7400000, guid: 5a21e07fc5ca5e640990890c79c7080f, type: 2}
+  animJumps:
+  - {fileID: 7400000, guid: 5a21e07fc5ca5e640990890c79c7080f, type: 2}
+  - {fileID: 7400000, guid: b1b46a06f46c14944a9f2d6dbd0dfc25, type: 3}
+  - {fileID: 7400000, guid: 368c81993a643304eb75d43e7da6c7e2, type: 3}
   jumpHeight: 2

@@ -18,16 +18,16 @@ MonoBehaviour:
     transitionTime: 0.2
     customTransitions:
     - sourceState: 3
-      transtionTime: 0.1
+      transtionTime: 0.2
   - animationState: 1
     template: {fileID: 11400000, guid: 77a1771c29c3b8840a042410475f5c3f, type: 2}
     transitionTime: 0.1
     customTransitions: []
   - animationState: 2
     template: {fileID: 11400000, guid: e044848e6741b7d45903263d8d04a632, type: 2}
-    transitionTime: 0
+    transitionTime: 0.2
     customTransitions: []
   - animationState: 3
     template: {fileID: 11400000, guid: 15a6f1bba3335c64cb8dd47f745f7d52, type: 2}
-    transitionTime: 0.1
+    transitionTime: 0.2
     customTransitions: []
