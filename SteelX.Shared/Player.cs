@@ -1,4 +1,4 @@
-﻿namespace Exteel.Core.Player
+﻿namespace SteelX.Shared
 {
 	public class Player //ToDo: Rename to "User"?
 	{
@@ -35,7 +35,7 @@
 
 namespace Exteel.Game.Player
 {
-	public class Player : Exteel.Core.Player.Player
+	public class Player : SteelX.Shared.Player
 	{
 		//Inventory List<> Parts
 		//Mechs List<> Builds

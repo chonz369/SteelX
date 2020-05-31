@@ -9,11 +9,11 @@
 		#region Explicit Operators
 		public static bool operator == (MechWeapon equip, WeaponTypes weap)
 		{
-			return weap == Exteel.Core.Weapon.GetWeapType(equip.LH != Weaponz.NONE ? equip.LH : equip.RH);
+			return weap == Weapon.GetWeapType(equip.LH != Weaponz.NONE ? equip.LH : equip.RH);
 		}
 		public static bool operator != (MechWeapon equip, WeaponTypes weap)
 		{
-			return weap != Exteel.Core.Weapon.GetWeapType(equip.LH != Weaponz.NONE ? equip.LH : equip.RH);
+			return weap != Weapon.GetWeapType(equip.LH != Weaponz.NONE ? equip.LH : equip.RH);
 		}
 		//public static bool operator == (Weapon lh, Weapon rh)
 		//public static bool operator == (MechWeapons lh, MechWeapons rh)

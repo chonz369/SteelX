@@ -1,6 +1,4 @@
-﻿using SteelX.Shared;
-
-namespace Exteel.Core
+﻿namespace SteelX.Shared
 {
 	/// <summary>
 	/// </summary>

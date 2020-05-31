@@ -21,7 +21,6 @@
 	#endregion
 
 	#region Mech Parts
-
 	public enum Parts
 	{
 		/// <summary>Jaywalker</summary>
@@ -359,14 +358,14 @@
 		Head,
 		Arm,
 		Leg
-	}	
+	}
 
 	public enum WeightClass
 	{
 		Light,
 		Standard,
 		Heavy
-	}	
+	}
 
 	public enum Skills
 	{

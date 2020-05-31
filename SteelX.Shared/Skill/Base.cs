@@ -1,4 +1,4 @@
-﻿namespace Exteel.Core
+﻿namespace SteelX.Shared
 {
 	/// <summary>
 	/// Use this class to create the base, 
