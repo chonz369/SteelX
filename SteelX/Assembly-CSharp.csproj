@@ -87,6 +87,7 @@
     <Compile Include="Assets\GameMain\Scripts\Definition\Constant\Constant.Setting.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\BuildInfo.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\ImpactData.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\LoginInfo.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\DataStruct\VersionInfo.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\Enum\CampType.cs" />
     <Compile Include="Assets\GameMain\Scripts\Definition\Enum\QualityLevelType.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\ThrusterData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\WeaponData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Aircraft.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Mechanaught.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Armor.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Asteroid.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Bullet.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Weapon.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\GameBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\GameMode.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\GlobalVariables.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\SurvivalGame.cs" />
     <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarComponent.cs" />
     <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarItem.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Assets\GameMain\Scripts\Utility\AssetUtility.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\LitJsonHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\WebUtility.cs" />
+    <Compile Include="Assets\OperatorStatsUI.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
