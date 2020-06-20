@@ -53,11 +53,15 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Mechanaught\Data\MechData.cs" />
     <Compile Include="Mechanaught\Parts\Base.cs" />
+    <Compile Include="Mechanaught\Parts\Data\ArmData.cs" />
+    <Compile Include="Mechanaught\Parts\Data\CoreData.cs" />
+    <Compile Include="Mechanaught\Parts\Data\HeadData.cs" />
+    <Compile Include="Mechanaught\Parts\Data\LegData.cs" />
     <Compile Include="Player\Inventory.cs" />
     <Compile Include="Weapon\Data\MechWeapon.cs" />
     <Compile Include="Mechanaught\Mechanaught.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartMetaData.cs" />
-    <Compile Include="Mechanaught\Parts\Data\MechPartData.cs" />
+    <Compile Include="Mechanaught\Parts\Data\BoosterData.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartData.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
