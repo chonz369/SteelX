@@ -51,15 +51,15 @@
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Mechanaught.cs" />
     <Compile Include="Mechanaught\Data\MechData.cs" />
     <Compile Include="Mechanaught\Parts\Base.cs" />
+    <Compile Include="Player\Inventory.cs" />
     <Compile Include="Weapon\Data\MechWeapon.cs" />
     <Compile Include="Mechanaught\Mechanaught.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartMetaData.cs" />
     <Compile Include="Mechanaught\Parts\Data\MechPartData.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartData.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill\Data\SkillData.cs" />
     <Compile Include="Skill\Base.cs" />

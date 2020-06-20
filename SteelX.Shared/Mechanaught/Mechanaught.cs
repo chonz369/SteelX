@@ -3,28 +3,27 @@
 	public class Mechanaught
 	{
 		#region Variables
-		public Operators Pilot		{ get; private set; }
-		public Arms Arm				{ get; private set; }
-		public Legs Leg				{ get; private set; }
-		public Cores Core			{ get; private set; }
-		public Heads Head			{ get; private set; }
-		public Boosters Booster		{ get; private set; }
+		public Parts Arm			{ get; private set; }
+		public Parts Leg			{ get; private set; }
+		public Parts Core			{ get; private set; }
+		public Parts Head			{ get; private set; }
+		public Parts Booster		{ get; private set; }
 		public MechData Mech		{ get; private set; }
 		public Weapon[,] Weapons	{ get; private set; }
 		public Skill[] Skills		{ get; private set; }
 
 		#region Stats
 		//ToDo: Add Weapon Durability to Mech's?
-		public int Durability		{ get { return Arm.Durability + Leg.Durability + Core.Durability + Head.Durability + Booster.Durability; } }
-		public int Weight			{ get { return Arm.Weight + Leg.Weight + Core.Weight + Head.Weight + Booster.Weight; } }
-		public int Size				{ get { return Arm.Size + Leg.Size + Core.Size + Head.Size + Booster.Size; } }
-		public int HP				{ get { return Arm.HP + Leg.HP + Core.HP + Head.HP + Booster.HP; } }
-		public int EN				{ get { return Core.EN; } }
-		public int SP				{ get { return Head.SP; } }
-		public int MPU				{ get { return Head.MPU; } }
-		public int MoveSpeed		{ get { return Leg.BasicSpeed; } }
-		public int EN_Recovery		{ get { return Arm.RecoveryEN + Leg.RecoveryEN + Core.RecoveryEN + Head.RecoveryEN + Booster.RecoveryEN; } }
-		public int MinEN_Required	{ get { return Core.MinEN; } }
+		public int Durability		{ get { return Application.PartsData[Arm].Durability + Application.PartsData[Leg].Durability + Application.PartsData[Core].Durability + Application.PartsData[Head].Durability + Application.PartsData[Booster].Durability; } }
+		public int Weight			{ get { return Application.PartsData[Arm].Weight + Application.PartsData[Leg].Weight + Application.PartsData[Core].Weight + Application.PartsData[Head].Weight + Application.PartsData[Booster].Weight; } }
+		public int Size				{ get { return Application.PartsData[Arm].Size + Application.PartsData[Leg].Size + Application.PartsData[Core].Size + Application.PartsData[Head].Size + Application.PartsData[Booster].Size; } }
+		public int HP				{ get { return Application.PartsData[Arm].HP + Application.PartsData[Leg].HP + Application.PartsData[Core].HP + Application.PartsData[Head].HP + Application.PartsData[Booster].HP; } }
+		public int EN				{ get { return Application.CoresData[Core].EN; } }
+		public int SP				{ get { return Application.HeadsData[Head].SP; } }
+		public int MPU				{ get { return Application.HeadsData[Head].MPU; } }
+		public int MoveSpeed		{ get { return Application.LegsData[Leg].BasicSpeed; } }
+		public int EN_Recovery		{ get { return Application.PartsData[Arm].RecoveryEN + Application.PartsData[Leg].RecoveryEN + Application.PartsData[Core].RecoveryEN + Application.PartsData[Head].RecoveryEN + Application.PartsData[Booster].RecoveryEN; } }
+		public int MinEN_Required	{ get { return Application.CoresData[Core].MinEN; } }
 		public int[] OperatorStats
 		{
 			get
@@ -54,38 +53,38 @@
 		}
 		#endregion
 		#region Arms
-		public int MaxHeat			{ get { return Arm.MaxHeat; } }
-		public int CooldownRate		{ get { return Arm.CooldownRate; } }
-		public int Marksmanship		{ get { return Arm.Marksmanship; } }
+		public int MaxHeat			{ get { return Application.ArmsData[Arm].MaxHeat; } }
+		public int CooldownRate		{ get { return Application.ArmsData[Arm].CooldownRate; } }
+		public int Marksmanship		{ get { return Application.ArmsData[Arm].Marksmanship; } }
 		#endregion
 		#region Legs
 		public int BasicSpeed		{ get { return MoveSpeed; } }
-		public int Capacity			{ get { return Leg.Capacity; } }
-		public int Deceleration		{ get { return Leg.Deceleration; } }
+		public int Capacity			{ get { return Application.LegsData[Leg].Capacity; } }
+		public int Deceleration		{ get { return Application.LegsData[Leg].Deceleration; } }
 		#endregion
 		#region Core
-		public int ENOutputRate		{ get { return Core.OutputRate; } }
+		public int ENOutputRate		{ get { return Application.CoresData[Core].OutputRate; } }
 		//public int MinENRequired { get; set; }
-		public int EnergyDrain		{ get { return Arm.EnergyDrain + Leg.EnergyDrain + Core.EnergyDrain + Head.EnergyDrain + Booster.EnergyDrain; } }
+		public int EnergyDrain		{ get { return Application.PartsData[Arm].EnergyDrain + Application.PartsData[Leg].EnergyDrain + Application.PartsData[Core].EnergyDrain + Application.PartsData[Head].EnergyDrain + Application.PartsData[Booster].EnergyDrain; } }
 		#endregion
 		#region Head
-		public int ScanRange		{ get { return Head.ScanRange; } }
+		public int ScanRange		{ get { return Application.HeadsData[Head].ScanRange; } }
 		#endregion
 		#region Booster
-		public int DashOutput		{ get { return Booster.DashOutput; } }
-		public int DashENDrain		{ get { return Booster.DashDrainEN; } }
-		public int JumpENDrain		{ get { return Booster.JumpDrainEN; } }
+		public int DashOutput		{ get { return Application.BoostersData[Booster].DashOutput; } }
+		public int DashENDrain		{ get { return Application.BoostersData[Booster].DashDrainEN; } }
+		public int JumpENDrain		{ get { return Application.BoostersData[Booster].JumpDrainEN; } }
 		#endregion
 		#endregion
 
 		#region Constructor
 		public Mechanaught() 
 		{
-			Arm = new Arms(Parts.AGM001);
-			Leg = new Legs(Parts.LGM001);
-			Core = new Cores(Parts.CGM001);
-			Head = new Heads(Parts.HGM001);
-			Booster = new Boosters(Parts.PGM001);
+			Arm		= Parts.AGM001; //new Arms(Parts.AGM001);
+			Leg		= Parts.LGM001; //new Legs(Parts.LGM001);
+			Core	= Parts.CGM001; //new Cores(Parts.CGM001);
+			Head	= Parts.HGM001; //new Heads(Parts.HGM001);
+			Booster	= Parts.PGM001; //new Boosters(Parts.PGM001);
 		}
 		public Mechanaught(MechData mech) : this()
 		{
@@ -118,14 +117,14 @@
 		private float DashAcceleration { get; set; }
 		private float DashDecelleration { get; set; }
 
-		public float GetJumpENDrain(int totalWeight)
+		public float GetJumpENDrain()
 		{
-			return JumpENDrain + totalWeight / 160f;//TODO : improve this
+			return JumpENDrain + Weight / 160f;//TODO : improve this
 		}
 
-		public float GetDashSpeed(int totalWeight)
+		public float GetDashSpeed()
 		{
-			return DashOutput * 1.8f - totalWeight * 0.004f; //DashOutput * 1.8f : max speed  ;  0.004 weight coefficient
+			return DashOutput * 1.8f - Weight * 0.004f; //DashOutput * 1.8f : max speed  ;  0.004 weight coefficient
 		}
 
 		public float GetMoveSpeed(int partWeight, int weaponWeight)
@@ -138,14 +137,14 @@
 			return (float)(BasicSpeed - (partWeight * x2 + weaponWeight) / x1);
 		}
 
-		public float GetDashAcceleration(int totalWeight)
+		public float GetDashAcceleration()
 		{
-			return GetDashSpeed(totalWeight) / 100f - 1;
+			return GetDashSpeed() / 100f - 1;
 		}
 
-		public float GetDashDecelleration(int totalWeight)
+		public float GetDashDecelleration()
 		{
-			return Deceleration / 10000f - (totalWeight - Deceleration) / 20000f;
+			return Deceleration / 10000f - (Weight - Deceleration) / 20000f;
 		}
 		#endregion
 	}

@@ -7,7 +7,7 @@ namespace SteelX.Shared
 	/// </summary>
 	public struct PartMetaData
 	{
-		//public Parts Type		{ get; private set; }
+		//public MechSlots Type	{ get; private set; }
 		public Parts Id			{ get; private set; }
 		public Parts Color		{ get; private set; }
 	}

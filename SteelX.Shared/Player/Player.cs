@@ -11,13 +11,14 @@
 		//Mech Mech //Active Mech
 		//Pilot Pilot //Active Pilot
 		//int[] Stats/Experience Points //Feed From Server, may not need it in class
-		public Mechanaughts ActiveMech { get; private set; }
+		public MechData ActiveMech { get; private set; }
 		public System.Guid Uid { get; private set; }
 		public string Username { get; private set; }
 		public string PilotName { get; private set; }
 		public int Level { get; private set; }
 		public int Rank { get; private set; }
 		public int Credits { get; private set; }
+		//parts[] inventoryid
 
 		//ToDo: Move to Global Class
 		//internal Mechanaughts LoadFromServer(System.Guid HashId)
@@ -30,20 +31,5 @@
 
 		#region Nested Classes
 		#endregion
-	}
-}
-
-namespace Exteel.Game.Player
-{
-	public class Player : SteelX.Shared.Player
-	{
-		//Inventory List<> Parts
-		//Mechs List<> Builds
-		//int RepairPoints
-		//Mech Mech //Active Mech
-		//Pilot Pilot //Active Pilot
-		//int CurrentHP
-		//int CurrentEN
-		//int CurrentSP
 	}
 }
