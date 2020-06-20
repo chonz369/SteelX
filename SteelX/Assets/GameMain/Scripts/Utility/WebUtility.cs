@@ -7,7 +7,7 @@
 
 using System;
 
-namespace StarForce
+namespace SteelX
 {
     public static class WebUtility
     {

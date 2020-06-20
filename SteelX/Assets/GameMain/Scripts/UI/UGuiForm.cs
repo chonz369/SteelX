@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
     public abstract class UGuiForm : UIFormLogic
     {

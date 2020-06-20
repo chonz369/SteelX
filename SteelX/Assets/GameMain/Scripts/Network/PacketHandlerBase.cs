@@ -7,7 +7,7 @@
 
 using GameFramework.Network;
 
-namespace StarForce
+namespace SteelX
 {
     public abstract class PacketHandlerBase : IPacketHandler
     {

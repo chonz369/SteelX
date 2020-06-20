@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityEngine;
 
-namespace StarForce
+namespace SteelX
 {
     [Serializable]
     public class WeaponData : AccessoryObjectData

@@ -7,7 +7,7 @@
 
 using GameFramework;
 
-namespace StarForce
+namespace SteelX
 {
     public static class AssetUtility
     {

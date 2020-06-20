@@ -8,7 +8,7 @@
 using GameFramework;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
     public static class ConfigExtension
     {

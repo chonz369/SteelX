@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace SteelX
 {
     public static partial class Constant
     {

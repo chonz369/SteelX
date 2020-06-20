@@ -8,9 +8,9 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
-    public class MyAircraft : Aircraft
+    public class MyAircraft : Mechanaught
     {
         [SerializeField]
         private MyAircraftData m_MyAircraftData = null;

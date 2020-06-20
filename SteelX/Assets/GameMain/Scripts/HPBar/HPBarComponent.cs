@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
     public class HPBarComponent : GameFrameworkComponent
     {

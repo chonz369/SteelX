@@ -5,7 +5,7 @@
 // Feedback: mailto:jiangyin@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace SteelX
 {
     public enum PacketType : byte
     {

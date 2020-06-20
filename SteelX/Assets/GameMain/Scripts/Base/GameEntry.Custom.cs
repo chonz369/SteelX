@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace SteelX
 {
     /// <summary>
     /// 游戏入口。

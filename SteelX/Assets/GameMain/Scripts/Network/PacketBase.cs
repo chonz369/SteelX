@@ -8,7 +8,7 @@
 using GameFramework.Network;
 using ProtoBuf;
 
-namespace StarForce
+namespace SteelX
 {
     public abstract class PacketBase : Packet, IExtensible
     {

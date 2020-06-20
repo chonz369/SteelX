@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityGameFramework.Editor.DataTableTools;
 
-namespace StarForce.Editor.DataTableTools
+namespace SteelX.Editor.DataTableTools
 {
     public sealed class DataTableGenerator
     {

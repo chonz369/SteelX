@@ -7,21 +7,24 @@
 
 namespace SteelX
 {
-    public class BuildInfo
+    public class LoginInfo
     {
-        public string GameVersion
+        /// <summary>
+        /// Access production server or development server
+        /// </summary>
+        public bool Debug
         {
             get;
             set;
         }
 
-        public int InternalGameVersion
+        public string Username
         {
             get;
             set;
         }
 
-        public string CheckVersionUrl
+        public string Password
         {
             get;
             set;

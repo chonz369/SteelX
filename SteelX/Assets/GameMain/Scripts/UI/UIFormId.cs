@@ -5,7 +5,7 @@
 // Feedback: mailto:jiangyin@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace SteelX
 {
     /// <summary>
     /// 界面编号。

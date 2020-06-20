@@ -9,7 +9,7 @@ using GameFramework;
 using GameFramework.DataTable;
 using UnityEngine;
 
-namespace StarForce
+namespace SteelX
 {
     public class SurvivalGame : GameBase
     {

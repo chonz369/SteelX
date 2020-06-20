@@ -5,7 +5,7 @@
 // Feedback: mailto:jiangyin@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace SteelX
 {
     /// <summary>
     /// 阵营类型。

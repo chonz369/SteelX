@@ -11,7 +11,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Editor.AssetBundleTools;
 
-namespace StarForce.Editor
+namespace SteelX.Editor
 {
     public sealed class StarForceBuildEventHandler : IBuildEventHandler
     {

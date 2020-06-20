@@ -16,7 +16,7 @@ using System.IO;
 using System.Reflection;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {

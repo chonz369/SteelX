@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityGameFramework.Editor;
 using UnityGameFramework.Editor.AssetBundleTools;
 
-namespace StarForce.Editor
+namespace SteelX.Editor
 {
     public static class GameFrameworkConfigs
     {

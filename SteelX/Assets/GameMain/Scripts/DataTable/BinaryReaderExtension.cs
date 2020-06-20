@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace StarForce
+namespace SteelX
 {
     public static class BinaryReaderExtension
     {

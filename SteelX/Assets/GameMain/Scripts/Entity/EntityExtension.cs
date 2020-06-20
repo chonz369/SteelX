@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace SteelX
 {
     public static class EntityExtension
     {
@@ -47,7 +47,7 @@ namespace StarForce
 
         public static void ShowAircraft(this EntityComponent entityComponent, AircraftData data)
         {
-            entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Constant.AssetPriority.AircraftAsset, data);
+            entityComponent.ShowEntity(typeof(Mechanaught), "Aircraft", Constant.AssetPriority.AircraftAsset, data);
         }
 
         public static void ShowThruster(this EntityComponent entityComponent, ThrusterData data)
