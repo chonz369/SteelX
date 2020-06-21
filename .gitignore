@@ -8,6 +8,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Bb]uilt/
+[Bb]in/
 UnityGenerated/
 UWP/
 WindowsStore/
@@ -15,6 +16,7 @@ WS/
 UnityVS/
 Assets/AssetStoreTools*
 node_modules/
+/Assets/AssetStoreTools*
 
 # Never ignore Asset meta data
 !SteelX/[Aa]ssets/**/*.meta
@@ -23,17 +25,16 @@ node_modules/
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 ExportedObj/
-.consulo/
-.vs/
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
+*.svd
 *.userprefs
 *.pidb
 *.booproj
+.consulo/
+.vs/
+.vscode/
+/.vs/
+#*.sln
+*.tmp
 *.svd
 *.pdb
 *.mdb
@@ -63,8 +64,20 @@ Assets/Infinita*
 UnityPackageManager/
 Demo/
 Demo.rar
-Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
-Assets/BundledResources/
+/Assets/StreamingAssets/*
+!/Assets/StreamingAssets/.gitkeep
+/ProjectSettings/ProjectVersion.txt
+/Packages/*
+/UnityPackageManager/*
+/GameFramework/bin
+/SteelX.Client/bin
+/SteelX.Server/bin
+/SteelX.UnitTest/bin
+/SteelX/Assets/GameMain/Libraries
+!/SteelX/Assets/GameMain/Libraries/*.dll
+!/SteelX/Assets/GameMain/Libraries/*.dll.meta
+SteelX/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset
+SteelX/Assets/BundledResources/
 
 # ============ #
 # Builds       #

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:SteelX/Assets/Scenes.meta
 guid: 1899d67aab077824386de04774ef92a6
+=======
+guid: d3bb21b4e2b6aed4d9e4139e8a443bbb
+>>>>>>> Develop-Code:SteelX/Assets/GameFramework/Prefabs.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
