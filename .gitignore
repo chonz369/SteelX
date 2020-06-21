@@ -17,7 +17,7 @@ Assets/AssetStoreTools*
 node_modules/
 
 # Never ignore Asset meta data
-!/[Aa]ssets/**/*.meta
+!SteelX/[Aa]ssets/**/*.meta
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
