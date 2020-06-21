@@ -18,12 +18,12 @@
 		public int Weight			{ get { return Application.PartsData[Arm].Weight + Application.PartsData[Leg].Weight + Application.PartsData[Core].Weight + Application.PartsData[Head].Weight + Application.PartsData[Booster].Weight; } }
 		public int Size				{ get { return Application.PartsData[Arm].Size + Application.PartsData[Leg].Size + Application.PartsData[Core].Size + Application.PartsData[Head].Size + Application.PartsData[Booster].Size; } }
 		public int HP				{ get { return Application.PartsData[Arm].HP + Application.PartsData[Leg].HP + Application.PartsData[Core].HP + Application.PartsData[Head].HP + Application.PartsData[Booster].HP; } }
-		public int EN				{ get { return Application.CoresData[Core].EN; } }
-		public int SP				{ get { return Application.HeadsData[Head].SP; } }
+		public int EN				{ get { return Application.CoresData[Core].Capacity; } }
+		public int SP				{ get { return Application.HeadsData[Head].SPCache; } }
 		public int MPU				{ get { return Application.HeadsData[Head].MPU; } }
-		public int MoveSpeed		{ get { return Application.LegsData[Leg].BasicSpeed; } }
+		public int MoveSpeed		{ get { return Application.LegsData[Leg].MoveSpeed; } }
 		public int EN_Recovery		{ get { return Application.PartsData[Arm].RecoveryEN + Application.PartsData[Leg].RecoveryEN + Application.PartsData[Core].RecoveryEN + Application.PartsData[Head].RecoveryEN + Application.PartsData[Booster].RecoveryEN; } }
-		public int MinEN_Required	{ get { return Application.CoresData[Core].MinEN; } }
+		public int MinEN_Required	{ get { return Application.CoresData[Core].MinSupply; } }
 		public int[] OperatorStats
 		{
 			get
@@ -59,21 +59,20 @@
 		#endregion
 		#region Legs
 		public int BasicSpeed		{ get { return MoveSpeed; } }
-		public int Capacity			{ get { return Application.LegsData[Leg].Capacity; } }
-		public int Deceleration		{ get { return Application.LegsData[Leg].Deceleration; } }
+		public int Capacity			{ get { return Application.LegsData[Leg].LoadAbility; } }
+		public int Deceleration		{ get { return Application.LegsData[Leg].BreakAbility; } }
 		#endregion
 		#region Core
-		public int ENOutputRate		{ get { return Application.CoresData[Core].OutputRate; } }
-		//public int MinENRequired { get; set; }
+		public int ENOutputRate		{ get { return Application.CoresData[Core].Generate; } }
 		public int EnergyDrain		{ get { return Application.PartsData[Arm].EnergyDrain + Application.PartsData[Leg].EnergyDrain + Application.PartsData[Core].EnergyDrain + Application.PartsData[Head].EnergyDrain + Application.PartsData[Booster].EnergyDrain; } }
 		#endregion
 		#region Head
 		public int ScanRange		{ get { return Application.HeadsData[Head].ScanRange; } }
 		#endregion
 		#region Booster
-		public int DashOutput		{ get { return Application.BoostersData[Booster].DashOutput; } }
-		public int DashENDrain		{ get { return Application.BoostersData[Booster].DashDrainEN; } }
-		public int JumpENDrain		{ get { return Application.BoostersData[Booster].JumpDrainEN; } }
+		public int DashOutput		{ get { return Application.BoostersData[Booster].BoosterPower; } }
+		public int DashENDrain		{ get { return Application.BoostersData[Booster].BoosterEnDrain; } }
+		public int JumpENDrain		{ get { return Application.BoostersData[Booster].BoosterJumpEnDrain; } }
 		#endregion
 		#endregion
 
