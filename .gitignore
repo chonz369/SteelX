@@ -20,6 +20,9 @@ node_modules/
 
 # Never ignore Asset meta data
 !SteelX/[Aa]ssets/**/*.meta
+!SteelX/[Aa]ssets/*.meta
+# Unity Auto-Generates, and Modify Assemblies
+SteelX/*.csproj
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
