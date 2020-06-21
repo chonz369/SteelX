@@ -18,6 +18,11 @@
 		Blades,
 		Cannons
 	}
+
+	public enum BlowTypes
+	{
+		NONE
+	}
 	#endregion
 
 	#region Mech Parts
@@ -404,6 +409,45 @@
 		Code = 1,
 		Etc = 2,
 		UnitSet = 3
+	}
+	#endregion
+
+	#region Skills
+	public enum CodeTypes
+	{
+		SKILL, PASSIVE, TUNNING
+	}
+
+	public enum CodeCategorys
+	{
+		CONTROL,
+		OVERCLOCK,
+		HACKING,
+		/// <summary>
+		/// exclusive
+		/// </summary>
+		COMPUTING
+	}
+
+	public enum CodeEquipTypes
+	{
+		WEAPON,
+		BOOSTER
+	}
+
+	public enum CodeWeaponTypes
+	{
+
+	}
+
+	public enum CodeActivationTargets
+	{
+		SELF,
+		ENEMY,
+		/// <summary>
+		/// exclusive
+		/// </summary>
+		ALLY
 	}
 	#endregion
 

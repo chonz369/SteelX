@@ -2,7 +2,7 @@
 {
 	//ToDo: similiar to NPCData, but instead with weapons...
 	//eventitem Number xxxxxxx=  x[PartsType=1~9]+x[PC=PartsType/NPC=0/GM=1/Event=2]+xxxxx[Vari1~99999]
-	public struct WeaponData
+	public struct WeaponGunData : IWeaponData
 	{
 		public int Id { get; private set; }
 		public bool NPCPart { get; private set; }
@@ -11,14 +11,17 @@
 		/// Used for localization
 		/// </summary>
 		public string Name { get; private set; }
-		public int WeaponType { get; private set; }
+		public WeaponTypes WeaponType { get; private set; }
 		public int IFOType { get; private set; }
 		public int Weight { get; private set; }
 		public int Size { get; private set; }
 		public int IFOSize { get; private set; }
 		public int EnergyDrain { get; private set; }
-		public int TwoHanded { get; private set; }
+		public bool TwoHanded { get; private set; }
 		public int Damage { get; private set; }
+		/// <summary>
+		/// Delta values for animation frames
+		/// </summary>
 		public float ReloadTime { get; private set; }
 		public float HitMin { get; private set; }
 		public int AmmoMax { get; private set; }
@@ -29,12 +32,21 @@
 		public float DropRange { get; private set; }
 		public bool StopAttack { get; private set; }
 		public float AttackFreezeTime { get; private set; }
+		/// <summary>
+		/// Duration of recoil (flinch?) in seconds
+		/// </summary>
 		public float RecoilTime { get; private set; }
+		/// <summary>
+		/// Knockback distance from recoil
+		/// </summary>
 		public float RecoilDistance { get; private set; }
+		/// <summary>
+		/// How many points added to overheat 
+		/// </summary>
 		public float OverheatPoint { get; private set; }
 		public float OverheatRecovery { get; private set; }
 		public int HealEnergy { get; private set; }
-		public int LockOnAngle { get; private set; }
+		public float LockOnAngle { get; private set; }
 		public int IFORadius { get; private set; }
 		public int SplashRadius { get; private set; }
 		public int SplashDamage { get; private set; }

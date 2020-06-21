@@ -90,14 +90,6 @@
 		#endregion
 
 		#region Methods
-		internal Weapon GetWeapon(Weaponz ID)
-		{
-			foreach (Weapon weap in Database)
-			{
-				if (weap.WeaponId == ID) return weap;
-			}
-			throw new System.Exception("Part ID doesnt exist in the database. Please check Arms constructor.");
-		}
 		public static WeaponTypes GetWeapType(Weaponz weap)
 		{
 			//if (WeaponId == Weapon.NONE)
@@ -109,15 +101,6 @@
 				default:
 					return WeaponTypes.NONE;
 			}
-		}
-		#endregion
-
-		#region Database
-		private static readonly Weapon[] Database;
-		static Weapon()
-		{
-			Database = new Weapon[] {
-			};
 		}
 		#endregion
 	}
