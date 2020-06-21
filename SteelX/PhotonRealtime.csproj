@@ -302,34 +302,34 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="GameFramework">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/GameFramework.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\GameFramework.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/LitJson.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/protobuf-net.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="SteelX.Client">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/SteelX.Client.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Client.dll</HintPath>
     </Reference>
     <Reference Include="SteelX.Shared">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/SteelX.Shared.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Plugins/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+      <HintPath>..\SteelX\Assets\Plugins\JetBrains\JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Library/PackageCache/com.unity.burst@1.3.0-preview.7/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.burst@1.3.0-preview.7/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Library/PackageCache/com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

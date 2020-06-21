@@ -305,6 +305,7 @@
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>..\SteelX\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
+    <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -507,10 +508,10 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="GameFramework">
-      <HintPath>..\SteelX\Assets\GameFramework\Libraries\GameFramework.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\GameFramework.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\SteelX\Assets\GameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
       <HintPath>..\SteelX\Assets\GameMain\Libraries\LitJson.dll</HintPath>
@@ -518,14 +519,26 @@
     <Reference Include="protobuf-net">
       <HintPath>..\SteelX\Assets\GameMain\Libraries\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+    <Reference Include="SteelX.Client">
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    <Reference Include="SteelX.Shared">
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Shared.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>..\SteelX\Assets\Plugins\JetBrains\JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.burst@1.3.0-preview.7/Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

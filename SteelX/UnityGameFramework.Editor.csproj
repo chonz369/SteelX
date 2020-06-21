@@ -384,35 +384,35 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
     <Reference Include="GameFramework">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Assets/GameFramework/Libraries/GameFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Assets/GameFramework/Libraries/ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\GameFramework.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Assets/GameMain/Libraries/LitJson.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Assets/GameMain/Libraries/protobuf-net.dll</HintPath>
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+    <Reference Include="SteelX.Client">
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+    <Reference Include="SteelX.Shared">
+      <HintPath>..\SteelX\Assets\GameMain\Libraries\SteelX.Shared.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\Photon3Unity3D.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\SteelX\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/admin/Documents/GitHub/StarForce/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>..\SteelX\Assets\Plugins\JetBrains\JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.burst@1.3.0-preview.7/Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\SteelX\Library\PackageCache\com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
