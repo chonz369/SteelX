@@ -1,8 +1,155 @@
 fileFormatVersion: 2
 guid: a4a79ae7ae7da4244a2adb15f32572ea
 ModelImporter:
-  serializedVersion: 19300
-  internalIDToNameTable: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AES104
+    100002: AES104_L_Finger0
+    100004: AES104_L_Finger01
+    100006: AES104_L_Finger1
+    100008: AES104_L_Finger11
+    100010: AES104_L_Finger2
+    100012: AES104_L_Finger21
+    100014: AES104_L_ForeArm
+    100016: AES104_L_Hand
+    100018: AES104_L_UpperArm
+    100020: AES104_L_UpperArm_2
+    100022: AES104_R_Finger0
+    100024: AES104_R_Finger01
+    100026: AES104_R_Finger1
+    100028: AES104_R_Finger11
+    100030: AES104_R_Finger2
+    100032: AES104_R_Finger21
+    100034: AES104_R_ForeArm
+    100036: AES104_R_Hand
+    100038: AES104_R_UpperArm
+    100040: AES104_R_UpperArm_2
+    100042: BackPack_Bone
+    100044: Bip01
+    100046: Bip01_Head
+    100048: Bip01_HeadNub
+    100050: Bip01_L_Calf
+    100052: Bip01_L_Clavicle
+    100054: Bip01_L_Finger0
+    100056: Bip01_L_Finger01
+    100058: Bip01_L_Finger0Nub
+    100060: Bip01_L_Finger1
+    100062: Bip01_L_Finger11
+    100064: Bip01_L_Finger1Nub
+    100066: Bip01_L_Finger2
+    100068: Bip01_L_Finger21
+    100070: Bip01_L_Finger2Nub
+    100072: Bip01_L_Foot
+    100074: Bip01_L_ForeArm
+    100076: Bip01_L_Hand
+    100078: Bip01_L_Thigh
+    100080: Bip01_L_Toe0
+    100082: Bip01_L_Toe0Nub
+    100084: Bip01_L_UpperArm
+    100086: Bip01_Neck
+    100088: Bip01_Pelvis
+    100090: Bip01_R_Calf
+    100092: Bip01_R_Clavicle
+    100094: Bip01_R_Finger0
+    100096: Bip01_R_Finger01
+    100098: Bip01_R_Finger0Nub
+    100100: Bip01_R_Finger1
+    100102: Bip01_R_Finger11
+    100104: Bip01_R_Finger1Nub
+    100106: Bip01_R_Finger2
+    100108: Bip01_R_Finger21
+    100110: Bip01_R_Finger2Nub
+    100112: Bip01_R_Foot
+    100114: Bip01_R_ForeArm
+    100116: Bip01_R_Hand
+    100118: Bip01_R_Thigh
+    100120: Bip01_R_Toe0
+    100122: Bip01_R_Toe0Nub
+    100124: Bip01_R_UpperArm
+    100126: Bip01_Spine
+    100128: Bip01_Spine1
+    100130: Bip01_Spine2
+    100132: Bip01_Spine3
+    100134: //RootNode
+    100136: L_UpperArm_Bone
+    100138: R_UpperArm_Bone01
+    100140: Weapon_lft_Bone
+    100142: Weapon_rt_Bone
+    400000: AES104
+    400002: AES104_L_Finger0
+    400004: AES104_L_Finger01
+    400006: AES104_L_Finger1
+    400008: AES104_L_Finger11
+    400010: AES104_L_Finger2
+    400012: AES104_L_Finger21
+    400014: AES104_L_ForeArm
+    400016: AES104_L_Hand
+    400018: AES104_L_UpperArm
+    400020: AES104_L_UpperArm_2
+    400022: AES104_R_Finger0
+    400024: AES104_R_Finger01
+    400026: AES104_R_Finger1
+    400028: AES104_R_Finger11
+    400030: AES104_R_Finger2
+    400032: AES104_R_Finger21
+    400034: AES104_R_ForeArm
+    400036: AES104_R_Hand
+    400038: AES104_R_UpperArm
+    400040: AES104_R_UpperArm_2
+    400042: BackPack_Bone
+    400044: Bip01
+    400046: Bip01_Head
+    400048: Bip01_HeadNub
+    400050: Bip01_L_Calf
+    400052: Bip01_L_Clavicle
+    400054: Bip01_L_Finger0
+    400056: Bip01_L_Finger01
+    400058: Bip01_L_Finger0Nub
+    400060: Bip01_L_Finger1
+    400062: Bip01_L_Finger11
+    400064: Bip01_L_Finger1Nub
+    400066: Bip01_L_Finger2
+    400068: Bip01_L_Finger21
+    400070: Bip01_L_Finger2Nub
+    400072: Bip01_L_Foot
+    400074: Bip01_L_ForeArm
+    400076: Bip01_L_Hand
+    400078: Bip01_L_Thigh
+    400080: Bip01_L_Toe0
+    400082: Bip01_L_Toe0Nub
+    400084: Bip01_L_UpperArm
+    400086: Bip01_Neck
+    400088: Bip01_Pelvis
+    400090: Bip01_R_Calf
+    400092: Bip01_R_Clavicle
+    400094: Bip01_R_Finger0
+    400096: Bip01_R_Finger01
+    400098: Bip01_R_Finger0Nub
+    400100: Bip01_R_Finger1
+    400102: Bip01_R_Finger11
+    400104: Bip01_R_Finger1Nub
+    400106: Bip01_R_Finger2
+    400108: Bip01_R_Finger21
+    400110: Bip01_R_Finger2Nub
+    400112: Bip01_R_Foot
+    400114: Bip01_R_ForeArm
+    400116: Bip01_R_Hand
+    400118: Bip01_R_Thigh
+    400120: Bip01_R_Toe0
+    400122: Bip01_R_Toe0Nub
+    400124: Bip01_R_UpperArm
+    400126: Bip01_Spine
+    400128: Bip01_Spine1
+    400130: Bip01_Spine2
+    400132: Bip01_Spine3
+    400134: //RootNode
+    400136: L_UpperArm_Bone
+    400138: R_UpperArm_Bone01
+    400140: Weapon_lft_Bone
+    400142: Weapon_rt_Bone
+    4300000: AES104
+    9500000: //RootNode
+    13700000: AES104
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -10,7 +157,7 @@ ModelImporter:
       name: AES104
     second: {fileID: 2100000, guid: d0246335613e24e41872da2b1c7ac60f, type: 2}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,7 +190,6 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -51,19 +197,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -72,10 +217,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human:
     - boneName: Bip01_Pelvis
       humanName: Hips
@@ -670,17 +815,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ae3528bf134e9d349baf09683836d2f8,
-    type: 3}
-  autoGenerateAvatarMappingIfUnspecified: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
