@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <_TargetFrameworkDirectories>non_empty_path_generated_by_rider_editor_plugin</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_rider_editor_plugin</_FullFrameworkReferenceAssemblyPaths>
+    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
-    <ProjectGuid>{D19EADA6-8953-A88D-7896-F61420240126}</ProjectGuid>
+    <RootNamespace>SteelX.Unity</RootNamespace>
+    <ProjectGuid>{0AC6FE88-37D6-697C-A823-936D40F10B76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SteelX.Unity</RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -24,11 +26,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_7;UNITY_2018_3;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;ENABLE_LOG;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_7;UNITY_2018_3;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;PHOTON_UNITY_NETWORKING;PUN_2_0_OR_NEWER;PUN_2_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>0169;CS0649;IDE0051</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,8 +38,8 @@
     <OutputPath>Temp\bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>0169;CS0649;IDE0051</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -45,13 +47,6 @@
     <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
-    <UnityVersion>2018.3.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -105,23 +100,146 @@
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\ThrusterData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityData\WeaponData.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityExtension.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Mechanaught.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Armor.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Asteroid.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Bullet.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Effect.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Entity.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Mechanaught.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\MyAircraft.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\TargetableObject.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Thruster.cs" />
     <Compile Include="Assets\GameMain\Scripts\Entity\EntityLogic\Weapon.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Console\Console.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Console\ConsoleGUI.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Console\ConsoleTextLinux.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Console\ConsoleTextWin.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Core\ConfigVars.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Core\LevelManager.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Core\SimpleBundleManager.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ECS\BaseComponentDataSystem.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Entity\GameWorld.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\GameBase.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\GameMode.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\GlobalVariables.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\ClientGameLoop.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\Game.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\GameConfiguration.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\GameNetworkEvents.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\PlayerSettings.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\PreviewGameLoop.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Main\ServerGameLoop.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\AbilityOwner.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\ActionAnimationDefinition.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimationJobs\FootIkJob.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_AnimatorController.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_InAir.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_Jump.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_Move8Dir.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_Stack.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_Stand.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraph_StateSelector.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\AnimGraphAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\BlendTree2dSimpleDirectional.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimGraph\IAnimGraphInstance.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\AnimStateController.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\CharacterAnimatorController.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Animation\SimpleTranstion.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Behaviours\Abilities\Ability_Boost.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Behaviours\Abilities\Ability_Movement.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Behaviours\AbilityCollection.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Behaviours\CharacterBehaviours.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterModuleClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterModulePreview.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterModuleServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterModuleSettings.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterModuleShared.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterMoveQuery.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\CharacterSystemShared.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\Character.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\CharacterInterpolated.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\CharacterPredicted.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\CharacterReplicated.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\MechPresentationSetup.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\Components\MechSkeleton.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\HitCollision\HitCollision.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\LocalPlayerCharacterControl.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\ArmsPartAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\BoosterPartAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\CorePartAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\HeadPartAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\LegsPartAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\MechPartAssetBase.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPart\MechPartRegistry.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechPresentationBuilder.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechTypeAsset.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechTypeDefinition.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\MechTypeRegistry.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Modules\Character\PlayerCharacterControl.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\BitInputStream.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\BitOutputStream.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\Compression\RawInputStream.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\Compression\RawOutputStream.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\DeltaReader.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\DeltaWriter.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkCommon.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkConnection.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkEvent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkObjectPool.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkPrediction.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkReader.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkSchema.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkStatisticsClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkStatisticsServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkUtils.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\NetworkWriter.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\PhotonNetworkTransport.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\SequenceBuffer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Networking\SparseSequenceBuffer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\Components\PlayerState.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\Components\UserCommandComponent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\LocalPlayer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\PlayerModuleClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\PlayerModuleServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\PlayerModuleSettings.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\PlayerSystemsClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Player\UserCommand.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\DataComponentSerializers.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedComponent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntity.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntityCollection.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntityFactory.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntityModuleClient.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntityModuleServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\ReplicatedEntityRegistry.cs" />
     <Compile Include="Assets\GameMain\Scripts\Game\SurvivalGame.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarComponent.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarItem.cs" />
-    <Compile Include="Assets\GameMain\Scripts\HPBar\HPBarItemObject.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\BundledResource\AssetRegistryRoot.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\BundledResource\BundledResourceManager.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\BundledResource\RegistryBase.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\BundledResource\WeakAssetReference.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\CircularList.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\ConversionUtility.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\DebugDraw.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\FloatRollingAverage.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\GameDebug.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\AABox.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\Box.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\Capsule.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\collision.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\Intersection.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\linesegment.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\Prim.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\ray.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\Primitives\Sphere.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StateHistory\SparseTickBuffer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StateMachine.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StopwatchExtensions.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StringExtensionMethods.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\TickStateDenseBuffer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\TickStateSparseBuffer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\Game\Utils\TransformExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\LocalizationExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\Localization\XmlLocalizationHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Network\CSPacketBase.cs" />
@@ -157,11 +275,21 @@
     <Compile Include="Assets\GameMain\Scripts\UI\UGuiGroupHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UIExtension.cs" />
     <Compile Include="Assets\GameMain\Scripts\UI\UIFormId.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\GameModeSystemServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\HPBar\HPBarComponent.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\HPBar\HPBarItem.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\HPBar\HPBarItemObject.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\InputSystem.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\Movable\Movable.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\Movable\MovableSystemServer.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\OperatorStatsUI.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\PlayerCamera\PlayerCamera.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\PlayerCamera\PlayerCameraSettings.cs" />
+    <Compile Include="Assets\GameMain\Scripts\UnityMonoHandlers\PlayerCamera\PlayerCameraSystem.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\AIUtility.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\AssetUtility.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\LitJsonHelper.cs" />
     <Compile Include="Assets\GameMain\Scripts\Utility\WebUtility.cs" />
-    <Compile Include="Assets\OperatorStatsUI.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>..\SteelX\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -746,22 +874,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SteelX.Shared\SteelX.Shared.csproj">
-      <Project>{C4BD7AC0-1333-4D62-A6CD-881A1806FFAD}</Project>
-      <Name>SteelX.Shared</Name>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
+      <Project>{31FBBE80-9866-BD15-5C6B-1384FAED06CA}</Project>
+      <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityGameFramework.Runtime.csproj">
-      <Project>{BCA2A453-28A6-271F-07AA-3D38AC10BFCF}</Project>
+      <Project>{235E85F1-E66D-2D6C-0E56-BEC0D623FB4B}</Project>
       <Name>UnityGameFramework.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
+      <Project>{46AAC9AF-FD09-EFE0-A181-0A7D9C914AC6}</Project>
+      <Name>PunDemos.DemoHubEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
+      <Project>{820E4622-915D-DCB6-3B34-A97BC46542B1}</Project>
+      <Name>PunDemos.DemoSlotcarEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
+      <Project>{344D7B38-D5F7-693D-4D75-1F2DCEF509C3}</Project>
+      <Name>PhotonUnityNetworking.Demos</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{70439AB5-EEC2-9E19-B5EF-6689720EF04E}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityGameFramework.Editor.csproj">
-      <Project>{6DA914E4-18F8-ED74-3CEF-60DB3792CEF8}</Project>
+      <Project>{9A2A4832-A99E-4258-A28E-29D169E6EFFE}</Project>
       <Name>UnityGameFramework.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="PhotonWebSocket.csproj">
+      <Project>{5BF5744E-7D3D-AB27-6721-791B3D989026}</Project>
+      <Name>PhotonWebSocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonRealtime.csproj">
+      <Project>{64F58068-CEB1-8E05-B6EF-F87EBDD38033}</Project>
+      <Name>PhotonRealtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.csproj">
+      <Project>{514C89C6-87BB-7F7E-6921-2C1546DFB323}</Project>
+      <Name>PhotonUnityNetworking</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonChat.csproj">
+      <Project>{83B5404B-BC24-D483-448E-4ABA2D16F130}</Project>
+      <Name>PhotonChat</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
+      <Project>{2A03910E-3B16-E95E-FD68-8125722437FC}</Project>
+      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
+      <Project>{9E6D8917-2081-8765-3717-174F12265977}</Project>
+      <Name>PhotonUnityNetworking.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

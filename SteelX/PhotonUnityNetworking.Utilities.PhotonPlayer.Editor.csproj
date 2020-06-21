@@ -13,10 +13,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>SteelX.Unity</RootNamespace>
-    <ProjectGuid>{9128E328-9DC0-C029-C904-8DED122D3225}</ProjectGuid>
+    <ProjectGuid>{31FBBE80-9866-BD15-5C6B-1384FAED06CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <AssemblyName>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -30,7 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -57,18 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\BuildTools.cs" />
-    <Compile Include="Assets\Editor\BuildWindowProgress.cs" />
-    <Compile Include="Assets\Editor\EditorLevelManager.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGenerator.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Editor\DataTableGenerator\DataTableGeneratorMenu.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Editor\GameFrameworkConfigs.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Editor\StarForceBuildEventHandler.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Game\ReplicatedEntity\Editor\ReplicatedEntityEditor.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Game\Utils\BundledResource\Editor\BundledResourceBuilder.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StateHistory\Editor\StateHistoryInspectorWindow.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Game\Utils\StateHistory\Editor\StateHistoryWindow.cs" />
-    <Compile Include="Assets\GameMain\Scripts\Game\Utils\WeakAssetReference\Editor\WeakAssetReferenceDrawer.cs" />
+    <Compile Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\PhotonPlayer\Editor\PlayerNumberingInspector.cs" />
+    <Compile Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs" />
+    <None Include="Assets\Photon\PhotonUnityNetworking\UtilityScripts\PhotonPlayer\Editor\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.asmdef" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -300,35 +291,35 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
     <Reference Include="GameFramework">
-      <HintPath>..\SteelX\Assets\GameFramework\Libraries\GameFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\SteelX\Assets\GameFramework\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/GameFramework.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>..\SteelX\Assets\GameMain\Libraries\LitJson.dll</HintPath>
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>..\SteelX\Assets\GameMain\Libraries\protobuf-net.dll</HintPath>
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+    <Reference Include="SteelX.Client">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/SteelX.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+    <Reference Include="SteelX.Shared">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/GameMain/Libraries/SteelX.Shared.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    <Reference Include="websocket-sharp">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>..\SteelX\Library\PackageCache\com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Assets/Plugins/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Library/PackageCache/com.unity.burst@1.3.0-preview.7/Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>C:/Users/admin/Documents/GitHub/SteelX-1/SteelX/Library/PackageCache/com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -686,42 +677,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{0AC6FE88-37D6-697C-A823-936D40F10B76}</Project>
-      <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{31FBBE80-9866-BD15-5C6B-1384FAED06CA}</Project>
-      <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityGameFramework.Runtime.csproj">
-      <Project>{235E85F1-E66D-2D6C-0E56-BEC0D623FB4B}</Project>
-      <Name>UnityGameFramework.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{46AAC9AF-FD09-EFE0-A181-0A7D9C914AC6}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{820E4622-915D-DCB6-3B34-A97BC46542B1}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{344D7B38-D5F7-693D-4D75-1F2DCEF509C3}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{70439AB5-EEC2-9E19-B5EF-6689720EF04E}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityGameFramework.Editor.csproj">
-      <Project>{9A2A4832-A99E-4258-A28E-29D169E6EFFE}</Project>
-      <Name>UnityGameFramework.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonWebSocket.csproj">
-      <Project>{5BF5744E-7D3D-AB27-6721-791B3D989026}</Project>
-      <Name>PhotonWebSocket</Name>
-    </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
       <Project>{64F58068-CEB1-8E05-B6EF-F87EBDD38033}</Project>
       <Name>PhotonRealtime</Name>
@@ -730,17 +685,9 @@
       <Project>{514C89C6-87BB-7F7E-6921-2C1546DFB323}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonChat.csproj">
-      <Project>{83B5404B-BC24-D483-448E-4ABA2D16F130}</Project>
-      <Name>PhotonChat</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{2A03910E-3B16-E95E-FD68-8125722437FC}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{9E6D8917-2081-8765-3717-174F12265977}</Project>
-      <Name>PhotonUnityNetworking.Editor</Name>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{70439AB5-EEC2-9E19-B5EF-6689720EF04E}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
