@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
-using Exteel.Core.Player;
+using SteelX.Shared;
+using SteelX.Unity;
+using UnityEngine.Networking;
 //using UnityEngine;
 
-namespace Exteel
+namespace SteelX.Unity
 {
 	public class GlobalVariables //: MonoBehaviour
 	{
@@ -29,6 +31,7 @@ namespace Exteel
 			form.AddField("password", pass);
 
 			UnityEngine.WWW www = new UnityEngine.WWW(Settings.LoginURL, form);
+			//UnityWebRequest www = new UnityEngine.Networking.UnityWebRequest(Settings.LoginURL, form);
 
 			//Debug.Log("Authenticating...");
 

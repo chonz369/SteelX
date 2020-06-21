@@ -42,6 +42,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
+      <Project>{109d7f39-79ab-4862-9f73-0b8c638930c6}</Project>
+      <Name>GameFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SteelX.Shared\SteelX.Shared.csproj">
       <Project>{c4bd7ac0-1333-4d62-a6cd-881a1806ffad}</Project>
       <Name>SteelX.Shared</Name>
