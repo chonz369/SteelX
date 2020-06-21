@@ -360,9 +360,15 @@
 		Leg
 	}
 
-	public enum WeightClass
+	public enum WeightClass : byte
 	{
+		/// <summary>
+		/// Speed
+		/// </summary>
 		Light,
+		/// <summary>
+		/// Normal
+		/// </summary>
 		Standard,
 		Heavy
 	}
@@ -379,5 +385,53 @@
 		Shop,
 		Settings,
 		Inventory
+	}
+
+	#region Shop
+	/// <summary>
+	/// The contract type for this item
+	/// </summary>
+	public enum ContractTypes : int
+	{
+		FixedQty = 0,
+		Durability = 1,
+		Time = 2
+	}
+
+	public enum ProductTypes : byte
+	{
+		Part = 0,
+		Code = 1,
+		Etc = 2,
+		UnitSet = 3
+	}
+	#endregion
+
+	public enum NPCTypes
+	{
+		NORMAL				= 1,
+		SPY					= 2,
+		TERRORIST			= 3,
+		GUARD				= 4,
+		BERSERKER			= 5,
+		HP_GUARD			= 6,
+		SUPER_HP_GUARD		= 7,
+		GUNNER				= 8,
+		SUPPORTER			= 9,
+		TUTORIAL			= 10,
+		DUDLEY_FIGHTER		= 80,
+		DUDLEY_BOMBER		= 81,
+		DUDLEY_ANNIHILATOR	= 90
+}
+
+	public enum AbilityGrowthTypes
+	{
+		PA_UNKNOWN = 0,
+		PA_HP = 1,
+		PA_MV = 2,
+		PA_EN = 3,
+		PA_SCAN_MPU = 4,
+		PA_SP_OHE = 5,
+		PA_AIM_OHR = 6
 	}
 }

@@ -57,7 +57,10 @@
     <Compile Include="Mechanaught\Parts\Data\CoreData.cs" />
     <Compile Include="Mechanaught\Parts\Data\HeadData.cs" />
     <Compile Include="Mechanaught\Parts\Data\LegData.cs" />
+    <Compile Include="NPC\NPCData.cs" />
     <Compile Include="Player\Inventory.cs" />
+    <Compile Include="Shop\ShopEntry.cs" />
+    <Compile Include="Weapon\Data\WeaponData.cs" />
     <Compile Include="Weapon\Data\MechWeapon.cs" />
     <Compile Include="Mechanaught\Mechanaught.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartMetaData.cs" />

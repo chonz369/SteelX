@@ -4,36 +4,31 @@
 	{
 		#region Variables
 		public Parts Part { get; set; }
-		/// <summary>
-		/// SP sets the minimum Skill Points of the Mechanaught
-		/// </summary>
-		public int SP { get; set; }
+		public int Id { get; private set; }
+		public int NPCPart { get; private set; }
+		public string Model { get; private set; }
+		public string Name { get; private set; }
+		public int Weight { get; private set; }
+		public int HitPoint { get; private set; }
+		public int Size { get; private set; }
+		public int EnergyDrain { get; private set; }
 		/// <summary>
 		/// MPU sets how many <see cref="Skills"/> can be equipped on the mechanaught
 		/// </summary>
-		public int MPU { get; set; }
+		public int MPU { get; private set; }
+		/// <summary>
+		/// SP sets the minimum Skill Points of the Mechanaught
+		/// </summary>
+		public int SPCache { get; private set; }
 		/// <summary>
 		/// Scan Range sets the minimum scan range of the mechanaught.
 		/// </summary>
-		public int ScanRange { get; set; }
-		#endregion
-
-		#region Constructor
-		public HeadData(Parts? name = null, string display = null, byte rank = 0, int hp = 0, int sp = 0, int mpu = 0, int size = 0, int weight = 0, int endrain = 0, int scan = 0, WeightClass? type = null)
-		{
-			Part = name.HasValue ? name.Value : Parts.HDS008;
-			//PartName = name.HasValue ? name.Value : Parts.HGM001;
-			//DisplayName = display ?? "GameMaster";
-			//RankRequired = rank;
-			//HP = hp;
-			SP = sp;
-			MPU = mpu;
-			//Size = size;
-			//Weight = weight;
-			//EnergyDrain = endrain;
-			ScanRange = scan;
-			//WeightSeries = type.HasValue ? type.Value : WeightClass.Standard;
-		}
+		public int ScanRange { get; private set; }
+		public int IFOSize { get; private set; }
+		public int BoneType { get; private set; }
+		public float RepairTime { get; private set; }
+		public int Grade { get; private set; }
+		public string Description { get; private set; }
 		#endregion
 	}
 }

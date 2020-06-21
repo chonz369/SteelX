@@ -4,36 +4,40 @@
 	{
 		#region Variables
 		public Parts Part { get; set; }
+		public int Id { get; set; }
+		public int NPCPart { get; private set; }
+		public string Model { get; private set; }
+		public string Name { get; private set; }
+		public int WeaponType { get; private set; }
+		public int IFOType { get; private set; }
+		public int NotifyCount { get; private set; }
+		public int BoneCount { get; private set; }
+		public int Weight { get; private set; }
+		public int HitPoint { get; private set; }
 		/// <summary>
 		/// Rate of speed that is increased when dashing.
 		/// </summary>
-		public int DashOutput { get; set; }
+		public int BoosterPower { get; private set; }
 		/// <summary>
 		/// How fast Energy is drained when dashing.
 		/// </summary>
-		public int DashDrainEN { get; set; }
+		public int BoosterEnDrain { get; private set; }
+		public int Size { get; private set; }
+		public int EnergyDrain { get; private set; }
 		/// <summary>
 		/// How fast Energy is drained when jumping.
 		/// </summary>
-		public int JumpDrainEN { get; set; }
-		#endregion
-
-		#region Constructor
-		public BoosterData(Parts? name = null, string display = null, byte rank = 0, int hp = 0, int size = 0, int weight = 0, int endrain = 0, int dashout = 0, int dashdrain = 0, int jumpout = 0, WeightClass? type = null)
-		{
-			Part = name.HasValue ? name.Value : Parts.PRC008;
-			//PartName = name.HasValue ? name.Value : Parts.PGM001;
-			//DisplayName = display ?? "GameMaster";
-			//RankRequired = rank;
-			//HP = hp;
-			//Size = size;
-			//Weight = weight;
-			//EnergyDrain = endrain;
-			DashOutput = dashout;
-			DashDrainEN = dashdrain;
-			JumpDrainEN = jumpout;
-			//WeightSeries = type.HasValue ? type.Value : WeightClass.Standard;
-		}
+		public int BoosterJumpEnDrain { get; private set; }
+		public float BoostJumpVelocity { get; private set; }
+		public float BoostJumpMoveVelocity { get; private set; }
+		public float RepairTime { get; private set; }
+		public int IFOSize { get; private set; }
+		public bool StopAttack { get; private set; }
+		public float AttackFreezeTime { get; private set; }
+		public int PrjSpeed { get; private set; }
+		public int IFORadius { get; private set; }
+		public int Grade { get; private set; }
+		public string Description { get; private set; }
 		#endregion
 	}
 }
