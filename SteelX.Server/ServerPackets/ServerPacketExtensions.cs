@@ -1,3 +1,5 @@
+using System.Drawing;
+using Colorful;
 using Data.Model;
 using Data.Model.Items;
 using GameServer.Game;
@@ -46,30 +48,62 @@ namespace GameServer.ServerPackets
         /// <param name="part"></param>
         public static void WritePartInfo(this ServerBasePacket packet, Part part)
         {
-            packet.WriteUInt(part.Id);
-            packet.WriteUInt(part.TemplateId);
-            
-            packet.WriteUShort(part.Parameters);
-            packet.WriteUShort(part.Type);
-            
-            packet.WriteByte(part.Color.R);
-            packet.WriteByte(part.Color.G);
-            packet.WriteByte(part.Color.B);
-            
-            packet.WriteByte(1); // Unknown
-            packet.WriteByte(1); // Unknown
-            
-            packet.WriteInt(1); // Unknown
-            
-            // FArray - Unknown
-            packet.WriteInt(0); // Array size
-            
-            // Array contents would go here
-            
-            packet.WriteInt(1); // Unknown
-            packet.WriteInt(1); // Unknown
-            packet.WriteInt(5000); // If 1, durability, if 2, expired?
-            packet.WriteInt(3600); // Unknown
+            if (part != null)
+            {
+                packet.WriteUInt(part.Id);
+                packet.WriteUInt(part.TemplateId);
+
+                packet.WriteUShort(part.Parameters);
+                packet.WriteUShort(part.Type);
+
+                packet.WriteByte(part.Color.R);
+                packet.WriteByte(part.Color.G);
+                packet.WriteByte(part.Color.B);
+
+                packet.WriteByte(1); // Unknown
+                packet.WriteByte(1); // Unknown
+
+                packet.WriteInt(1); // Unknown
+
+                // FArray - Unknown
+                packet.WriteInt(0); // Array size
+
+                // Array contents would go here
+
+                packet.WriteInt(10000); // Expiry time / current durability
+                packet.WriteInt(10000); // Max Durability
+                packet.WriteInt(1); // If 1, durability, if 2, expired?
+                packet.WriteInt(0); // Unknown
+            }
+            else
+            {
+                Console.WriteLine("Wrote EMPTY part!", Color.Green);
+                
+                packet.WriteInt(-1);
+                packet.WriteUInt(0);
+
+                packet.WriteUShort(0);
+                packet.WriteUShort(0);
+
+                packet.WriteByte(0);
+                packet.WriteByte(0);
+                packet.WriteByte(0);
+
+                packet.WriteByte(0); // Unknown
+                packet.WriteByte(0); // Unknown
+
+                packet.WriteInt(0); // Unknown
+
+                // FArray - Unknown
+                packet.WriteInt(0); // Array size
+
+                // Array contents would go here
+
+                packet.WriteInt(0); // Unknown
+                packet.WriteInt(0); // Unknown
+                packet.WriteInt(0); // If 1, durability, if 2, expired?
+                packet.WriteInt(0); // Unknown
+            }
         }
 
         /// <summary>
@@ -81,12 +115,15 @@ namespace GameServer.ServerPackets
         {
             // TODO: Move this to helper or maybe even room info obj
             packet.WriteString("StringA"); // Room / session code?
+            
             packet.WriteInt(room.Id); // Unknown
             packet.WriteInt(0); // Unknown
             packet.WriteInt((int)room.GameType);
 
+            
             packet.WriteString(room.Name);
             packet.WriteString("StringB"); // Unknown
+            packet.WriteString("StringC"); // Unknown
             packet.WriteString(room.Master != null ? room.Master.Callsign : "UNKNOWN");
   
             packet.WriteInt(room.Capacity);
@@ -112,14 +149,21 @@ namespace GameServer.ServerPackets
             packet.WriteInt(0); // Unknown
  
             packet.WriteByte(0); // Unknown
+            
+            packet.WriteInt(50); // Min level
+            packet.WriteInt(51); // max Level
+            packet.WriteInt(52); // Unknown
+            packet.WriteInt(53); // Unknown
+            packet.WriteInt(54); // Unknown
         }
 
         public static void WriteRoomUserInfo(this ServerBasePacket packet, GameInstance room, ExteelUser user)
         {
             packet.WriteString("StringA"); // Unknown
             packet.WriteString(user.Callsign);
-            
             packet.WriteString(""); // Clan name
+            
+            packet.WriteInt(0); // Unknown
             packet.WriteInt(0); // Unknown - clan id?
             
             packet.WriteUInt(user.Id);
@@ -131,6 +175,7 @@ namespace GameServer.ServerPackets
             packet.WriteInt(0); // Unknown
             packet.WriteInt(0); // Unknown
             packet.WriteInt(0); // Unknown
+            
             
             packet.WriteBool(user.IsReady); // Unknown - ready?
             packet.WriteBool(user.Id == room.MasterId);
@@ -155,7 +200,12 @@ namespace GameServer.ServerPackets
                 packet.WriteInt(0); // Unknown
             }
             
-            for (var i = 0; i < 14; i++)
+            for (var i = 0; i < 11; i++)
+            {
+                packet.WriteInt(0); // Unknown
+            }
+            
+            for (var i = 0; i < 11; i++)
             {
                 packet.WriteInt(0); // Unknown
             }
@@ -172,6 +222,8 @@ namespace GameServer.ServerPackets
             
             // Another unknown struct. Seems to be an array?
             packet.WriteInt(0); // Size?
+            
+            
             
             packet.WritePilotInfo(user.PilotInfo);
         }

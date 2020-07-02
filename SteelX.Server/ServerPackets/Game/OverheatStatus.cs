@@ -10,12 +10,14 @@ namespace GameServer.ServerPackets.Game
     {
         private readonly Weapon _weapon;
         private readonly int _arm;
+        private readonly int _slot;
         private readonly Unit _unit;
 
-        public OverheatStatus(Unit unit, int arm, Weapon weapon)
+        public OverheatStatus(Unit unit, int arm, int slot, Weapon weapon)
         {
             _unit = unit;
             _arm = arm;
+            _slot = slot;
             _weapon = weapon;
         }
         
@@ -26,7 +28,7 @@ namespace GameServer.ServerPackets.Game
 
         public override byte GetId()
         {
-            return 0x7d;
+            return 0x83;
         }
 
         protected override void WriteImpl()
@@ -34,7 +36,7 @@ namespace GameServer.ServerPackets.Game
             WriteUInt(_unit.Id); // UnitId
             WriteFloat(_weapon.CurrentOverheat); // Overheat value - seems to be absolute...
             // TODO: Should slow and arm be stored on weapon?
-            WriteInt(_unit.CurrentWeaponSet); // SlotNumber
+            WriteInt(_slot); // SlotNumber
             WriteByte((byte)_arm); // Hand
             WriteBool(_weapon.IsOverheated); // Status
         }

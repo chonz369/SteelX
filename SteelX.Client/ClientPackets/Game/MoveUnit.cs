@@ -11,8 +11,17 @@ namespace GameServer.ClientPackets.Game
     /// </summary>
     public class MoveUnit : ClientGameBasePacket
     {
+        private readonly bool _shouldUpdate;
+        
         public MoveUnit(byte[] data, GameSession client) : base(data, client)
         {
+            if (Unit.IgnorePackets > 0)
+            {
+                Unit.IgnorePackets--;
+                _shouldUpdate = false;
+                Console.WriteLine("IGNORED MOVE PACKET", Color.Pink);
+                return;
+            }
             TickUnit();
             //GetInt(); // ClientTime? - Not sure what to do with this yet - ping check? - maybe packet number?
 
@@ -20,9 +29,13 @@ namespace GameServer.ClientPackets.Game
             Unit.Movement = GetByte();
             Unit.UnknownMovementFlag = GetByte();
             Unit.Boosting = GetByte();
+            
+//            System.Console.WriteLine("Unit Move {0} Unknown {1} Boost {2}", Unit.Movement, Unit.UnknownMovementFlag, Unit.Boosting);
 
             // Read the position information
             GetUnitPositionAndAim();
+
+            _shouldUpdate = true;
         }
 
         public override string GetType()
@@ -32,7 +45,8 @@ namespace GameServer.ClientPackets.Game
 
         protected override void RunImpl()
         {
-            GetClient().GameInstance.UpdateUnitPosition(Unit);
+            if (_shouldUpdate)
+                GetClient().GameInstance.UpdateUnitPosition(Unit);
         }
     }
 }

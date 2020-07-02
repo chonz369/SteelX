@@ -1,4 +1,7 @@
+using System;
 using Data.Model;
+using GameServer.ServerPackets.Game;
+using Console = Colorful.Console;
 
 namespace GameServer.ClientPackets.Game
 {
@@ -24,6 +27,9 @@ namespace GameServer.ClientPackets.Game
         /// </summary>
         protected void TickUnit()
         {
+            // Just for practice mode right now
+            if (Unit == null) return;
+            
             var ping = GetUInt();
             
             var delta = Unit.UpdatePing(ping);
@@ -42,8 +48,10 @@ namespace GameServer.ClientPackets.Game
             if (Unit == null) return;
             
             // Read aim
-            Unit.AimX = GetShort();
             Unit.AimY = GetShort();
+            Unit.AimX = GetShort();
+
+//            Console.WriteLine("User Aim X: {1:F} Aim Y: {0:F}", Unit.AimY, Unit.AimX);
 
             // Read position
             Unit.WorldPosition.X = GetFloat();

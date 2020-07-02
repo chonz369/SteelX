@@ -24,7 +24,7 @@ namespace GameServer.ServerPackets.Bridge
 
         public override byte GetId()
         {
-            return 0x96;
+            return 0x9f;
         }
 
         protected override void WriteImpl()

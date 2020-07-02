@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Data.Model;
+using GameServer.Database;
 using GameServer.ServerPackets;
 using Microsoft.EntityFrameworkCore;
 using Console = Colorful.Console;

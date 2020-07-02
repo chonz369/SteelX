@@ -13,14 +13,16 @@ namespace GameServer.ServerPackets
 
         public override byte GetId()
         {
-            return 0x03;
+            return 0x04;
         }
 
         protected override void WriteImpl()
         {
             // Write the clients time
-            WriteInt(_clientTime);
-            
+//            var server = (GameServer)GetClient().Server;
+//            WriteInt(server.RunningMs);
+            WriteInt(_clientTime);            
+
             // Write the servers connection time for the client
             WriteInt(GetClient().ConnectedMs);
         }

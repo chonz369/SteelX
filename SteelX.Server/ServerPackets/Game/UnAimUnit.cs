@@ -23,7 +23,7 @@ namespace GameServer.ServerPackets.Game
 
         public override byte GetId()
         {
-            return 0x61;
+            return 0x66;
         }
 
         protected override void WriteImpl()

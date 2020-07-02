@@ -23,7 +23,7 @@ namespace GameServer.ServerPackets.Game
 
         public override byte GetId()
         {
-            return 0x60;
+            return 0x65;
         }
 
         protected override void WriteImpl()
@@ -34,8 +34,8 @@ namespace GameServer.ServerPackets.Game
             WriteInt(0); // Unknown
             WriteInt(0); // Unknown
             
-            WriteShort(_attacker.AimX); // Attacker - AimX
-            WriteShort(_attacker.AimY); // Attacker - AimY
+            WriteShort(_attacker.AimY); // Attacker - AimX
+            WriteShort(_attacker.AimX); // Attacker - AimY
             
             WriteFloat(_attacker.WorldPosition.X); // Attacker - X
             WriteFloat(_attacker.WorldPosition.Y); // Attacker - Y

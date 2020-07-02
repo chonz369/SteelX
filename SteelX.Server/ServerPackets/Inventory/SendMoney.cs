@@ -18,7 +18,7 @@ namespace GameServer.ServerPackets.Inventory
 
         public override byte GetId()
         {
-            return 0x1c;
+            return 0x1d;
         }
 
         protected override void WriteImpl()

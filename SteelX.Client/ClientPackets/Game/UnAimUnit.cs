@@ -15,6 +15,9 @@ namespace GameServer.ClientPackets.Game
         
         public UnAimUnit(byte[] data, GameSession client) : base(data, client)
         {
+            // Check practice mode
+            if (GetClient().GameInstance == null) return;
+
             TickUnit();
             //GetInt(); // ClientTime? - Not sure what to do with this yet - ping check? - maybe packet number?
 
@@ -24,7 +27,12 @@ namespace GameServer.ClientPackets.Game
             _oldTarget = Unit.GetWeaponByArm(arm).Target;
             
             // Update to no target
-            Unit.GetWeaponByArm(arm).Target = null;
+            var weapon = Unit.GetWeaponByArm(arm);
+            
+            if (weapon != null)
+                weapon.Target = null;
+            else
+                Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, arm);
         }
 
         public override string GetType()
@@ -34,6 +42,9 @@ namespace GameServer.ClientPackets.Game
 
         protected override void RunImpl()
         {
+            // Check practice mode
+            if (GetClient().GameInstance == null) return;
+
             GetClient().GameInstance.UnAimUnit(Unit, _oldTarget);
         }
     }

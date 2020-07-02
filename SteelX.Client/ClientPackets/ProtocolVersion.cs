@@ -18,7 +18,16 @@ namespace GameServer.ClientPackets
         
         public ProtocolVersion(byte[] data, GameSession client) : base(data, client)
         {
-            _version = GetInt();
+            try
+            {
+                _version = GetInt();
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Error on client protocol version!");
+                _version = 0;
+                client.Disconnect();
+            }
         }
 
         protected override void RunImpl()

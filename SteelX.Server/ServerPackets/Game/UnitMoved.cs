@@ -1,3 +1,5 @@
+using System;
+using System.Numerics;
 using Data.Model;
 
 namespace GameServer.ServerPackets.Game
@@ -8,10 +10,14 @@ namespace GameServer.ServerPackets.Game
     public class UnitMoved : ServerBasePacket
     {
         private readonly Unit _unit;
+        private readonly int _serverTime;
+        private readonly Vector3 _vel;
 
-        public UnitMoved(Unit unit)
+        public UnitMoved(Unit unit, int serverTime, Vector3 vel)
         {
             _unit = unit;
+            _serverTime = serverTime;
+            _vel = vel;
         }
         
         public override string GetType()
@@ -21,13 +27,13 @@ namespace GameServer.ServerPackets.Game
 
         public override byte GetId()
         {
-            return 0x5e;
+            return 0x63;
         }
 
         protected override void WriteImpl()
         {
-            WriteUInt(_unit.Id);
-            WriteUInt(_unit.User.Id);
+            WriteInt(_serverTime); // Unknown - Tick?
+            WriteUInt(_unit.Id); 
             
             WriteByte(_unit.Movement);
             WriteByte(_unit.UnknownMovementFlag);
@@ -37,12 +43,12 @@ namespace GameServer.ServerPackets.Game
             WriteFloat(_unit.WorldPosition.Y);
             WriteFloat(_unit.WorldPosition.Z);
             
-            WriteFloat(0); // Unknown - vector?
-            WriteFloat(0); // Unknown - vector?
-            WriteFloat(0); // Unknown - vector?
+            WriteFloat(_vel.X); // Unknown - vector?
+            WriteFloat(_vel.Y); // Unknown - vector?
+            WriteFloat(_vel.Z); // Unknown - vector?
             
-            WriteShort(_unit.AimX);
             WriteShort(_unit.AimY);
+            WriteShort(_unit.AimX);
         }
     }
 }

@@ -19,6 +19,11 @@ namespace GameServer.ClientPackets.Game
         
         public AimUnit(byte[] data, GameSession client) : base(data, client)
         {
+            Console.WriteLine("Packet size: {0}",Color.Coral, Size);
+            
+            Console.WriteLine("Packet raw: {0}", Color.Coral,
+                String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
+            
             // TODO: This is just for practice. Improve it?
             if (client.GameInstance == null) return;
             TickUnit();
@@ -36,7 +41,12 @@ namespace GameServer.ClientPackets.Game
             GetUnitPositionAndAim();
             
             // Assign target
-            Unit.GetWeaponByArm(_arm).Target = _target;
+            var weapon = Unit.GetWeaponByArm(_arm);
+            
+            if (weapon != null)
+                weapon.Target = _target;
+            else
+                Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, _arm);
         }
 
         public override string GetType()
@@ -46,6 +56,9 @@ namespace GameServer.ClientPackets.Game
 
         protected override void RunImpl()
         {
+            // Check practice mode
+            if (GetClient().GameInstance == null) return;
+            
             GetClient().GameInstance.AimUnit(Unit, _target);
         }
     }

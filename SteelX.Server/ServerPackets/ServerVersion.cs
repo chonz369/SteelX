@@ -17,7 +17,10 @@ namespace GameServer.ServerPackets
 
         protected override void WriteImpl()
         {
-            WriteInt(333);
+            WriteInt(0);
+            WriteInt(0);
+            WriteUInt(3459107938);
+            WriteInt(0);
         }
     }
 }

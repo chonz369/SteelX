@@ -15,26 +15,25 @@ namespace GameServer.ClientPackets.Game
         /// The arm they are attacking with
         /// </summary>
         private readonly int _arm;
-        
-        private const int damage = 297;
+
+        private readonly int _comboStep;
         
         public StartAttack(byte[] data, GameSession client) : base(data, client)
         {
-            Console.WriteLine("Packet size: {0}",Color.Coral, Size);
-            
-            Console.WriteLine("Packet raw: {0}", Color.Coral,
-                String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
+//            // Check practice mode
+            if (GetClient().GameInstance == null) return;
+
 
             TickUnit();
             //Console.WriteLine("Timestamp?? - : {0}", GetInt()); // ??
 
             _arm = GetInt();
-            
-            Console.WriteLine("Arm?? - : {0}", _arm); // ??
-            Console.WriteLine("Int?? - : {0}", GetInt()); // ??
+            _comboStep = GetInt();
             
             // Read the position information
             GetUnitPositionAndAim();
+            
+            System.Console.WriteLine("Got aim: X: {0:F} Y: {1:F}", Unit.AimX/100.0f, Unit.AimY/100.0f);
         }
 
         public override string GetType()
@@ -44,9 +43,15 @@ namespace GameServer.ClientPackets.Game
 
         protected override void RunImpl()
         {
-            GetClient().GameInstance.TryAttack(Unit, _arm);
+            // Check practice mode
+            if (GetClient().GameInstance == null) return;
 
+            
             var weapon = Unit.GetWeaponByArm(_arm);
+
+            weapon.ComboStep = _comboStep;
+            
+            GetClient().GameInstance.TryAttack(Unit, _arm);
             
             if (weapon.IsAutomatic)
             {

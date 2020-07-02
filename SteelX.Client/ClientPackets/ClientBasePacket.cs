@@ -53,7 +53,7 @@ namespace GameServer.ClientPackets
             {
                 // TODO: Implement logging with levels (sever, info, etc)
                 var user = GetClient().GetUserName();
-                Console.WriteLine("WARNING: User {0} caused error on packet {1} - {2}", user, GetType(), e);
+                Console.WriteLine("WARNING: User {0} caused error on packet:run {1} - {2}", user, GetType(), e);
             }
         }
 

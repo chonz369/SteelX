@@ -48,7 +48,10 @@ namespace GameServer.ClientPackets.Inventory
             client.SendPacket(new SendSpecialItems(client.User));
             
             // Send codes
-            client.SendPacket(new SendCodeList(client.User));           
+            client.SendPacket(new SendCodeList(client.User)); 
+            
+            // Send operators
+            client.SendPacket(new SendOperatorList(client.User));
             
             // Send end packet
             client.SendPacket(new SendInventoryEnd(client.User));

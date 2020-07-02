@@ -18,13 +18,13 @@ namespace GameServer.ClientPackets.Bridge
 
         public override string GetType()
         {
-            return "BRIDGE_REQ_SURVIVAL_INFO";
+            return "BRIDGE_REQ_STAT_INFO";
         }
 
         protected override void RunImpl()
         {
             // Determine the stat type based on the Id offset
-            var statType = (UserStats.StatType)(Id - 0x4d);
+            var statType = (UserStats.StatType)(Id - 0x47);
             
             // Lookup stats
             var stats = GetClient().User.Stats.FirstOrDefault(s => s.Type == statType);
@@ -53,6 +53,10 @@ namespace GameServer.ClientPackets.Bridge
                 
                 case UserStats.StatType.TeamBattle:
                     packet = new TeamBattleInfo(stats);
+                    break;
+                
+                case UserStats.StatType.Ctf:
+                    packet = new CtfInfo(stats);
                     break;
                 
                 case UserStats.StatType.ClanBattle:

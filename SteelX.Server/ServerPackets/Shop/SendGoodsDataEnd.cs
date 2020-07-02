@@ -9,7 +9,7 @@ namespace GameServer.ServerPackets.Shop
 
         public override byte GetId()
         {
-            return 0x8c;
+            return 0x92;
         }
 
         // Empty packet

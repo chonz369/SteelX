@@ -28,7 +28,7 @@ namespace GameServer.ServerPackets.Room
 
         public override byte GetId()
         {
-            return 0x33;
+            return 0x35;
         }
 
         protected override void WriteImpl()

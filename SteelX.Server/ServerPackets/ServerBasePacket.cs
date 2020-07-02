@@ -52,8 +52,7 @@ namespace GameServer.ServerPackets
         protected abstract void WriteImpl();
         //protected abstract void RunImpl();
         
-        #region WRITE FUNCTIONS
-        
+        #region WRITE FUNCTIONS        
         /// <summary>
         /// Writes a raw byte array into the buffer
         /// </summary>
@@ -146,8 +145,8 @@ namespace GameServer.ServerPackets
             {
                 text = "";
             }
-//            else
-//            {
+            //else
+            //{
                 if (nullTerminate) text += "\0";
                 
                 // Convert to bytes
@@ -161,9 +160,8 @@ namespace GameServer.ServerPackets
                 {
                     _data.AddRange(BitConverter.GetBytes(c));
                 }
-//            }
-        }
-        
+            //}
+        }        
         #endregion
     }
 }
