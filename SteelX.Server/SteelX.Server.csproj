@@ -39,9 +39,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clan.cs" />
+    <Compile Include="GameServer.cs" />
+    <Compile Include="Game\GameInfo.cs" />
+    <Compile Include="Game\GameInstance.cs" />
+    <Compile Include="Game\GameMode.cs" />
+    <Compile Include="Game\StatCalculatorExtensions.cs" />
+    <Compile Include="Items\Part.cs" />
+    <Compile Include="Items\UserInventory.cs" />
+    <Compile Include="Items\Weapon.cs" />
+    <Compile Include="Managers\RoomManager.cs" />
+    <Compile Include="Managers\ServerManager.cs" />
+    <Compile Include="Mechanaught.cs" />
+    <Compile Include="PacketHandler.cs" />
+    <Compile Include="Pilot.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\AvatarInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\BestInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\ClanBattleInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\DefensiveBattleInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\SurvivalInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\TeamBattleInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\TeamSurvivalInfo.cs" />
+    <Compile Include="ServerPackets\Bridge\Stats\TrainingInfo.cs" />
+    <Compile Include="ServerPackets\ConnectResult.cs" />
+    <Compile Include="ServerPackets\Game\AimUnit.cs" />
+    <Compile Include="ServerPackets\Game\AttackStart.cs" />
+    <Compile Include="ServerPackets\Game\BaseSelected.cs" />
+    <Compile Include="ServerPackets\Game\GameStarted.cs" />
+    <Compile Include="ServerPackets\Game\OverheatStatus.cs" />
+    <Compile Include="ServerPackets\Game\PaletteList.cs" />
+    <Compile Include="ServerPackets\Game\RegainResult.cs" />
+    <Compile Include="ServerPackets\Game\SpawnUnit.cs" />
+    <Compile Include="ServerPackets\Game\StatusChanged.cs" />
+    <Compile Include="ServerPackets\Game\UnAimUnit.cs" />
+    <Compile Include="ServerPackets\Game\UnitDestroyed.cs" />
+    <Compile Include="ServerPackets\Game\UnitInfo.cs" />
+    <Compile Include="ServerPackets\Game\UnitMoved.cs" />
+    <Compile Include="ServerPackets\Game\UserInfo.cs" />
+    <Compile Include="ServerPackets\Inventory\SendCodeList.cs" />
+    <Compile Include="ServerPackets\Inventory\SendDefaultUnit.cs" />
+    <Compile Include="ServerPackets\Inventory\SendInventoryEnd.cs" />
+    <Compile Include="ServerPackets\Inventory\SendMoney.cs" />
+    <Compile Include="ServerPackets\Inventory\SendPalette.cs" />
+    <Compile Include="ServerPackets\Inventory\SendParts.cs" />
+    <Compile Include="ServerPackets\Inventory\SendSpecialItems.cs" />
+    <Compile Include="ServerPackets\Inventory\SendUnit.cs" />
+    <Compile Include="ServerPackets\Inventory\SendUnitSlots.cs" />
+    <Compile Include="ServerPackets\Inventory\ServerInventoryBasePacket.cs" />
+    <Compile Include="ServerPackets\Lobby\GameEntered.cs" />
+    <Compile Include="ServerPackets\Lobby\GameSearched.cs" />
+    <Compile Include="ServerPackets\Room\GameStart.cs" />
+    <Compile Include="ServerPackets\Room\UnitInfo.cs" />
+    <Compile Include="ServerPackets\Room\UserEnter.cs" />
+    <Compile Include="ServerPackets\Room\UserInfo.cs" />
+    <Compile Include="ServerPackets\ServerBasePacket.cs" />
+    <Compile Include="ServerPackets\ServerPacketExtensions.cs" />
+    <Compile Include="ServerPackets\ServerTime.cs" />
+    <Compile Include="ServerPackets\ServerVersion.cs" />
+    <Compile Include="ServerPackets\Shop\SendGoodsData.cs" />
+    <Compile Include="ServerPackets\Shop\SendGoodsDataEnd.cs" />
+    <Compile Include="ServerPackets\Shop\SendGoodsDataStart.cs" />
+    <Compile Include="ServerPackets\Shop\SendMoneySynced.cs" />
+    <Compile Include="ServerPackets\SwitchServer.cs" />
+    <Compile Include="Shop\ShopEntity.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Utility\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SteelX.Client\SteelX.Client.csproj">
+      <Project>{d21e27f5-1118-4abb-8b8e-97a9891a4a01}</Project>
+      <Name>SteelX.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SteelX.Shared\SteelX.Shared.csproj">
       <Project>{c4bd7ac0-1333-4d62-a6cd-881a1806ffad}</Project>
       <Name>SteelX.Shared</Name>

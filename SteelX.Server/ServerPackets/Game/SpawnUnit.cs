@@ -1,3 +1,4 @@
+using SteelX.Shared;
 using SteelX.Server;
 
 namespace SteelX.Server.Packets.Game

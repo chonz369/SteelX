@@ -50,6 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
+    <Compile Include="Application\BasePacket.cs" />
+    <Compile Include="Application\ClanData.cs" />
+    <Compile Include="Application\GameSession.cs" />
+    <Compile Include="Application\PacketHandler.cs" />
+    <Compile Include="Application\StatData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Mechanaught\Data\MechData.cs" />
     <Compile Include="Mechanaught\Parts\Base.cs" />
@@ -57,15 +62,22 @@
     <Compile Include="Mechanaught\Parts\Data\CoreData.cs" />
     <Compile Include="Mechanaught\Parts\Data\HeadData.cs" />
     <Compile Include="Mechanaught\Parts\Data\LegData.cs" />
+    <Compile Include="Mechanaught\Parts\Part.cs" />
     <Compile Include="NPC\ChannelPenalty.cs" />
     <Compile Include="NPC\GameMode.cs" />
     <Compile Include="NPC\NPCData.cs" />
     <Compile Include="Player\Inventory.cs" />
-    <Compile Include="Shop\ShopEntry.cs" />
+    <Compile Include="Player\PilotWeaponFactory.cs" />
+    <Compile Include="Player\PilotAbilityFactory.cs" />
+    <Compile Include="SerializableClasses\SeriV2.cs" />
+    <Compile Include="SerializableClasses\SeriV3.cs" />
+    <Compile Include="SerializableClasses\SeriV4.cs" />
+    <Compile Include="Shop\ShopEntity.cs" />
+    <Compile Include="Mechanaught\Parts\Data\IPartData.cs" />
     <Compile Include="Weapon\Data\IWeaponData.cs" />
     <Compile Include="Weapon\Data\WeaponMeleeData.cs" />
     <Compile Include="Weapon\Data\WeaponShieldData.cs" />
-    <Compile Include="Weapon\Data\WeaponData.cs" />
+    <Compile Include="Weapon\Data\WeaponGunData.cs" />
     <Compile Include="Weapon\Data\MechWeapon.cs" />
     <Compile Include="Mechanaught\Mechanaught.cs" />
     <Compile Include="Mechanaught\Parts\Data\PartMetaData.cs" />
@@ -74,7 +86,6 @@
     <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill\Data\SkillData.cs" />
-    <Compile Include="Skill\Base.cs" />
     <Compile Include="Weapon\Base.cs" />
   </ItemGroup>
   <ItemGroup />
