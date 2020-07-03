@@ -4,7 +4,7 @@
 	{
 		#region Variable
 		public uint PlayerId			{ get; private set; }
-		public WeaponTypes WeaponType	{ get; private set; }
+		//public WeaponTypes WeaponType	{ get; private set; }
 
 		#region Weapon Progression
 		/// <summary>
