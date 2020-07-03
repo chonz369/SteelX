@@ -1,32 +1,41 @@
 ﻿namespace SteelX.Shared
 {
+	/// <summary>
+	/// As a pilot gains levels in certain weapon classes, 
+	/// he or she gains bonuses to those particular weapons. 
+	/// These bonuses can included greater damage, faster reload times, etc.
+	/// </summary>
 	public abstract class PilotWeaponFactory
 	{
 		#region Variable
-		public uint PlayerId			{ get; private set; }
-		//public WeaponTypes WeaponType	{ get; private set; }
+		public uint PlayerId				{ get; private set; }
 
 		#region Weapon Progression
 		/// <summary>
 		/// Melee (Sword and Spear) Level
 		/// </summary>
-		public byte FightLevel { get; protected set; }
+		public abstract byte FightLevel		{ get; }
+		public uint FightExperience			{ get; protected set; }
 		/// <summary>
 		/// Sniper (Range and Rectifier?) Level
 		/// </summary>
-		public byte RangedLevel { get; protected set; }
+		public abstract byte RangedLevel	{ get; }
+		public uint RangedExperience		{ get; protected set; }
 		/// <summary>
 		/// Assault (SMG and Shotgun) Level
 		/// </summary>
-		public byte SiegeLevel { get; protected set; }
+		public abstract byte SiegeLevel		{ get; }
+		public uint SiegeExperience			{ get; protected set; }
 		/// <summary>
 		/// Artilary (Rocket and Cannon) Level
 		/// </summary>
-		public byte RocketLevel { get; protected set; }
+		public abstract byte RocketLevel	{ get; }
+		public uint RocketExperience		{ get; protected set; }
 		/// <summary>
 		/// Booster Level
 		/// </summary>
-		public byte BackpackLevel { get; protected set; }
+		public abstract byte BackpackLevel	{ get; }
+		public uint BackpackExperience		{ get; protected set; }
 		#endregion
 
 		#region Weapon Growth
@@ -61,8 +70,8 @@
 		#endregion
 
 		#region Abstract Methods
-		// Create methods here that subtract points
-		// in exchange for progression.
+		// Create methods here that convert experience points
+		// to bonuses that are distributed across stats
 		// One version for Server (Receive Command), 
 		// another for Client (Send Command)
 		#endregion
