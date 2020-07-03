@@ -18,7 +18,7 @@ namespace SteelX
 		//public static Dictionary<Skills, SkillData> SkillsData { get; private set; }
 
 		public static Dictionary<Weaponz, Weapon> WeaponsFactory { get; private set; }
-		public static Dictionary<Skills, Skill> SkillsFactory { get; private set; }
+		public static Dictionary<Skills, SkillData> SkillsFactory { get; private set; }
 
 
 		//public static bool InitParts(bool? sql = null)
