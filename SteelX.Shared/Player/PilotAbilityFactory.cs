@@ -106,7 +106,7 @@
 		//As a pilot gains levels in certain weapon classes, 
 		//he or she gains bonuses to those particular weapons. 
 		//These bonuses can included greater damage, faster reload times, etc.
-		#region Weapon Progression
+		/*#region Weapon Progression
 		/// <summary>
 		/// Melee (Sword and Spear) Level
 		/// </summary>
@@ -162,7 +162,7 @@
 		public float BoosterWeighttBonus { get; protected set; }
 		public float BoosterHPBonus { get; protected set; }
 		public float BoosterBoostPowerBonus { get; protected set; }
-		#endregion
+		#endregion*/
 		#endregion
 
 		#region Abstract Methods
