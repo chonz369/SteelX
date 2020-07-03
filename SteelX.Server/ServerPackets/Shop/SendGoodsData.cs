@@ -10,9 +10,9 @@ namespace SteelX.Server.Packets.Shop
 	/// </summary>
 	public class SendGoodsData : ServerBasePacket
 	{
-		private readonly List<ShopEntry> _goods;
+		private readonly List<ShopEntity> _goods;
 		
-		public SendGoodsData(List<ShopEntry> goods)
+		public SendGoodsData(List<ShopEntity> goods)
 		{
 			_goods = goods;
 		}
