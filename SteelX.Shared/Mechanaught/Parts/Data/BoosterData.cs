@@ -1,11 +1,11 @@
 ﻿namespace SteelX.Shared
 {
-	public struct BoosterData
+	public struct BoosterData : IPartData
 	{
 		#region Variables
 		public Parts Part { get; set; }
 		public int Id { get; set; }
-		public int NPCPart { get; private set; }
+		public bool NPCPart { get; private set; }
 		public string Model { get; private set; }
 		public string Name { get; private set; }
 		public int WeaponType { get; private set; }

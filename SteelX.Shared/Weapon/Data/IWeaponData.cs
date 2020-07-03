@@ -1,19 +1,13 @@
 ﻿namespace SteelX.Shared
 {
-	public interface IWeaponData
+	public interface IWeaponData : IPartData
 	{
-		string Description { get; }
-		int EnergyDrain { get; }
-		int Grade { get; }
-		int Id { get; }
-		int IFOSize { get; }
-		string Model { get; }
-		string Name { get; }
-		bool NPCPart { get; }
-		float RepairTime { get; }
-		int Size { get; }
+		/// <summary>
+		/// How many points added to overheat 
+		/// </summary>
+		float OverheatPoint { get; }
+		float OverheatRecovery { get; }
 		bool TwoHanded { get; }
 		WeaponTypes WeaponType { get; }
-		int Weight { get; }
 	}
 }
