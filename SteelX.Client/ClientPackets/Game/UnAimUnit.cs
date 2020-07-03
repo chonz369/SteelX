@@ -1,51 +1,60 @@
 using System;
-using System.Drawing;
 using System.Linq;
-using Data.Model;
-using Console = Colorful.Console;
+using SteelX.Shared;
+//using System.Drawing;
+//using Data.Model;
+//using Console = Colorful.Console;
 
-namespace GameServer.ClientPackets.Game
+namespace SteelX.Client.Packets.Game
 {
-    /// <summary>
-    /// Sent when the user stops aiming at a unit
-    /// </summary>
-    public class UnAimUnit : ClientGameBasePacket
-    {
-        private readonly Unit _oldTarget;
-        
-        public UnAimUnit(byte[] data, GameSession client) : base(data, client)
-        {
-            // Check practice mode
-            if (GetClient().GameInstance == null) return;
+	/// <summary>
+	/// Sent when the user stops aiming at a unit
+	/// </summary>
+	public class UnAimUnit : ClientGameBasePacket
+	{
+		private readonly Unit _oldTarget;
 
-            TickUnit();
-            //GetInt(); // ClientTime? - Not sure what to do with this yet - ping check? - maybe packet number?
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.UN_AIM_UNIT;
+			}
+		}
 
-            var arm = GetInt();
-            
-            // Save old target
-            _oldTarget = Unit.GetWeaponByArm(arm).Target;
-            
-            // Update to no target
-            var weapon = Unit.GetWeaponByArm(arm);
-            
-            if (weapon != null)
-                weapon.Target = null;
-            else
-                Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, arm);
-        }
+		public UnAimUnit(byte[] data, GameSession client) : base(data, client)
+		{
+			// Check practice mode
+			if (GetClient().GameInstance == null) return;
 
-        public override string GetType()
-        {
-            return "UN_AIM_UNIT";
-        }
+			TickUnit();
+			//GetInt(); // ClientTime? - Not sure what to do with this yet - ping check? - maybe packet number?
 
-        protected override void RunImpl()
-        {
-            // Check practice mode
-            if (GetClient().GameInstance == null) return;
+			var arm = GetInt();
+			
+			// Save old target
+			_oldTarget = Unit.GetWeaponByArm(arm).Target;
+			
+			// Update to no target
+			var weapon = Unit.GetWeaponByArm(arm);
+			
+			if (weapon != null)
+				weapon.Target = null;
+			else
+				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, arm);
+		}
 
-            GetClient().GameInstance.UnAimUnit(Unit, _oldTarget);
-        }
-    }
+		/*public override string GetType()
+		{
+			return "UN_AIM_UNIT";
+		}*/
+
+		protected override void RunImpl()
+		{
+			// Check practice mode
+			if (GetClient().GameInstance == null) return;
+
+			GetClient().GameInstance.UnAimUnit(Unit, _oldTarget);
+		}
+	}
 }

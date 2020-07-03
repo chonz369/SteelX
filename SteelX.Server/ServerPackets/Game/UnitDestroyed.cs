@@ -1,39 +1,48 @@
-using Data.Model;
+using SteelX.Shared;
+using SteelX.Server;
 
-namespace GameServer.ServerPackets.Game
+namespace SteelX.Server.Packets.Game
 {
-    /// <summary>
-    /// Sent when someone DIES
-    /// </summary>
-    public class UnitDestroyed : ServerBasePacket
-    {
-        private readonly Unit _killer;
-        private readonly Unit _victim;
+	/// <summary>
+	/// Sent when someone DIES
+	/// </summary>
+	public class UnitDestroyed : ServerBasePacket
+	{
+		private readonly Unit _killer;
+		private readonly Unit _victim;
 
-        public UnitDestroyed(Unit victim, Unit killer)
-        {
-            _killer = killer;
-            _victim = victim;
-        }
-        
-        public override string GetType()
-        {
-            return "UNIT_DESTROYED";
-        }
+		public UnitDestroyed(Unit victim, Unit killer)
+		{
+			_killer = killer;
+			_victim = victim;
+		}
 
-        public override byte GetId()
-        {
-            return 0x62;
-        }
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.UNIT_DESTROYED;
+			}
+		}
 
-        protected override void WriteImpl()
-        {
-            var killerId = _killer?.Id ?? 0;
-            
-            WriteInt(0); // Unknown
-            WriteUInt(killerId); // Killer
-            WriteUInt(_victim.Id); // VictimId
-            WriteInt(1); // Unknown
-        }
-    }
+		/*public override string GetType()
+		{
+			return "UNIT_DESTROYED";
+		}
+
+		public override byte GetId()
+		{
+			return 0x62;
+		}*/
+
+		protected override void WriteImpl()
+		{
+			var killerId = _killer?.Id ?? 0;
+			
+			WriteInt(0); // Unknown
+			WriteUInt(killerId); // Killer
+			WriteUInt(_victim.Id); // VictimId
+			WriteInt(1); // Unknown
+		}
+	}
 }

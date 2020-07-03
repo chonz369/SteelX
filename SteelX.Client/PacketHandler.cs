@@ -1,15 +1,16 @@
 using System;
 using SteelX.Shared;
+using SteelX.Shared.Packets;
 using SteelX.Client.Packets;
 using SteelX.Client.Packets.Bridge;
 using SteelX.Client.Packets.Game;
 using SteelX.Client.Packets.Inventory;
 using SteelX.Client.Packets.Lobby;
 using SteelX.Client.Packets.Room;
-using SteelX.Server.Packets.Bridge;
+//using GameServer.ServerPackets.Bridge;
 //using Console = Colorful.Console;
 
-namespace SteelX.Server.Packets
+namespace SteelX.Client.Packets
 {
 	/// <summary>
 	/// This class handles all packets as they come in

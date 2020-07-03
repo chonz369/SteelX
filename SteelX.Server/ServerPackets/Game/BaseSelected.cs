@@ -1,25 +1,35 @@
-namespace GameServer.ServerPackets.Game
+using SteelX.Shared;
+
+namespace SteelX.Server.Packets.Game
 {
-    /// <summary>
-    /// Sent as a reponse to users when they select a base
-    /// Not fully understood
-    /// </summary>
-    public class BaseSelected : ServerBasePacket
-    {
-        public override string GetType()
-        {
-            return "GAME_BASE_SELECTED";
-        }
+	/// <summary>
+	/// Sent as a reponse to users when they select a base
+	/// </summary>
+	/// Not fully understood
+	public class BaseSelected : ServerBasePacket
+	{
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.GAME_BASE_SELECTED;
+			}
+		}
 
-        public override byte GetId()
-        {
-            return 0x55;
-        }
+		/*public override string GetType()
+		{
+			return "GAME_BASE_SELECTED";
+		}
 
-        protected override void WriteImpl()
-        {
-            WriteInt(0); // Unknown
-            WriteInt(0); // Unknown
-        }
-    }
+		public override byte GetId()
+		{
+			return 0x55;
+		}*/
+
+		protected override void WriteImpl()
+		{
+			WriteInt(0); // Unknown
+			WriteInt(0); // Unknown
+		}
+	}
 }

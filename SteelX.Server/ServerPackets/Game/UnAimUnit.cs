@@ -1,38 +1,47 @@
-using Data.Model;
+using SteelX.Shared;
+using SteelX.Server;
 
-namespace GameServer.ServerPackets.Game
+namespace SteelX.Server.Packets.Game
 {
-    /// <summary>
-    /// I think this is the aim unit packet, but it has a lot of data so i could be wrong
-    /// </summary>
-    public class UnAimUnit : ServerBasePacket
-    {
-        private readonly Unit _attacker;
-        private readonly uint _victim;
-        
-        public UnAimUnit(Unit attacker, uint victim)
-        {
-            _attacker = attacker;
-            _victim = victim;
-        }
-        
-        public override string GetType()
-        {
-            return "UN_AIM_UNIT";
-        }
+	/// <summary>
+	/// I think this is the aim unit packet, but it has a lot of data so i could be wrong
+	/// </summary>
+	public class UnAimUnit : ServerBasePacket
+	{
+		private readonly Unit _attacker;
+		private readonly uint _victim;
+		
+		public UnAimUnit(Unit attacker, uint victim)
+		{
+			_attacker = attacker;
+			_victim = victim;
+		}
 
-        public override byte GetId()
-        {
-            return 0x66;
-        }
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.UN_AIM_UNIT;
+			}
+		}
 
-        protected override void WriteImpl()
-        {
-            WriteInt(0); // Unknown
-            WriteUInt(_attacker.Id); // UnitID Attacker
-            WriteUInt(_victim); // UnitId Victim - zero means no lock?
-            WriteInt(0); // Unknown
-            WriteInt(0); // Unknown
-        }
-    }
+		/*public override string GetType()
+		{
+			return "UN_AIM_UNIT";
+		}
+
+		public override byte GetId()
+		{
+			return 0x66;
+		}*/
+
+		protected override void WriteImpl()
+		{
+			WriteInt(0); // Unknown
+			WriteUInt(_attacker.Id); // UnitID Attacker
+			WriteUInt(_victim); // UnitId Victim - zero means no lock?
+			WriteInt(0); // Unknown
+			WriteInt(0); // Unknown
+		}
+	}
 }

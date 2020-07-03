@@ -1,11 +1,12 @@
 using System;
-using System.Drawing;
 using System.Linq;
-using System.Numerics;
-using GameServer.ServerPackets.Game;
-using Console = Colorful.Console;
+using SteelX.Shared;
+//using System.Drawing;
+//using System.Numerics;
+//using GameServer.ServerPackets.Game;
+//using Console = Colorful.Console;
 
-namespace GameServer.ClientPackets.Game
+namespace SteelX.Client.Packets.Game
 {
     /// <summary>
     /// Called when the user wishes to respawn
@@ -13,7 +14,15 @@ namespace GameServer.ClientPackets.Game
     public class RequestRegain : ClientBasePacket
     {
         private readonly uint _unitId;
-        
+
+        public override Shared.PacketTypes PacketType
+        {
+            get
+            {
+                return Shared.PacketTypes.REQ_REGAIN;
+            }
+        }
+
         public RequestRegain(byte[] data, GameSession client) : base(data, client)
         {
             Console.WriteLine("Packet size: {0}",Color.Coral, Size);
@@ -27,10 +36,10 @@ namespace GameServer.ClientPackets.Game
             Console.WriteLine("baseId?? - : {0}", GetInt()); // ??
         }
 
-        public override string GetType()
+        /*public override string GetType()
         {
             return "REQ_REGAIN";
-        }
+        }*/
 
         protected override void RunImpl()
         {

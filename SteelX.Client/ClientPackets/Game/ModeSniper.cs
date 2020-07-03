@@ -1,33 +1,42 @@
 using System;
-using System.Drawing;
 using System.Linq;
-using Console = Colorful.Console;
+using SteelX.Shared;
+//using System.Drawing;
+//using Console = Colorful.Console;
 
-namespace GameServer.ClientPackets.Game
+namespace SteelX.Client.Packets.Game
 {
-    /// <summary>
-    /// Called when the client enters sniper mode
-    /// </summary>
-    public class ModeSniper : ClientGameBasePacket
-    {
-        public ModeSniper(byte[] data, GameSession client) : base(data, client)
-        {
-            TickUnit();
-            
-            // Read the units position and aim
-            GetUnitPositionAndAim();
-            
-            Console.WriteLine("Sniper unknown byte {0}", GetByte());
-        }
+	/// <summary>
+	/// Called when the client enters sniper mode
+	/// </summary>
+	public class ModeSniper : ClientGameBasePacket
+	{
+		public ModeSniper(byte[] data, GameSession client) : base(data, client)
+		{
+			TickUnit();
+			
+			// Read the units position and aim
+			GetUnitPositionAndAim();
+			
+			Console.WriteLine("Sniper unknown byte {0}", GetByte());
+		}
 
-        public override string GetType()
-        {
-            return "MODE_SNIPER";
-        }
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.MODE_SNIPER;
+			}
+		}
 
-        protected override void RunImpl()
-        {
-            GetClient().GameInstance.EnterSniperMode(Unit);
-        }
-    }
+		/*public override string GetType()
+		{
+			return "MODE_SNIPER";
+		}*/
+
+		protected override void RunImpl()
+		{
+			GetClient().GameInstance.EnterSniperMode(Unit);
+		}
+	}
 }

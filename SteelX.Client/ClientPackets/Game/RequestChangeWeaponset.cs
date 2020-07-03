@@ -1,6 +1,6 @@
-using Colorful;
+using SteelX.Shared;
 
-namespace GameServer.ClientPackets.Game
+namespace SteelX.Client.Packets.Game
 {
     /// <summary>
     /// Sent when the client wants to swap weapons
@@ -11,16 +11,24 @@ namespace GameServer.ClientPackets.Game
         /// The weaponset they wish to switch to
         /// </summary>
         private readonly int _desiredWeaponset;
-        
+
+        public override Shared.PacketTypes PacketType
+        {
+            get
+            {
+                return Shared.PacketTypes.REQ_CHANGE_WEAPONSET;
+            }
+        }
+
         public RequestChangeWeaponset(byte[] data, GameSession client) : base(data, client)
         {
             _desiredWeaponset = GetInt();
         }
 
-        public override string GetType()
+        /*public override string GetType()
         {
             return "REQ_CHANGE_WEAPONSET";
-        }
+        }*/
 
         protected override void RunImpl()
         {

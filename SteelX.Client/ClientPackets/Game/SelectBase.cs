@@ -1,16 +1,25 @@
 using System;
-using System.Drawing;
 using System.Linq;
-using GameServer.ServerPackets.Game;
-using Console = Colorful.Console;
+using SteelX.Shared;
+//using System.Drawing;
+//using GameServer.ServerPackets.Game;
+//using Console = Colorful.Console;
 
-namespace GameServer.ClientPackets.Game
+namespace SteelX.Client.Packets.Game
 {
     /// <summary>
     /// Sent when the user first spawns. Not sure exactly how it works
     /// </summary>
     public class SelectBase : ClientBasePacket
     {
+        public override Shared.PacketTypes PacketType
+        {
+            get
+            {
+                return Shared.PacketTypes.GAME_SELECT_BASE;
+            }
+        }
+
         public SelectBase(byte[] data, GameSession client) : base(data, client)
         {
             Console.WriteLine("Packet size: {0}",Color.Coral, Size);
@@ -21,10 +30,10 @@ namespace GameServer.ClientPackets.Game
             Console.WriteLine("Int?? - : {0}", GetInt()); // ??
         }
 
-        public override string GetType()
+        /*public override string GetType()
         {
             return "GAME_SELECT_BASE";
-        }
+        }*/
 
         protected override void RunImpl()
         {

@@ -1,26 +1,35 @@
 using System;
-using GameServer.ServerPackets;
+using SteelX.Shared;
+//using GameServer.ServerPackets;
 
-namespace GameServer.ClientPackets
+namespace SteelX.Client.Packets
 {
-    /// <summary>
-    /// Sent when the client first connects to do an encryption handshake?
-    /// </summary>
-    public class ValidateClient : ClientBasePacket
-    {
-        public ValidateClient(byte[] data, GameSession client) : base(data, client)
-        {
-            Console.WriteLine("Validation: {0}", GetString());
-        }
+	/// <summary>
+	/// Sent when the client first connects to do an encryption handshake?
+	/// </summary>
+	public class ValidateClient : ClientBasePacket
+	{
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.VALIDATE_CLIENT;
+			}
+		}
 
-        public override string GetType()
-        {
-            return "VALIDATE_CLIENT";
-        }
+		public ValidateClient(byte[] data, GameSession client) : base(data, client)
+		{
+			Console.WriteLine("Validation: {0}", GetString());
+		}
 
-        protected override void RunImpl()
-        {
-            GetClient().SendPacket(new ClientValidated());
-        }
-    }
+		/*public override string GetType()
+		{
+			return "VALIDATE_CLIENT";
+		}*/
+
+		protected override void RunImpl()
+		{
+			GetClient().SendPacket(new ClientValidated());
+		}
+	}
 }
