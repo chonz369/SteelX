@@ -61,13 +61,13 @@ Demo.rar
 /ProjectSettings/ProjectVersion.txt
 /Packages/*
 /UnityPackageManager/*
-/GameFramework/bin
-/SteelX.Client/bin
-/SteelX.Server/bin
-/SteelX.UnitTest/bin
-/SteelX/Assets/GameMain/Libraries
-!/SteelX/Assets/GameMain/Libraries/*.dll
-!/SteelX/Assets/GameMain/Libraries/*.dll.meta
+GameFramework/bin
+SteelX.Client/bin
+SteelX.Server/bin
+SteelX.UnitTest/bin
+SteelX/Assets/GameMain/Libraries
+!SteelX/Assets/GameMain/Libraries/*.dll
+!SteelX/Assets/GameMain/Libraries/*.dll.meta
 
 # ============ #
 # Builds       #
