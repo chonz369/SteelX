@@ -1,3 +1,5 @@
+using SteelX.Shared;
+
 namespace SteelX.Server.Game
 {
 	public class GameInfo
@@ -11,7 +13,7 @@ namespace SteelX.Server.Game
 		/// <summary>
 		/// The game mode of this game
 		/// </summary>
-		public GameMode GameMode;
+		public GameModes GameMode;
 
 		/// <summary>
 		/// The name of this game - shown in lobby

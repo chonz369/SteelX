@@ -13,7 +13,7 @@ namespace SteelX.Client.Packets.Game
 	{
 		//TODO: Maybe swap this to a lookup of the victim unit?
 		//TODO: Maybe a units dictionary in the room?
-		private readonly Unit _target;
+		private readonly Mechanaught _target;
 		private readonly int _arm;
 
 		public override Shared.PacketTypes PacketType
@@ -53,7 +53,7 @@ namespace SteelX.Client.Packets.Game
 			if (weapon != null)
 				weapon.Target = _target;
 			else
-				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, _arm);
+				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, _arm);
 		}
 
 		/*public override string GetType()

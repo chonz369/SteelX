@@ -16,9 +16,9 @@ namespace SteelX.Server.Packets.Room
 		/// <summary>
 		/// The unit
 		/// </summary>
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public UnitInfo(Player user, Unit unit)
+		public UnitInfo(Player user, Mechanaught unit)
 		{
 			_unit = unit;
 			_user = user;

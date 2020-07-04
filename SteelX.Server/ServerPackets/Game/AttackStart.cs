@@ -9,13 +9,13 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class AttackStart : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 		private readonly int _arm;
 		private readonly Weapon _weapon;
 
 		public static int RESULT = 0;
 
-		public AttackStart(Unit unit, int arm, Weapon weapon)
+		public AttackStart(Mechanaught unit, int arm, Weapon weapon)
 		{
 			_unit = unit;
 			_arm = arm;

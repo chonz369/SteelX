@@ -8,9 +8,9 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class RegainResult : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public RegainResult(Unit unit)
+		public RegainResult(Mechanaught unit)
 		{
 			_unit = unit;
 		}

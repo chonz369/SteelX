@@ -12,9 +12,9 @@ namespace SteelX.Server.Packets.Game
 		/// <summary>
 		/// The unit whos data to send
 		/// </summary>
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public PaletteList(Unit unit)
+		public PaletteList(Mechanaught unit)
 		{
 			_unit = unit;
 		}

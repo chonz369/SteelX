@@ -8,10 +8,10 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class UnitDestroyed : ServerBasePacket
 	{
-		private readonly Unit _killer;
-		private readonly Unit _victim;
+		private readonly Mechanaught _killer;
+		private readonly Mechanaught _victim;
 
-		public UnitDestroyed(Unit victim, Unit killer)
+		public UnitDestroyed(Mechanaught victim, Mechanaught killer)
 		{
 			_killer = killer;
 			_victim = victim;

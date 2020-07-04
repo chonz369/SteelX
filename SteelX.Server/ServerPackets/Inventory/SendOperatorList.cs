@@ -1,49 +1,58 @@
-using Data.Model;
+using SteelX.Shared;
+using SteelX.Server;
+//using Data.Model;
 
-namespace GameServer.ServerPackets.Inventory
+namespace SteelX.Server.Packets.Inventory
 {
-    /// <summary>
-    /// Sends a list of operators... that the user has? or for sale. not sure
-    /// </summary>
-    public class SendOperatorList : ServerInventoryBasePacket
-    {
-        public SendOperatorList(ExteelUser user) : base(user)
-        {
-        }
+	/// <summary>
+	/// Sends a list of operators... that the user has? or for sale. not sure
+	/// </summary>
+	public class SendOperatorList : ServerInventoryBasePacket
+	{
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.INV_OP_ITEM_LIST;
+			}
+		}
 
-        public override string GetType()
-        {
-            return "INV_OP_ITEM_LIST";
-        }
+		public SendOperatorList(Player user) : base(user)
+		{
+		}
 
-        public override byte GetId()
-        {
-            return 0x24;
-        }
+		/*public override string GetType()
+		{
+			return "INV_OP_ITEM_LIST";
+		}
 
-        protected override void WriteImpl()
-        {
-            WriteInt(7); // Size
-            
-            WriteInt(1); // Id?
-            WriteInt(6001); // Template
-            WriteInt(-1); // Time - seconds, -1 for unlimited
-            WriteInt(0); // Unknown
-            WriteInt(0); // Unknown
-            WriteInt(0); // Unknown
-            WriteInt(1); // Selected?
+		public override byte GetId()
+		{
+			return 0x24;
+		}*/
 
-            for (var i = 2; i <= 7; i++)
-            {
+		protected override void WriteImpl()
+		{
+			WriteInt(7); // Size
+			
+			WriteInt(1); // Id?
+			WriteInt(6001); // Template
+			WriteInt(-1); // Time - seconds, -1 for unlimited
+			WriteInt(0); // Unknown
+			WriteInt(0); // Unknown
+			WriteInt(0); // Unknown
+			WriteInt(1); // Selected?
 
-                WriteInt(i); // Id?
-                WriteInt(6000 + i); // Template
-                WriteInt(-1); // Time - seconds, -1 for unlimited
-                WriteInt(0); // Unknown
-                WriteInt(0); // Unknown
-                WriteInt(0); // Unknown
-                WriteInt(0); // Unknown
-            }
-        }
-    }
+			for (var i = 2; i <= 7; i++)
+			{
+				WriteInt(i); // Id?
+				WriteInt(6000 + i); // Template
+				WriteInt(-1); // Time - seconds, -1 for unlimited
+				WriteInt(0); // Unknown
+				WriteInt(0); // Unknown
+				WriteInt(0); // Unknown
+				WriteInt(0); // Unknown
+			}
+		}
+	}
 }

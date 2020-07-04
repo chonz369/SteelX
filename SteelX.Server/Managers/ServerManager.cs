@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using SteelX.Shared;
 using SteelX.Server;
-using SteelX.Server.Util;
+using SteelX.Server.Utility;
 
 namespace SteelX.Server.Managers
 {
@@ -21,7 +22,7 @@ namespace SteelX.Server.Managers
 		/// <returns></returns>
 		public static int JoinServer(GameSession session, string serverId)
 		{
-			return Jobs.AddNext(new Job { User = session.User, ConnectedStamp = session.ConnectedStamp, ServerId = serverId});
+			return Jobs.AddNext(new Job { User = (Server.Player)session.User, ConnectedStamp = session.ConnectedStamp, ServerId = serverId});
 		}
 
 		/// <summary>
@@ -44,7 +45,7 @@ namespace SteelX.Server.Managers
 
 		private class Job
 		{
-			public Player User;
+			public Server.Player User;
 			public DateTime ConnectedStamp;
 			public string ServerId;
 		}

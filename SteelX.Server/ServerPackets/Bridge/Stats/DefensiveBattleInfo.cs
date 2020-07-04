@@ -9,11 +9,6 @@ namespace SteelX.Server.Packets.Bridge.Stats
 	public class DefensiveBattleInfo : ServerBasePacket
 	{
 		private readonly UserStats _stats;
-		
-		public DefensiveBattleInfo(UserStats stats)
-		{
-			_stats = stats;
-		}
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -21,6 +16,11 @@ namespace SteelX.Server.Packets.Bridge.Stats
 			{
 				return Shared.PacketTypes.BRIDGE_SEND_DEFENSIVEBATTLE_INFO;
 			}
+		}
+		
+		public DefensiveBattleInfo(UserStats stats)
+		{
+			_stats = stats;
 		}
 
 		/*public override string GetType()

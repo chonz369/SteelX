@@ -8,9 +8,9 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class SpawnUnit : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public SpawnUnit(Unit unit)
+		public SpawnUnit(Mechanaught unit)
 		{
 			_unit = unit;
 		}

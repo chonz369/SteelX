@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SteelX.Server.Util
+namespace SteelX.Server.Utility
 {
 	/// <summary>
 	/// This extension is used to assist in auto generating ids for jobs and rooms

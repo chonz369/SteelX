@@ -12,7 +12,7 @@ namespace SteelX.Client.Packets.Game
 	/// </summary>
 	public class UnAimUnit : ClientGameBasePacket
 	{
-		private readonly Unit _oldTarget;
+		private readonly Mechanaught _oldTarget;
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -41,7 +41,7 @@ namespace SteelX.Client.Packets.Game
 			if (weapon != null)
 				weapon.Target = null;
 			else
-				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", Unit.Id, arm);
+				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, arm);
 		}
 
 		/*public override string GetType()

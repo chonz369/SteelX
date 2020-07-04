@@ -8,10 +8,10 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class UnAimUnit : ServerBasePacket
 	{
-		private readonly Unit _attacker;
+		private readonly Mechanaught _attacker;
 		private readonly uint _victim;
 		
-		public UnAimUnit(Unit attacker, uint victim)
+		public UnAimUnit(Mechanaught attacker, uint victim)
 		{
 			_attacker = attacker;
 			_victim = victim;

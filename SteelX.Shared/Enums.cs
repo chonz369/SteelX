@@ -615,6 +615,19 @@
 		FlagCompetition = 9
 	}
 
+	public enum GameModes : byte
+	{
+		Training = 0,
+		Deathmatch = 1,
+		TeamDeathmatch = 2,
+		TeamBattle = 3, // TC?
+		ClanBattle = 4,
+		DefensiveBattle = 5, // CTF?
+		Tutorial = 6,
+		Mission = 7, // Last stand?
+		FreeMode = 8 // ?
+	}
+
 	public enum NPCTypes : byte
 	{
 		NORMAL = 1,

@@ -9,9 +9,9 @@ namespace SteelX.Server.Packets.Game
 	public class UnitInfo : ServerBasePacket
 	{
 		private readonly Player _user;
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public UnitInfo(Player user, Unit unit)
+		public UnitInfo(Player user, Mechanaught unit)
 		{
 			_user = user;
 			_unit = unit;

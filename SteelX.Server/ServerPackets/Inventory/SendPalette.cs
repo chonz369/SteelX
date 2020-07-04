@@ -12,9 +12,9 @@ namespace SteelX.Server.Packets.Inventory
 		/// <summary>
 		/// The unit that this packet is for
 		/// </summary>
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
-		public SendPalette(Unit unit)
+		public SendPalette(Mechanaught unit)
 		{
 			_unit = unit;
 		}

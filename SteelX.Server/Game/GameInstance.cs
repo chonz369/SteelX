@@ -67,7 +67,7 @@ namespace SteelX.Server.Game
 		/// Dictionary of all units in this room
 		/// </summary>
 		//private readonly ConcurrentDictionary<uint, Unit> _units = new ConcurrentDictionary<uint, Unit>();
-		private readonly Dictionary<uint, Unit> _units = new Dictionary<uint, Unit>();
+		private readonly Dictionary<uint, Mechanaught> _units = new Dictionary<uint, Mechanaught>();
 
 		/// <summary>
 		/// The users in this room
@@ -112,7 +112,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		public Unit GetUnitById(uint id)
+		public Mechanaught GetUnitById(uint id)
 		{
 			//TODO: Error handling
 			return _units[id];
@@ -178,8 +178,8 @@ namespace SteelX.Server.Game
 			session.IsGameReady = false;
 			
 			// Announce user to room
-			MulticastPacket(new UserEnter(this, session.User));
-			MulticastPacket(new ServerPackets.Room.UnitInfo(session.User, session.User.DefaultUnit));
+			MulticastPacket(new UserEnter(this, (Server.Player)session.User));
+			MulticastPacket(new Server.Packets.Room.UnitInfo(session.User, session.User.DefaultUnit));
 			
 			// Add to session list
 			_sessions.TryAdd(session.Id, session);
@@ -210,7 +210,7 @@ namespace SteelX.Server.Game
 			session.IsGameReady = true;
 			
 			// Send user info
-			MulticastPacket(new ServerPackets.Game.UserInfo(this, session.User));
+			MulticastPacket(new Server.Packets.Game.UserInfo(this, (Server.Player)session.User));
 			
 			// Load user stats here, so they are not loaded during gameplay
 			session.User.DefaultUnit.CalculateStats();
@@ -248,7 +248,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// <param name="unit"></param>
 		/// <param name="user"></param>
-		public void SpawnUnit(Unit unit, Player user)
+		public void SpawnUnit(Mechanaught unit, Player user)
 		{
 			//TODO: See if we need to be destroying and removing units in dict or not
 			_units[unit.Id] = unit;
@@ -260,10 +260,10 @@ namespace SteelX.Server.Game
 			user.CurrentUnit = unit;
 
 			//TODO: Calculate HP
-			unit.Health = unit.MaxHealth;
+			unit.Health = unit.HP;
 			
 			// Reset death flag
-			unit.Alive = true;
+			//unit.Alive = true;
 			
 			// Set unit Location
 			//TODO: Spawn maps?
@@ -271,7 +271,7 @@ namespace SteelX.Server.Game
 			
 			//TODO: Users have multiple units, do we need to handle that here?
 			// Send unit info
-			MulticastPacket(new ServerPackets.Game.UnitInfo(user, unit));
+			MulticastPacket(new Server.Packets.Game.UnitInfo(user, unit));
 			
 			// Send spawn command
 			MulticastPacket(new SpawnUnit(unit));
@@ -283,7 +283,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// Checks for death by location
 		//TODO: Broadcast to only nearby players?
-		public void UpdateUnitPosition(Unit unit)
+		public void UpdateUnitPosition(Mechanaught unit)
 		{
 			// Update user unit info
 			MulticastPacket(new UnitMoved(unit));
@@ -301,10 +301,10 @@ namespace SteelX.Server.Game
 		/// <param name="unit"></param>
 		/// <param name="killer"></param>
 		//TODO: Find out how to handle killer / victim packets
-		public void KillUnit(Unit unit, Unit killer = null)
+		public void KillUnit(Mechanaught unit, Mechanaught killer = null)
 		{
 			unit.Health = 0;
-			unit.Alive = false;
+			//unit.Alive = false;
 			
 			MulticastPacket(new UnitDestroyed(unit, killer));
 		}
@@ -316,7 +316,7 @@ namespace SteelX.Server.Game
 		/// <param name="target">Target</param>
 		//TODO: Should this be multicasted or just to the two users?
 		//TODO: Do we need to factor arm into this?
-		public void AimUnit(Unit attacker, Unit target)
+		public void AimUnit(Mechanaught attacker, Mechanaught target)
 		{
 			MulticastPacket(new AimUnit(attacker, target.Id));     
 		}
@@ -326,7 +326,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// <param name="attacker"></param>
 		/// <param name="oldTarget"></param>
-		public void UnAimUnit(Unit attacker, Unit oldTarget)
+		public void UnAimUnit(Mechanaught attacker, Mechanaught oldTarget)
 		{
 			var oldTargetId = oldTarget == null ? 0 : oldTarget.Id;
 			System.Console.WriteLine("Un aimed - {0}", oldTargetId);
@@ -339,7 +339,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// <param name="attacker"></param>
 		/// <param name="weapon"></param>
-		public void TryAttack(Unit attacker, int arm)
+		public void TryAttack(Mechanaught attacker, int arm)
 		{
 			// Get weapon
 			var weapon = attacker.GetWeaponByArm(arm);
@@ -387,7 +387,7 @@ namespace SteelX.Server.Game
 		/// </summary>
 		/// <param name="unit"></param>
 		/// <param name="timeStamp"></param>
-		public void TickUnit(Unit unit, float delta)
+		public void TickUnit(Mechanaught unit, float delta)
 		{           
 			// Do ticks
 			//TODO: Clean this up

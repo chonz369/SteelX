@@ -9,11 +9,6 @@ namespace SteelX.Server.Packets.Bridge.Stats
 	public class SurvivalInfo : ServerBasePacket
 	{
 		private readonly UserStats _stats;
-		
-		public SurvivalInfo(UserStats stats)
-		{
-			_stats = stats;
-		}
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -21,6 +16,11 @@ namespace SteelX.Server.Packets.Bridge.Stats
 			{
 				return Shared.PacketTypes.BRIDGE_SEND_SURVIVAL_INFO;
 			}
+		}
+		
+		public SurvivalInfo(UserStats stats)
+		{
+			_stats = stats;
 		}
 
 		/*public override string GetType()

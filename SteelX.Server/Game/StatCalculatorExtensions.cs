@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
+using SteelX.Shared;
 using SteelX.Server;
-using SteelX.Server.Items;
-using SteelX.Server.Config;
-using SteelX.Server.Config.Poo;
+//using SteelX.Server.Items;
+//using SteelX.Server.Config;
+//using SteelX.Server.Config.Poo;
 
 namespace SteelX.Server.Game
 {
@@ -13,7 +14,7 @@ namespace SteelX.Server.Game
 		/// Calculates all stats required for gameplay on this unit
 		/// </summary>
 		/// <param name="unit"></param>
-		public static void CalculateStats(this Unit unit)
+		public static void CalculateStats(this Mechanaught unit)
 		{
 			unit.CalculateMaxHealth();
 			unit.CalculateOverheatParameters();
@@ -23,7 +24,7 @@ namespace SteelX.Server.Game
 		/// Calculates the max health and assigns it for a unit
 		/// </summary>
 		/// <param name="unit"></param>
-		private static void CalculateMaxHealth(this Unit unit)
+		private static void CalculateMaxHealth(this Mechanaught unit)
 		{
 			var headHp = PooReader.Head.First(h => h.TemplateId == unit.Head.TemplateId).HitPoints;
 			var chestHp = PooReader.Chest.First(h => h.TemplateId == unit.Chest.TemplateId).HitPoints;
@@ -33,16 +34,16 @@ namespace SteelX.Server.Game
 
 			// calculate
 			// TODO: User ability growth
-			unit.MaxHealth = headHp + chestHp + armHp + legHp + boosterHp;
+			//unit.HP = headHp + chestHp + armHp + legHp + boosterHp;
 			
-			Console.WriteLine("Calculated max hp of {0} for unit {1}", unit.MaxHealth, unit.Id);
+			Console.WriteLine("Calculated max hp of {0} for unit {1}", unit.HP, unit.Id);
 		}
 
 		/// <summary>
 		/// Calculates the overheat parameters for this unit
 		/// </summary>
 		/// <param name="unit"></param>
-		private static void CalculateOverheatParameters(this Unit unit)
+		private static void CalculateOverheatParameters(this Mechanaught unit)
 		{
 			var armStats = PooReader.Arm.First(h => h.TemplateId == unit.Arms.TemplateId);
 			
@@ -81,7 +82,7 @@ namespace SteelX.Server.Game
 			weapon.Damage = weaponStats.Damage;
 			weapon.OverheatPerShot = weaponStats.OverheatPoint;
 			weapon.NormalRecovery = weaponStats.OverheatRecovery;
-			weapon.IsAutomatic = weaponStats.WeaponType == WeaponType.machingun;
+			weapon.IsAutomatic = weaponStats.WeaponType == WeaponTypes.SMGs; //machingun
 			if (weapon.IsAutomatic)
 			{
 				var gunStats = (Gun) weaponStats;

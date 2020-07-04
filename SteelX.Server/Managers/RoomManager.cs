@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SteelX.Server;
 using SteelX.Server.Game;
-using SteelX.Server.Util;
+using SteelX.Server.Utility;
 
 namespace SteelX.Server.Managers
 {

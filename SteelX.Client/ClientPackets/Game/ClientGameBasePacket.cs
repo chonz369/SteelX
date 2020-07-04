@@ -14,7 +14,7 @@ namespace SteelX.Client.Packets.Game
 		/// <summary>
 		/// The unit for this client
 		/// </summary>
-		protected readonly Unit Unit;
+		protected readonly Mechanaught Unit;
 		
 		protected ClientGameBasePacket(byte[] data, GameSession client) 
 			: base(data, client)

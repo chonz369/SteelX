@@ -8,12 +8,12 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class StatusChanged : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 		private readonly int _a;
 		private readonly int _b;
 		private readonly int _c;
 
-		public StatusChanged(Unit unit, int a, int b, int c)
+		public StatusChanged(Mechanaught unit, int a, int b, int c)
 		{
 			_unit = unit;
 

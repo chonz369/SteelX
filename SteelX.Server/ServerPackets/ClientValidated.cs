@@ -1,23 +1,34 @@
-namespace GameServer.ServerPackets
+using SteelX.Shared;
+using SteelX.Server;
+
+namespace SteelX.Server.Packets
 {
-    /// <summary>
-    /// Sent to the client when they are validated?
-    /// </summary>
-    public class ClientValidated : ServerBasePacket
-    {
-        public override string GetType()
-        {
-            return "CLIENT_VALIDATED";
-        }
+	/// <summary>
+	/// Sent to the client when they are validated?
+	/// </summary>
+	public class ClientValidated : ServerBasePacket
+	{
+		public override Shared.PacketTypes PacketType
+		{
+			get
+			{
+				return Shared.PacketTypes.CLIENT_VALIDATED;
+			}
+		}
 
-        public override byte GetId()
-        {
-            return 0x01;
-        }
+		/*public override string GetType()
+		{
+			return "CLIENT_VALIDATED";
+		}
 
-        protected override void WriteImpl()
-        {
-            //WriteInt(1);
-        }
-    }
+		public override byte GetId()
+		{
+			return 0x01;
+		}*/
+
+		protected override void WriteImpl()
+		{
+			//WriteInt(1);
+		}
+	}
 }

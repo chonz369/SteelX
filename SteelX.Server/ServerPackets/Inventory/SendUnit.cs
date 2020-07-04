@@ -11,14 +11,14 @@ namespace SteelX.Server.Packets.Inventory
 		/// <summary>
 		/// The unit to send
 		/// </summary>
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
 		/// <summary>
 		/// The user who owns this unit
 		/// </summary>
 		private readonly Player _user;
 		
-		public SendUnit(Player user, Unit unit)
+		public SendUnit(Player user, Mechanaught unit)
 		{
 			_unit = unit;
 			_user = user;

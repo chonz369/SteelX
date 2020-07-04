@@ -11,11 +11,11 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class UnitMoved : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 		private readonly int _serverTime;
 		private readonly Vector _vel;
 
-		public UnitMoved(Unit unit, int serverTime, Vector vel)
+		public UnitMoved(Mechanaught unit, int serverTime, Vector vel)
 		{
 			_unit = unit;
 			_serverTime = serverTime;
