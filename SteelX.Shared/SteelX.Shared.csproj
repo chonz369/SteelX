@@ -50,12 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
-    <Compile Include="Application\BasePacket.cs" />
-    <Compile Include="Application\ClanData.cs" />
-    <Compile Include="Application\GameSession.cs" />
-    <Compile Include="Application\PacketHandler.cs" />
+    <Compile Include="Application\Network\BasePacket.cs" />
+    <Compile Include="Application\Network\ClientBasePacket.cs" />
+    <Compile Include="Application\Network\ServerBasePacket.cs" />
+    <Compile Include="Game\Session.cs" />
+    <Compile Include="Application\Network\PacketHandler.cs" />
     <Compile Include="Application\StatData.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Game\GameInfo.cs" />
+    <Compile Include="Game\Instance.cs" />
     <Compile Include="Mechanaught\Data\MechData.cs" />
     <Compile Include="Mechanaught\Parts\Base.cs" />
     <Compile Include="Mechanaught\Parts\Data\ArmData.cs" />

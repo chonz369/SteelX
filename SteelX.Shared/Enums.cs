@@ -1,5 +1,9 @@
 ﻿namespace SteelX.Shared
 {
+	public enum Colors
+	{
+	}
+
 	public enum Ranks
 	{
 		/// <summary>
@@ -626,6 +630,20 @@
 		Tutorial = 6,
 		Mission = 7, // Last stand?
 		FreeMode = 8 // ?
+	}
+
+	/// <summary>
+	/// The type of stat this is
+	/// Guessing: DM, TDM, TC, etc
+	/// </summary>
+	public enum StatTypes : byte
+	{
+		Training = 0,
+		Survival = 1,
+		TeamSurvival = 2,
+		TeamBattle = 3,
+		ClanBattle = 4,
+		DefensiveBattle = 5
 	}
 
 	public enum NPCTypes : byte

@@ -22,18 +22,4 @@ namespace SteelX.Shared
 		public GameTypes Mode { get; private set; }
 		//public uint MapId { get; private set; }        
 	}
-
-	/// <summary>
-	/// The type of stat this is
-	/// Guessing: DM, TDM, TC, etc
-	/// </summary>
-	public enum StatTypes : byte
-	{
-		Training = 0,
-		Survival = 1,
-		TeamSurvival = 2,
-		TeamBattle = 3,
-		ClanBattle = 4,
-		DefensiveBattle = 5
-	}
 }

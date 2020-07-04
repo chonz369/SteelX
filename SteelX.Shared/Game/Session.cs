@@ -12,9 +12,10 @@ namespace SteelX.Shared
 {
 	/// <summary>
 	/// The game session represents a single connected user
-	/// The user may or may not be logged in
 	/// </summary>
-	public class GameSession : TcpSession
+	/// The user may or may not be logged in
+	//ToDo: Change to Interface?
+	public abstract class GameSession //: TcpSession
 	{
 		/// <summary>
 		/// The user logged into this session
@@ -36,7 +37,8 @@ namespace SteelX.Shared
 		/// <summary>
 		/// The room this session is connected to
 		/// </summary>
-		public GameInstance GameInstance { get; set; }
+		//public GameInstance GameInstance { get; set; }
+		public Guid InstanceId { get; set; }
 		
 		/// <summary>
 		/// Has this session loaded into the game fully?
@@ -50,70 +52,69 @@ namespace SteelX.Shared
 		/// </summary>
 		public bool IsSignedIn { get { return User != null; } }
 
-		public GameSession(TcpServer server) : base(server)
-		{
-			
-		}
+		//public GameSession(TcpServer server) : base(server)
+		//{
+		//}
 
 		/// <summary>
 		/// Gets the username for this session if they are logged in
 		/// </summary>
 		/// <returns></returns>
-		public string GetUserName()
-		{
-			return User != null ? User.Username : "[NOT SIGNED IN]";
-		}
+		//public string GetUserName()
+		//{
+		//	return User != null ? User.Username : "[NOT SIGNED IN]";
+		//}
 
 		/// <summary>
-		/// Send a packet to this client
+		/// Send a packet from this client
 		/// </summary>
 		/// <param name="packet"></param>
-		public void SendPacket(ServerBasePacket packet)
-		{
-			var data = packet.Write();
-			
-			SendAsync(data);
-			
-			//TODO: Add config here - if debug
-			Console.WriteLine("[S] 0x{0:x2} {1} >>> {2}", Color.Green, packet.GetId(), packet.GetType(), GetUserName());
-		}
+		public abstract void SendPacket(ServerBasePacket packet);
+		//{
+		//	byte[] data = packet.Write();
+		//	
+		//	SendAsync(data);
+		//	
+		//	//TODO: Add config here - if debug
+		//	//Console.WriteLine("[S] 0x{0:x2} {1} >>> {2}", Color.Green, packet.GetId(), packet.GetType(), GetUserName());
+		//}
 
-		protected override void OnConnected()
+		protected virtual void OnConnected()
 		{
 			// Stamp when they connect for calculating ping
 			ConnectedStamp = DateTime.UtcNow;
 			
-			Console.WriteLine($"[{ConnectedStamp}] Game TCP session with Id {Id} connected!");
+			//Console.WriteLine($"[{ConnectedStamp}] Game TCP session with Id {Id} connected!");
 		}
 
-		protected override void OnDisconnected()
-		{
-			Console.WriteLine($"Game TCP session with Id {Id} disconnected!");
-		}
+		protected abstract void OnDisconnected();
+		//{
+		//	//Console.WriteLine($"Game TCP session with Id {Id} disconnected!");
+		//}
 
-		protected override void OnReceived(byte[] buffer, long offset, long size)
-		{
-			var pos = 0;
-			while (pos < size)
-			{
-				var packet = PacketHandler.HandlePacket(buffer, pos, this);
-				pos += packet.Size;
-				
-				//TODO: Add config here - if debug
-				Console.WriteLine("[C] 0x{0:x2} {1} <<< {2}", Color.Red, packet.Id, packet.GetType(), GetUserName());
+		protected abstract void OnReceived(byte[] buffer, long offset, long size);
+		//{
+		//	var pos = 0;
+		//	while (pos < size)
+		//	{
+		//		var packet = PacketHandler.HandlePacket(buffer, pos, this);
+		//		pos += packet.Size;
+		//		
+		//		//TODO: Add config here - if debug
+		//		//Console.WriteLine("[C] 0x{0:x2} {1} <<< {2}", Color.Red, packet.Id, packet.GetType(), GetUserName());
+		//
+		//		//TODO: RUN PACKET ASYNC IF LOW PRIORITY?
+		//		packet.Run();
+		//	}
+		//}
 
-				//TODO: RUN PACKET ASYNC IF LOW PRIORITY?
-				packet.Run();
-			}
-		}
-
-		protected override void OnError(SocketError error)
+		protected void OnError(SocketError error)
 		{
-			Console.WriteLine($"Game TCP session caught an error with code {error}");
+			//Console.WriteLine($"Game TCP session caught an error with code {error}");
 		}
 		
 		#region THREAD
-		private bool _inGame;
+		/*private bool _inGame;
 		private DateTime _lastTick;
 
 		/// <summary>
@@ -137,13 +138,13 @@ namespace SteelX.Shared
 				_lastTick = DateTime.UtcNow;
 				
 				// Call game session tick
-				GameInstance.TickUnit(User.CurrentUnit, delta);
+				this.GameInstance.TickUnit(User.CurrentUnit, delta);
 				
 				// Sleep
 				//await System.Threading.Tasks.Task.Delay(50);
 				System.Threading.Thread.Sleep(50);
 			}
-		}
+		}*/
 		#endregion
 	}
 }

@@ -9,8 +9,6 @@ namespace SteelX.Shared
 		/// Unique Id for this unit.
 		/// </summary>
 		public uint Id              { get; private set; }
-		public PilotAbilityFactory PilotAbility	{ get; private set; }
-		//public PilotWeaponFactory PilotWeapon	{ get; private set; }
 		public Parts Arm			{ get; private set; }
 		public Parts Leg			{ get; private set; }
 		public Parts Core			{ get; private set; }
@@ -18,6 +16,7 @@ namespace SteelX.Shared
 		public Parts Booster		{ get; private set; }
 		public Weapon[,] Weapons	{ get; private set; }
 		public Skills[] Skills		{ get; private set; }
+		public PilotAbilityFactory PilotAbility	{ get; private set; }
 
 		/// <summary>
 		/// The inventory this unit is part of
@@ -139,14 +138,36 @@ namespace SteelX.Shared
 		/// <summary>
 		/// The current weapon set this user is using
 		/// </summary>
-		private int _currentWeaponSet = 0;
+		//private int _currentWeaponSet = 0;
 
 		/// <summary>
 		/// Gets the current weapon set equipped
 		/// </summary>
-		public int CurrentWeaponSet { get { return _currentWeaponSet; } }
+		//public int CurrentWeaponSet { get { return _currentWeaponSet; } }
 
 		public bool Alive { get { return Health > 0; } }
+
+		/// <summary>
+		/// The user who is owns this unit
+		/// </summary>
+		/// Not mapped for now as I think we might need to assign this at runtime, for NPC units and stuff
+		//public Player User { get; set; }
+
+		/// <summary>
+		/// The team this unit is on
+		/// </summary>
+		/// Only used in game?
+		//public uint Team;
+
+		/// <summary>
+		/// Stores the time value the client has sent us. This will be used to calculate cooldowns i think
+		/// </summary>
+		private uint _lastTick = 0;
+
+		/// <summary>
+		/// Gets the players last tick
+		/// </summary>
+		public uint GetLastTick { get { return _lastTick; } }
 
 		#region Stats
 		public int Durability		{ get { return Application.PartsData[Arm].Durability + Application.PartsData[Leg].Durability + Application.PartsData[Core].Durability + Application.PartsData[Head].Durability + Application.PartsData[Booster].Durability; } }
@@ -230,6 +251,9 @@ namespace SteelX.Shared
 			//Head = new Heads(mech.Head);
 			//Booster = new Boosters(mech.Booster);
 		}
+		#endregion
+		
+		#region Methods
 		public Mechanaught LoadOut(MechWeapon weap, byte set = 1)
 		{
 			SetWeapons(weap, set);
@@ -240,171 +264,6 @@ namespace SteelX.Shared
 			Weapons[loadout, 1] = new Weapon(weap.LH);
 			Weapons[loadout, 2] = new Weapon(weap.RH);
 		}
-		#endregion
-	}
-
-	/// <summary>
-	/// This class represents a unit in the game
-	/// </summary>
-	/// May need to be switched to NPC/User in the future
-	//ToDo: Merge `Unit` with Mech class above, and remove
-	public class Unit
-	{
-		/// <summary>
-		/// Unique Id for this unit.
-		/// </summary>
-		/// Not sure if it is globally unique or just for the same session
-		public uint Id { get; set; }
-
-		/// <summary>
-		/// The user who is owns this unit
-		/// </summary>
-		/// Not mapped for now as I think we might need to assign this at runtime, for NPC units and stuff
-		public Player User { get; set; }
-
-		/// <summary>
-		/// The inventory this unit is part of
-		/// </summary>
-		public uint UserInventoryId { get; set; }
-
-		/// <summary>
-		/// The team this unit is on
-		/// </summary>
-		/// Only used in game?
-		//public uint Team;
-
-		/// <summary>
-		/// The launch order position of this unit
-		/// </summary>
-		public int LaunchOrder { get; set; }
-
-		/// <summary>
-		/// The name of this unit
-		/// </summary>
-		public string Name { get; set; }
-
-		/// <summary>
-		/// The head for this unit
-		/// </summary>
-		public Part Head { get; set; }
-		public uint HeadId { get; set; }
-
-		/// <summary>
-		/// The chest for this unit
-		/// </summary>
-		public Part Chest { get; set; }
-		public uint ChestId { get; set; }
-
-		/// <summary>
-		/// The arms for this unit
-		/// </summary>
-		public Part Arms { get; set; }
-		public uint ArmsId { get; set; }
-
-		/// <summary>
-		/// The legs for this unit
-		/// </summary>
-		public Part Legs { get; set; }
-		public uint LegsId { get; set; }
-
-		/// <summary>
-		/// The backpack for this unit
-		/// </summary>
-		public Part Backpack { get; set; }
-		public uint BackpackId { get; set; }
-
-		/// <summary>
-		/// The left weapon for this units first weapon set
-		/// </summary>
-		public Weapon WeaponSet1Left { get; set; }
-		public uint WeaponSet1LeftId { get; set; }
-
-		/// <summary>
-		/// The right weapon for this units first weapon set
-		/// </summary>
-		public Weapon WeaponSet1Right { get; set; }
-		public uint WeaponSet1RightId { get; set; }
-
-		/// <summary>
-		/// The left weapon for this units second weapon set
-		/// </summary>
-		public Weapon WeaponSet2Left { get; set; }
-		public uint WeaponSet2LeftId { get; set; }
-
-		/// <summary>
-		/// The right weapon for this units second weapon set
-		/// </summary>
-		public Weapon WeaponSet2Right { get; set; }
-		public uint WeaponSet2RightId { get; set; }
-
-		/// <summary>
-		/// The position of this unit in the world
-		/// </summary>
-		public Vector WorldPosition { get; set; }
-
-		//TODO: Possibly replace X and Y with some sort of vector?
-
-		/// <summary>
-		/// The x aim of this unit
-		/// </summary>
-		public short AimX { get; set; }
-
-		/// <summary>
-		/// The y aim of this unit
-		/// </summary>
-		public short AimY { get; set; }
-
-		/// <summary>
-		/// Byte flag or enum from client showing movement
-		/// </summary>
-		//TODO: Find out if this is a flag or an enum
-		public byte Movement { get; set; }
-
-		/// <summary>
-		/// Unknown byte or flag showing some sort of status for unit
-		/// </summary>
-		//TODO: Find out if this is a flag or an enum
-		public byte UnknownMovementFlag { get; set; }
-
-		/// <summary>
-		/// Byte flag or bool from client showing booster status
-		/// </summary>
-		//TODO: Find out if this is a flag or an enum
-		public byte Boosting { get; set; }
-
-		/// <summary>
-		/// </summary>
-		//TODO: Pull this from data files (poo + pilot growth)
-		public int Health { get; set; }
-
-		/// <summary>
-		/// This units max health
-		/// Assigned at runtime via stat calculations
-		/// </summary>
-		public int MaxHealth { get { return 1000; } }
-
-		/// <summary>
-		/// The current weapon set this user is using
-		/// </summary>
-		private int _currentWeaponSet = 0;
-
-		/// <summary>
-		/// Gets the current weapon set equipped
-		/// </summary>
-		public int CurrentWeaponSet { get { return _currentWeaponSet; } }
-
-		public bool Alive { get; set; }
-
-		/// <summary>
-		/// Stores the time value the client has sent us. This will be used to calculate cooldowns i think
-		/// </summary>
-		private uint _lastTick = 0;
-
-		/// <summary>
-		/// Gets the players last tick
-		/// </summary>
-		public uint GetLastTick { get { return _lastTick; } }
-
 		/// <summary>
 		/// Gets the weapon by arm based on the users current weapon set equipped
 		/// </summary>
@@ -412,14 +271,14 @@ namespace SteelX.Shared
 		/// <returns></returns>
 		public Weapon GetWeaponByArm(int arm)
 		{
-			if (_currentWeaponSet == 0)
-			{
-				return arm == 0 ? WeaponSet1Left : WeaponSet1Right;
-			}
-
-			return arm == 0 ? WeaponSet2Left : WeaponSet2Right;
+			//if (_currentWeaponSet == 0)
+			//{
+			//	return arm == 0 ? WeaponSet1Left : WeaponSet1Right;
+			//}
+			//
+			//return arm == 0 ? WeaponSet2Left : WeaponSet2Right;
+			return arm == 0 ? WeaponSetLeft : WeaponSetRight;
 		}
-
 		/// <summary>
 		/// Called when we get an updated timestamp. Will trickle down tick calls with delta to stuff
 		/// </summary>
@@ -436,5 +295,6 @@ namespace SteelX.Shared
 			// Return delta
 			return delta;
 		}
+		#endregion
 	}
 }
