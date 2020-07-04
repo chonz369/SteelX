@@ -72,7 +72,7 @@ namespace SteelX.Server.Game
 		/// <summary>
 		/// The users in this room
 		/// </summary>
-		public List<Player> Users => _sessions.Values.Select(s => s.User).ToList();		
+		public List<Server.Player> Users { get { return _sessions.Values.Select(s => (Server.Player)s.User).ToList(); } }
 		#endregion
 		
 		#region MESSAGING		
@@ -179,7 +179,7 @@ namespace SteelX.Server.Game
 			
 			// Announce user to room
 			MulticastPacket(new UserEnter(this, (Server.Player)session.User));
-			MulticastPacket(new Server.Packets.Room.UnitInfo(session.User, session.User.DefaultUnit));
+			MulticastPacket(new Server.Packets.Room.UnitInfo((Server.Player)session.User, session.User.DefaultUnit));
 			
 			// Add to session list
 			_sessions.TryAdd(session.Id, session);
