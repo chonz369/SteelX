@@ -4,7 +4,7 @@ using SteelX.Shared;
 namespace SteelX.Client.Packets.Inventory
 {
 	/// <summary>
-	/// Sent when the client requests their current operators or... all operators?
+	/// Sent when the client requests the operators they have access to (in their inventory)
 	/// </summary>
 	public class RequestOperator : ClientBasePacket
 	{
@@ -28,7 +28,10 @@ namespace SteelX.Client.Packets.Inventory
 		protected override void RunImpl()
 		{
 			var client = GetClient();
-			client.SendPacket(new SendOperatorList(client.User));
+			//client.SendPacket(new SendOperatorList(client.User));
+
+			//Sends a ping to server requesting operators
+			//Server responds back with a list of operators available
 		}
 	}
 }

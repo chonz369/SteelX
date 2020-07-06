@@ -20,7 +20,7 @@ namespace SteelX.Client.Packets
 		/// <summary>
 		/// The size of the header in bytes
 		/// </summary>
-		private const int HeaderSize = 3;
+		//private const int HeaderSize = 3;
 		
 		public static ClientBasePacket HandlePacket(byte[] data, int offset, GameSession client)
 		{

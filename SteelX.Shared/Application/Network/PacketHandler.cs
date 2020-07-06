@@ -1,4 +1,5 @@
 using System;
+using System.Net.Sockets;
 //using GameServer.ClientPackets;
 //using GameServer.ClientPackets.Bridge;
 //using GameServer.ClientPackets.Game;
@@ -17,143 +18,132 @@ namespace SteelX.Shared.Packets
 		/// <summary>
 		/// The size of the header in bytes
 		/// </summary>
-		private const int HeaderSize = 3;
-		
-		/*public static ClientBasePacket HandlePacket(byte[] data, int offset, GameSession client)
+		public const int HeaderSize = 3;
+
+		public static TcpClient TcpConn	{ get; private set; }
+		public static string TcpServer	{ get; private set; }
+		public static Int32 TcpPort		{ get; private set; }
+
+		public static PacketTypes ReceivePacket(byte[] data, out byte[] packet)//, int offset
 		{
+			//The number of bytes the packet Id takes up
+			int offset = 0;
+
 			// Calculate message size
-			var size = (short)((data[offset + 1] << 8) + data[offset]);
-			
+			short size = (short)((data[offset + 1] << 8) + data[offset]);
+
 			// Copy the packet to a new byte array
+			//byte[] packet = new byte[size];
+			packet = new byte[size];
 			// Skipping the header
-			var packet = new byte[size];
 			Array.Copy(data, offset, packet, 0, size);
 
-			ClientBasePacket msg;
-			
 			// Get the id
-			var id = packet[2];
-			
-			// Handle the packet
-			//TODO: Can we group these into login / game / etc?
-			switch (id)
+			byte id = packet[2];
+
+			return (PacketTypes)id;
+		}
+
+		/// <summary>
+		/// Used to send packets via TCP connection
+		/// </summary>
+		/// Not used, sample code for concept dev
+		/// <param name="data"></param>
+		public static void SendTcpPacket(byte[] data)
+		{
+			try
 			{
-				case 0x00:
-					msg = new ProtocolVersion(packet, client);
-					break;
-				
-				case 0x02:
-					msg = new ConnectClient(packet, client);
-					break;
-				
-				case 0x03:
-					msg = new ConnectSwitch(packet, client);
-					break;
-				
-				case 0x04:
-					msg = new SwitchServer(packet, client);
-					break;
-				
-				case 0x05:
-					msg = new ServerTime(packet, client);
-					break;
-				
-				case 0x0e:
-					msg = new SyncMoney(packet, client);
-					break;
-				
-				case 0x0f:
-					msg = new Log(packet, client);
-					break;
-				
-				case 0x1b:
-					msg = new RequestInventory(packet, client);
-					break;
-				
-				case 0x1c:
-					msg = new RequestSearchGame(packet, client);
-					break;
-				
-				case 0x20:
-					msg = new EnterGame(packet, client);
-					break;
-				
-				case 0x25:
-					msg = new ListUser(packet, client);
-					break;
-				
-				case 0x26:
-					msg = new Ready(packet, client);
-					break;
-				
-				case 0x28:
-					msg = new StartGame(packet, client);
-					break;
-				
-				case 0x31:
-					msg = new SelectBase(packet, client);
-					break;
-				
-				case 0x32:
-					msg = new ReadyGame(packet, client);
-					break;
-				
-				case 0x35:
-					msg = new RequestPalette(packet, client);
-					break;
-				
-				case 0x36:
-					msg = new MoveUnit(packet, client);
-					break;
-				
-				case 0x37:
-					msg = new AimUnit(packet, client);
-					break;
-				
-				case 0x38:
-					msg = new StartAttack(packet, client);
-					break;
-				
-				case 0x39:
-					msg = new StopAttack(packet, client);
-					break;
-				
-				case 0x3d:
-					msg = new RequestRegain(packet, client);
-					break;
-				
-				case 0x65:
-					msg = new UnAimUnit(packet, client);
-					break;
-				
-				case 0x48:
-					msg = new RequestGoodsData(packet, client);
-					break;
-				
-				case 0x4c:
-					msg = new RequestAvatarInfo(packet, client);
-					break;
-				
-				case 0x4d:
-				case 0x4e:
-				case 0x4f:
-				case 0x50:
-				case 0x51:
-				case 0x52:
-					msg = new RequestStatsInfo(packet, client);
-					break;
-				
-				case 0x53:
-					msg = new RequestBestInfo(packet, client);
-					break;
-				
-				default:
-					msg = new UnknownPacket(packet, client);
-					//Console.WriteLine("Unknown packet id [{0}] from user {1}", id, client.GetUserName());
-					break;
+				// Create a TcpClient.
+				// Note, for this client to work you need to have a TcpServer
+				// connected to the same address as specified by the server, port
+				// combination.
+				TcpClient client = new TcpClient(TcpServer, TcpPort);
+
+				// Translate the passed message into ASCII and store it as a Byte array.
+				//Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
+
+				// Get a client stream for reading and writing.
+				//  Stream stream = client.GetStream();
+
+				NetworkStream stream = client.GetStream();
+
+				// Send the message to the connected TcpServer.
+				stream.Write(data, 0, data.Length);
+
+				// Receive the TcpServer.response.
+
+				// Buffer to store the response bytes.
+				data = new Byte[256];
+
+				// String to store the response ASCII representation.
+				String responseData = String.Empty;
+
+				// Read the first batch of the TcpServer response bytes.
+				Int32 bytes = stream.Read(data, 0, data.Length);
+				responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+				//Console.WriteLine("Received: {0}", responseData);
+
+				// Close everything.
+				stream.Close();
+				client.Close();
+			}
+			catch (ArgumentNullException e)
+			{
+				//Console.WriteLine("ArgumentNullException: {0}", e);
+			}
+			catch (SocketException e)
+			{
+				//Console.WriteLine("SocketException: {0}", e);
 			}
 
-			return msg;
-		}*/
+			//Console.WriteLine("\n Press Enter to continue...");
+			//Console.Read();
+		}
+
+		/// <summary>
+		/// Used to send packets via UDP connection
+		/// </summary>
+		/// Not used, sample code for concept dev
+		/// <param name="data"></param>
+		public static void SenUdppPacket(byte[] data)
+		{
+			// This constructor arbitrarily assigns the local port number.
+			UdpClient udpClient = new UdpClient(TcpPort);
+			try
+			{
+				udpClient.Connect(TcpServer, TcpPort);
+
+				// Sends a message to the host to which you have connected.
+				//Byte[] data = Encoding.ASCII.GetBytes("Is anybody there?");
+
+				udpClient.Send(data, data.Length);
+
+				// Sends a message to a different host using optional hostname and port parameters.
+				//UdpClient udpClientB = new UdpClient();
+				//udpClientB.Send(data, data.Length, "AlternateHostMachineName", 11000);
+
+				//IPEndPoint object will allow us to read datagrams sent from any source.
+				System.Net.IPEndPoint RemoteIpEndPoint = new System.Net.IPEndPoint(System.Net.IPAddress.Any, 0);
+
+				// Blocks until a message returns on this socket from a remote host.
+				Byte[] receiveBytes = udpClient.Receive(ref RemoteIpEndPoint);
+				//string returnData = Encoding.ASCII.GetString(receiveBytes);
+
+				// Uses the IPEndPoint object to determine which of these two hosts responded.
+				//Console.WriteLine("This is the message you received " +
+				//							 returnData.ToString());
+				//Console.WriteLine("This message was sent from " +
+				//							RemoteIpEndPoint.Address.ToString() +
+				//							" on their port number " +
+				//							RemoteIpEndPoint.Port.ToString());
+
+				udpClient.Close();
+				//udpClientB.Close();
+			}
+			catch (Exception e)
+			{
+				//Console.WriteLine(e.ToString());
+			}
+		}
 	}
 }

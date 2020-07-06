@@ -30,7 +30,11 @@ namespace SteelX.Client.Packets.Room
 			// TODO: Check errors - users not ready, team balance, etc
 			var client = GetClient();
 			
-			client.GameInstance.MulticastPacket(new GameStart(client.GameInstance, 0));
+			//Send a request to start game match 
+			//if all users are ready, server will respond with `OK` to all
+			//if game cannot begin, server will let host know, and send message to chat
+			
+			//client.GameInstance.MulticastPacket(new GameStart(client.GameInstance, 0));
 		}
 	}
 }

@@ -25,7 +25,7 @@ namespace SteelX.Client.Packets.Game
 		public UnAimUnit(byte[] data, GameSession client) : base(data, client)
 		{
 			// Check practice mode
-			if (GetClient().GameInstance == null) return;
+			/*if (GetClient().GameInstance == null) return;
 
 			TickUnit();
 			//GetInt(); // ClientTime? - Not sure what to do with this yet - ping check? - maybe packet number?
@@ -41,7 +41,7 @@ namespace SteelX.Client.Packets.Game
 			if (weapon != null)
 				weapon.Target = null;
 			else
-				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, arm);
+				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, arm);*/
 		}
 
 		/*public override string GetType()
@@ -52,9 +52,13 @@ namespace SteelX.Client.Packets.Game
 		protected override void RunImpl()
 		{
 			// Check practice mode
-			if (GetClient().GameInstance == null) return;
+			//if (GetClient().GameInstance == null) return;
 
-			GetClient().GameInstance.UnAimUnit(Unit, _oldTarget);
+			//GetClient().GameInstance.UnAimUnit(Unit, _oldTarget);
+
+			//Sends a request to remove Lock-on from target
+			//Client sends an Id of the lock-on (so that packet ordering doesnt conflict)
+			//Server should respond back to client repeating (broadcasting) command, to confirm recieved
 		}
 	}
 }

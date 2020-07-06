@@ -47,14 +47,17 @@ namespace SteelX.Client.Packets
 
 		protected override void RunImpl()
 		{
-			GetClient().SendPacket(TryLogin());
+			//Send Username string, and Password hash to server as POST
+			//Wait from response from server with AuthId/AuthKey
+			//Store Key on client and proceed to next step with end user
+			//GetClient().SendPacket(TryLogin());
 		}
 
 		/// <summary>
 		/// Attempts to log in and returns the correct packet
 		/// </summary>
 		/// <returns></returns>
-		private ConnectResult TryLogin()
+		/*private ConnectResult TryLogin()
 		{
 			using (var db = new ExteelContext())
 			{               
@@ -131,6 +134,6 @@ namespace SteelX.Client.Packets
 				
 				return new ConnectResult(0, user);
 			}
-		}
+		}*/
 	}
 }

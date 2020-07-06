@@ -21,12 +21,12 @@ namespace SteelX.Client.Packets.Game
 
 		public ReadyGame(byte[] data, GameSession client) : base(data, client)
 		{
-			Console.WriteLine("Packet size: {0}",Color.Coral, Size);
+			/*Console.WriteLine("Packet size: {0}",Color.Coral, Size);
 			
 			Console.WriteLine("Packet raw: {0}", Color.Coral,
 				String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
 
-			Console.WriteLine("Int?? - : {0}", GetInt()); // ??
+			Console.WriteLine("Int?? - : {0}", GetInt()); // ??*/
 		}
 
 		/*public override string GetType()
@@ -38,7 +38,12 @@ namespace SteelX.Client.Packets.Game
 		{
 			var client = GetClient();
 
-			client.GameInstance.GameReady(client);
+			//client.GameInstance.GameReady(client);
+
+			//Client pings server at the end of loading screen
+			//After loading screen is done 
+			//server sends client permission to begin next step
+			//Next step should be to display spawn options or to spectate
 		}
 	}
 }

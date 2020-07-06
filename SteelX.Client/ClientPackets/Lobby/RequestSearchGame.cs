@@ -23,14 +23,14 @@ namespace SteelX.Client.Packets.Lobby
 
 		public RequestSearchGame(byte[] data, GameSession client) : base(data, client)
 		{
-			Console.WriteLine("Packet size: {0}",Color.Coral, Size);
-			
-			Console.WriteLine("Packet raw: {0}", Color.Coral,
-				String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
-
-			
-			Console.WriteLine("Int?? - : {0}", GetInt()); // ??
-			Console.WriteLine("Int?? - : {0}", GetInt()); // ??
+			//Console.WriteLine("Packet size: {0}",Color.Coral, Size);
+			//
+			//Console.WriteLine("Packet raw: {0}", Color.Coral,
+			//	String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
+			//
+			//
+			//Console.WriteLine("Int?? - : {0}", GetInt()); // ??
+			//Console.WriteLine("Int?? - : {0}", GetInt()); // ??
 		}
 
 		/*public override string GetType()
@@ -40,11 +40,11 @@ namespace SteelX.Client.Packets.Lobby
 
 		protected override void RunImpl()
 		{
-			var rooms = RoomManager.GetRooms();
+			//var rooms = RoomManager.GetRooms();
 			// Search for rooms
 			//TODO: Check the paramaters in this packet to see if they are filters or something
 			
-			GetClient().SendPacket(new GameSearched(rooms));
+			//GetClient().SendPacket(new GameSearched(rooms));
 		}
 	}
 }

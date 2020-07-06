@@ -34,9 +34,12 @@ namespace SteelX.Client.Packets.Room
 		protected override void RunImpl()
 		{
 			var client = GetClient();
-			client.User.IsReady = _ready;
+			//client.User.IsReady = _ready;
 			
-			client.GameInstance.MulticastPacket(new UserInfo(client.GameInstance, client.User));
+			//Client sends a ping to server saying this player is ready
+			//Server broadcast to all clients that the current player is ready
+
+			//client.GameInstance.MulticastPacket(new UserInfo(client.GameInstance, client.User));
 		}
 	}
 }

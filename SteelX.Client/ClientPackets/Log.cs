@@ -14,11 +14,6 @@ namespace SteelX.Client.Packets
 		/// Log data client sent us
 		/// </summary>
 		private readonly string _logString;
-		
-		public Log(byte[] data, GameSession client) : base(data, client)
-		{
-			_logString = GetString();
-		}
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -26,6 +21,11 @@ namespace SteelX.Client.Packets
 			{
 				return Shared.PacketTypes.LOG;
 			}
+		}
+		
+		public Log(byte[] data, GameSession client) : base(data, client)
+		{
+			_logString = GetString();
 		}
 
 		/*public override string GetType()
@@ -36,7 +36,7 @@ namespace SteelX.Client.Packets
 		protected override void RunImpl()
 		{
 			//TODO: If config C_LOG
-			Console.WriteLine(_logString, Color.DodgerBlue);
+			//Console.WriteLine(_logString, Color.DodgerBlue);
 		}
 	}
 }

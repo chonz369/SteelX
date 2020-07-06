@@ -26,8 +26,11 @@ namespace SteelX.Client.Packets.Bridge
 
 		protected override void RunImpl()
 		{
-			var client = GetClient();
-			client.SendPacket(new AvatarInfo(client.User));
+			/*var client = GetClient();
+			client.SendPacket(new AvatarInfo(client.User)); */
+
+			//Sends a ping to server with type of stats
+			//server will respond with the player's progress for given stat
 		}
 	}
 }

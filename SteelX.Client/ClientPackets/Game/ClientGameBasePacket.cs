@@ -9,7 +9,7 @@ namespace SteelX.Client.Packets.Game
 	/// <summary>
 	/// Base packet for game packets from the client
 	/// </summary>
-	public abstract class ClientGameBasePacket : ClientBasePacket
+	public abstract class ClientGameBasePacket : SteelX.Client.Packets.ClientBasePacket
 	{
 		/// <summary>
 		/// The unit for this client
@@ -19,13 +19,14 @@ namespace SteelX.Client.Packets.Game
 		protected ClientGameBasePacket(byte[] data, GameSession client) 
 			: base(data, client)
 		{
-			Unit = GetClient().User.CurrentUnit;
+			//Unit = GetClient().User.CurrentUnit;
 		}
 
 		/// <summary>
 		/// Ticks the unit by reading the current time stamp
 		/// </summary>
-		//TODO: Should this be called during the send step?
+		//ToDo: This is the packet's sequence id, for packet ordering
+		//Change method function from void to int, and use for packet conflicts
 		protected void TickUnit()
 		{
 			// Just for practice mode right now
@@ -35,7 +36,7 @@ namespace SteelX.Client.Packets.Game
 			
 			var delta = Unit.UpdatePing(ping);
 			
-			GetClient().GameInstance?.TickUnit(Unit, delta);
+			//GetClient().GameInstance?.TickUnit(Unit, delta);
 		}
 
 		/// <summary>
@@ -46,7 +47,7 @@ namespace SteelX.Client.Packets.Game
 		{
 			//TODO: Make this better
 			// Just for practice mode right now
-			if (Unit == null) return;
+			/*if (Unit == null) return;
 			
 			// Read aim
 			Unit.AimY = GetShort();
@@ -57,7 +58,7 @@ namespace SteelX.Client.Packets.Game
 			// Read position
 			Unit.WorldPosition.X = GetFloat();
 			Unit.WorldPosition.Y = GetFloat();
-			Unit.WorldPosition.Z = GetFloat();
+			Unit.WorldPosition.Z = GetFloat();*/
 		}
 	}
 }

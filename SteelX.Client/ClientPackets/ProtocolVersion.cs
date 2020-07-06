@@ -33,24 +33,27 @@ namespace SteelX.Client.Packets
 			}
 			catch (Exception e)
 			{
-				System.Console.WriteLine("Error on client protocol version!");
-				_version = 0;
-				client.Disconnect();
+				//System.Console.WriteLine("Error on client protocol version!");
+				//_version = 0;
+				//client.Disconnect();
 			}
 		}
 
 		protected override void RunImpl()
 		{
-			//TODO: Check version?
+			//Client pings server for version identifier
+			//Server responds with version id
+			//if client is outdated, force update stream
+			//or request end user to manually update
 			
 			// Set on client
 			GetClient().Version = _version;
 			
 			//TODO: If debug
-			Console.WriteLine("Client protocol is : {0}", _version, Color.DodgerBlue);
+			//Console.WriteLine("Client protocol is : {0}", _version, Color.DodgerBlue);
 			
 			// Send the client their version
-			GetClient().SendPacket(new ServerVersion());
+			//GetClient().SendPacket(new ServerVersion());
 		}
 		
 		/*public override string GetType()

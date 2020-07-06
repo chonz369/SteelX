@@ -36,7 +36,10 @@ namespace SteelX.Client.Packets.Game
 
 		protected override void RunImpl()
 		{
-			GetClient().GameInstance.EnterSniperMode(Unit);
+			//GetClient().GameInstance.EnterSniperMode(Unit);
+
+			//Bool toggle for if the player is using the weapon's scope zoom
+			//Server checks if the weapon has the ability to zoom
 		}
 	}
 }

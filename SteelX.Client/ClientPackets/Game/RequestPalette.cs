@@ -7,10 +7,10 @@ namespace SteelX.Client.Packets.Game
 {
 	/// <summary>
 	/// Seems to be sent by client to request palettes for units
+	/// </summary>
 	/// Maybe for preloading skills?
 	/// Or showing in bar?
 	/// Assuming palette is skills currently
-	/// </summary>
 	public class RequestPalette : ClientBasePacket
 	{
 		/// <summary>
@@ -39,13 +39,15 @@ namespace SteelX.Client.Packets.Game
 
 		protected override void RunImpl()
 		{
-			// TODO: Not sure if this should be multicasted
+			//TODO: Not sure if this should be multicasted
 			var client = GetClient();
 
 			// I think we need to find it. Not sure what to do if it fails
-			var unit = client.GameInstance.GetUnitById(_unitId);
+			//var unit = client.GameInstance.GetUnitById(_unitId);
 			
-			client.SendPacket(new PaletteList(unit));
+			//client.SendPacket(new PaletteList(unit));
+
+			//Palette being color for mechs on-screen? like "color palette"?
 		}
 	}
 }

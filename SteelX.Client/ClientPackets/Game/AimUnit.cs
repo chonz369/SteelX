@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using SteelX.Shared;
+using SteelX.Shared.Packets;
 //using Console = Colorful.Console;
 
 namespace SteelX.Client.Packets.Game
@@ -13,8 +14,8 @@ namespace SteelX.Client.Packets.Game
 	{
 		//TODO: Maybe swap this to a lookup of the victim unit?
 		//TODO: Maybe a units dictionary in the room?
-		private readonly Mechanaught _target;
-		private readonly int _arm;
+		public uint? Target { get; private set; }
+		public bool Arm { get; private set; }
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -24,12 +25,20 @@ namespace SteelX.Client.Packets.Game
 			}
 		}
 
+		public void ReceivePacket(byte[] data) //: base(data)
+		{
+			if (data == null) return;
+			AimUnitDto dto = data.FromByteArray<AimUnitDto>();
+			Target = dto.Target;
+			Arm = dto.Arm;
+		}
+
 		public AimUnit(byte[] data, GameSession client) : base(data, client)
 		{
-			Console.WriteLine("Packet size: {0}",Color.Coral, Size);
+			/*/Console.WriteLine("Packet size: {0}",Color.Coral, Size);
 			
-			Console.WriteLine("Packet raw: {0}", Color.Coral,
-				String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
+			//Console.WriteLine("Packet raw: {0}", Color.Coral,
+			//	String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
 			
 			//TODO: This is just for practice. Improve it?
 			if (client.GameInstance == null) return;
@@ -52,8 +61,8 @@ namespace SteelX.Client.Packets.Game
 			
 			if (weapon != null)
 				weapon.Target = _target;
-			else
-				Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, _arm);
+			//else
+			//	Console.WriteLine("Cant assign target, 2 handed weapon! Unit {0} Arm {1}", (object)Unit.Id, _arm);*/
 		}
 
 		/*public override string GetType()
@@ -64,9 +73,9 @@ namespace SteelX.Client.Packets.Game
 		protected override void RunImpl()
 		{
 			// Check practice mode
-			if (GetClient().GameInstance == null) return;
+			//if (GetClient().GameInstance == null) return;
 			
-			GetClient().GameInstance.AimUnit(Unit, _target);
+			//GetClient().GameInstance.AimUnit(Unit, _target);
 		}
 	}
 }

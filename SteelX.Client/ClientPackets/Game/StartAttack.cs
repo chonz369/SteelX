@@ -30,7 +30,7 @@ namespace SteelX.Client.Packets.Game
 		public StartAttack(byte[] data, GameSession client) : base(data, client)
 		{
 			// Check practice mode
-			if (GetClient().GameInstance == null) return;
+			//if (GetClient().GameInstance == null) return;
 
 
 			TickUnit();
@@ -53,7 +53,7 @@ namespace SteelX.Client.Packets.Game
 		protected override void RunImpl()
 		{
 			// Check practice mode
-			if (GetClient().GameInstance == null) return;
+			/*if (GetClient().GameInstance == null) return;
 
 			
 			var weapon = Unit.GetWeaponByArm(_arm);
@@ -66,7 +66,13 @@ namespace SteelX.Client.Packets.Game
 			{
 				// For machine guns
 				weapon.IsAttacking = true;
-			}
+			}*/
+
+			//Sends a ping to server on ButtonDown
+			//If weapon is single fire, it fires a single shot
+			//if weapon is automatic fire, the trigger is held down
+			//if weapon is melee, the combo is continued, if done in succession
+			//Server should respond back to client repeating (broadcasting) command, to confirm recieved
 		}
 	}
 }

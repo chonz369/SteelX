@@ -28,7 +28,7 @@ namespace SteelX.Client.Packets.Inventory
 
 		protected override void RunImpl()
 		{
-			var client = GetClient();
+			/*var client = GetClient();
 
 			// Send their money
 			client.SendPacket(new SendMoney(client.User));
@@ -63,7 +63,7 @@ namespace SteelX.Client.Packets.Inventory
 			client.SendPacket(new SendOperatorList(client.User));
 			
 			// Send end packet
-			client.SendPacket(new SendInventoryEnd(client.User));
+			client.SendPacket(new SendInventoryEnd(client.User));*/
 		}
 	}
 }

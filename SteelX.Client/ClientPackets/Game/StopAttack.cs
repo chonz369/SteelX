@@ -36,9 +36,13 @@ namespace SteelX.Client.Packets.Game
 		protected override void RunImpl()
 		{
 			var weapon = Unit.GetWeaponByArm(_arm);
-			
+
 			// For machine guns
-			weapon.IsAttacking = false;
+			//weapon.IsAttacking = false;
+
+			//Sends a ping to server that client has released mouse/attack button
+			//Client should identify which buton was released (MouseUp/KeyboardUp)
+			//Server should respond back to client repeating (broadcasting) command, to confirm recieved
 		}
 	}
 }

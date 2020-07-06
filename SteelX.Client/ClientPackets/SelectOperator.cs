@@ -24,11 +24,11 @@ namespace SteelX.Client.Packets
 
 		public SelectOperator(byte[] data, GameSession client) : base(data, client)
 		{
-			Console.WriteLine("INT - {0}", GetInt()); // Unknown
+			//Console.WriteLine("INT - {0}", GetInt()); // Unknown
 
 			_operatorId = GetUInt();
 			
-			Console.WriteLine("OperatorId - {0}", _operatorId);
+			//Console.WriteLine("OperatorId - {0}", _operatorId);
 		}
 
 		/*public override string GetType()
@@ -38,10 +38,14 @@ namespace SteelX.Client.Packets
 
 		protected override void RunImpl()
 		{
+			//Sends a message to server with chosen operator 
+			//that the end user wants as their active pilot
+			//Server responds with approval or decline of request
+			//Server will change active pilot in database and player's config
 			//TODO: Actually select operator
 			var client = GetClient();
 			
-			client.SendPacket(new SelectOperatorInfo(_operatorId));
+			//client.SendPacket(new SelectOperatorInfo(_operatorId));
 		}
 	}
 }

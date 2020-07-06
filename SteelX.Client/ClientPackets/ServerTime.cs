@@ -33,9 +33,11 @@ namespace SteelX.Client.Packets
 
 		protected override void RunImpl()
 		{
+			//Make a request to server for server's current DateTime
+			//server responds back with DateTime as an int (similar to JS)
 			// Send the client their ping
 			var client = GetClient();
-			client.SendPacket(new ServerPackets.ServerTime(client, _clientTime));
+			//client.SendPacket(new ServerPackets.ServerTime(client, _clientTime));
 		}
 	}
 }

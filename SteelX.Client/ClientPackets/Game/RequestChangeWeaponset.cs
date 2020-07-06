@@ -32,7 +32,13 @@ namespace SteelX.Client.Packets.Game
 
         protected override void RunImpl()
         {
-            GetClient().GameInstance.SwitchWeapons(Unit, _desiredWeaponset);
+            //GetClient().GameInstance.SwitchWeapons(Unit, _desiredWeaponset);
+
+            //Client pings server stating weapons were switched
+            //Server sends an update to all clients with weapon update
+            //Each weapon cycle is one ping from client
+            //Since weapon selection are only between two options
+            //Invert a bool that represents 0/1 for player decision
         }
     }
 }

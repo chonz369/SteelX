@@ -10,7 +10,8 @@ using SteelX.Shared;
 namespace SteelX.Client.Packets.Room
 {
 	/// <summary>
-	/// Called when the user enters a room and wants a list of the current users
+	/// Called when the user enters a room.
+	/// Displays a list of the current users
 	/// </summary>
 	public class ListUser : ClientBasePacket
 	{
@@ -33,7 +34,7 @@ namespace SteelX.Client.Packets.Room
 
 		protected override void RunImpl()
 		{
-			var room = GetClient().GameInstance;
+			/*var room = GetClient().GameInstance;
 			//List<Player> users;
 			//RoomInfo room;
 			
@@ -87,7 +88,7 @@ namespace SteelX.Client.Packets.Room
 				
 				// Send unit info
 				GetClient().SendPacket(new UnitInfo(user, user.DefaultUnit));
-			}
+			}*/
 		}
 	}
 }

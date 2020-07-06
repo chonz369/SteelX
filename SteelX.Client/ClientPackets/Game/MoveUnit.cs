@@ -24,7 +24,7 @@ namespace SteelX.Client.Packets.Game
 
 		public MoveUnit(byte[] data, GameSession client) : base(data, client)
 		{
-			if (Unit.IgnorePackets > 0)
+			/*if (Unit.IgnorePackets > 0)
 			{
 				Unit.IgnorePackets--;
 				_shouldUpdate = false;
@@ -44,7 +44,7 @@ namespace SteelX.Client.Packets.Game
 			// Read the position information
 			GetUnitPositionAndAim();
 
-			_shouldUpdate = true;
+			_shouldUpdate = true;*/
 		}
 
 		/*public override string GetType()
@@ -54,8 +54,8 @@ namespace SteelX.Client.Packets.Game
 
 		protected override void RunImpl()
 		{
-			if (_shouldUpdate)
-				GetClient().GameInstance.UpdateUnitPosition(Unit);
+			//if (_shouldUpdate)
+			//	GetClient().GameInstance.UpdateUnitPosition(Unit);
 		}
 	}
 }

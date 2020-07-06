@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
+    <Compile Include="Application\Network\Packet.cs" />
     <Compile Include="Application\Network\BasePacket.cs" />
     <Compile Include="Application\Network\ClientBasePacket.cs" />
     <Compile Include="Application\Network\ServerBasePacket.cs" />
@@ -59,17 +60,16 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Game\GameInfo.cs" />
     <Compile Include="Game\Instance.cs" />
+    <Compile Include="Inventory\Base.cs" />
     <Compile Include="Mechanaught\Data\MechData.cs" />
     <Compile Include="Mechanaught\Parts\Base.cs" />
     <Compile Include="Mechanaught\Parts\Data\ArmData.cs" />
     <Compile Include="Mechanaught\Parts\Data\CoreData.cs" />
     <Compile Include="Mechanaught\Parts\Data\HeadData.cs" />
     <Compile Include="Mechanaught\Parts\Data\LegData.cs" />
-    <Compile Include="Mechanaught\Parts\Part.cs" />
     <Compile Include="NPC\ChannelPenalty.cs" />
     <Compile Include="NPC\GameMode.cs" />
     <Compile Include="NPC\NPCData.cs" />
-    <Compile Include="Player\Inventory.cs" />
     <Compile Include="Player\PilotWeaponFactory.cs" />
     <Compile Include="Player\PilotAbilityFactory.cs" />
     <Compile Include="SerializableClasses\SeriV2.cs" />

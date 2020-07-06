@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using SteelX.Shared;
+using SteelX.Shared.Packets;
 //using Data.Model;
 //using GameServer.ServerPackets;
 //using GameServer.ServerPackets.Bridge;
@@ -33,7 +34,7 @@ namespace SteelX.Client.Packets.Bridge
 		protected override void RunImpl()
 		{
 			// Determine the stat type based on the Id offset
-			var statType = (UserStats.StatType)(Id - 0x47);
+			/*var statType = (StatTypes)(Id - 0x47);
 			
 			// Lookup stats
 			var stats = GetClient().User.Stats.FirstOrDefault(s => s.Type == statType);
@@ -48,39 +49,35 @@ namespace SteelX.Client.Packets.Bridge
 
 			switch (statType)
 			{
-				case UserStats.StatType.Training:
+				case StatTypes.Training:
 					packet = new TrainingInfo(stats);
 					break;
-				
-				case UserStats.StatType.Survival:
+				case StatTypes.Survival:
 					packet = new SurvivalInfo(stats);
 					break;
-				
-				case UserStats.StatType.TeamSurvival:
+				case StatTypes.TeamSurvival:
 					packet = new TeamSurvivalInfo(stats);
 					break;
-				
-				case UserStats.StatType.TeamBattle:
+				case StatTypes.TeamBattle:
 					packet = new TeamBattleInfo(stats);
 					break;
-				
-				case UserStats.StatType.Ctf:
+				case StatTypes.Ctf:
 					packet = new CtfInfo(stats);
 					break;
-				
-				case UserStats.StatType.ClanBattle:
+				case StatTypes.ClanBattle:
 					packet = new ClanBattleInfo(stats);
 					break;
-				
-				case UserStats.StatType.DefensiveBattle:
+				case StatTypes.DefensiveBattle:
 					packet = new DefensiveBattleInfo(stats);
 					break;
-				
 				default:
 					return;
 			}
 			
-			GetClient().SendPacket(packet);
+			GetClient().SendPacket(packet);*/
+
+			//Sends a ping to server with type of stats
+			//server will respond with the player's progress for given stat
 		}
 	}
 }

@@ -21,10 +21,10 @@ namespace SteelX.Client.Packets
 
 		public UnknownPacket(byte[] data, GameSession client) : base(data, client)
 		{
-			Console.WriteLine("Packet size: {0}",Color.Coral, Size);
+			//Console.WriteLine("Packet size: {0}",Color.Coral, Size);
 			
-			Console.WriteLine("Packet raw: {0}", Color.Coral,
-				String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
+			//Console.WriteLine("Packet raw: {0}", Color.Coral,
+			//	String.Join(" - ", _raw.Select(b => b.ToString("X2")).ToArray()));
 		}
 
 		/*public override string GetType()

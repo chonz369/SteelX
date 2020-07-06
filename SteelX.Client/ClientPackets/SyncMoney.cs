@@ -3,6 +3,10 @@ using SteelX.Client.Packets.Inventory;
 
 namespace SteelX.Client.Packets
 {
+	/// <summary>
+	/// Called when the user needs to sync their money
+	/// </summary>
+	/// appears to only be used in the shop
 	public class SyncMoney : ClientBasePacket
 	{
 		public override Shared.PacketTypes PacketType
@@ -14,8 +18,6 @@ namespace SteelX.Client.Packets
 		}
 
 		/// <summary>
-		/// Called when the user needs to sync their money
-		/// appears to only be used in the shop
 		/// </summary>
 		/// <param name="data"></param>
 		/// <param name="client"></param>
@@ -30,8 +32,13 @@ namespace SteelX.Client.Packets
 
 		protected override void RunImpl()
 		{
-			var client = GetClient();
-			client.SendPacket(new SendMoneySynced(client.User));
+			//Sends a request to server to refresh/update the credits end user has
+			//Server responds back with int value of credits and premium currency
+			//Update enduser with information in heads-up display
+			//Data is read-only and cannot be manipulated (immutable)
+			//Validation checks are done on server, not client
+			//var client = GetClient();
+			//client.SendPacket(new SendMoneySynced(client.User));
 		}
 	}
 }

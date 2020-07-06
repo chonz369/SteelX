@@ -4,19 +4,21 @@ using SteelX.Shared;
 
 namespace SteelX.Client.Packets
 {
+	/// <summary>
+	/// Called when the client needs to download shop data
+	/// </summary>
+	/// Totally unknown
 	public class RequestGoodsData : ClientBasePacket
 	{
 		public override Shared.PacketTypes PacketType
 		{
 			get
 			{
-				return Shared.PacketTypes.REQ_GOODS_DATA;
+				return Shared.PacketTypes.REQ_SHOP_DATA;
 			}
 		}
 
 		/// <summary>
-		/// Called when the client needs to download shop data
-		/// Totally unknown
 		/// </summary>
 		/// <param name="data"></param>
 		/// <param name="client"></param>
@@ -34,7 +36,12 @@ namespace SteelX.Client.Packets
 			//TODO: This should run in another thread?
 			var client = GetClient();
 			
-			client.SendPacket(new SendGoodsDataStart());
+			//Sends a request to server saying client is accessing shop
+			//Server will respond with all shop items to display
+			//Shop data is unlikely to change mid gameplay
+			//so data stream can be cached if accessed once already
+			//every user sees the same items, and every user gets the same price
+			/*client.SendPacket(new SendGoodsDataStart());
 			
 			client.SendPacket(new SendGoodsData(ShopDataReader.Set));
 			
@@ -49,7 +56,7 @@ namespace SteelX.Client.Packets
 			client.SendPacket(new SendGoodsData(ShopDataReader.Code));
 			client.SendPacket(new SendGoodsData(ShopDataReader.Etc));
 			
-			client.SendPacket(new SendGoodsDataEnd());
+			client.SendPacket(new SendGoodsDataEnd());*/
 		}
 	}
 }

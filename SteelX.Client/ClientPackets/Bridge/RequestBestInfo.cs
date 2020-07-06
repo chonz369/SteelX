@@ -28,11 +28,14 @@ namespace SteelX.Client.Packets.Bridge
 		protected override void RunImpl()
 		{
 			// Send various stats
-			// TODO: Figure out which of these is which and how data is mapped
+			//TODO: Figure out which of these is which and how data is mapped
 
-			var client = GetClient();
+			/*var client = GetClient();
 			
-			client.SendPacket(new BestInfo(GetClient().User));
+			client.SendPacket(new BestInfo(GetClient().User)); */
+
+			//Sends a ping to server with type of stats
+			//server will respond with the player's progress for given stat
 		}
 	}
 }
