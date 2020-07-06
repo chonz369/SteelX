@@ -1,6 +1,6 @@
 ﻿namespace SteelX.Shared
 {
-	public struct ArmData
+	public struct ArmData : IPartData
 	{
 		#region Variables
 		/// <summary>

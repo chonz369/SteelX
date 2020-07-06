@@ -1,11 +1,11 @@
 ﻿namespace SteelX.Shared
 {
-	public struct LegData
+	public struct LegData : IPartData
 	{
 		#region Variables
 		public Parts Part { get; set; }
 		public int Id { get; private set; }
-		public int NPCPart { get; private set; }
+		public bool NPCPart { get; private set; }
 		public string Model { get; private set; }
 		public string Name { get; private set; }
 		public int Weight { get; private set; }

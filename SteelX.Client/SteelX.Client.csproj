@@ -39,6 +39,74 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientPackets\Bridge\RequestAvatarInfo.cs" />
+    <Compile Include="ClientPackets\Bridge\RequestBestInfo.cs" />
+    <Compile Include="ClientPackets\Bridge\RequestStatsInfo.cs" />
+    <Compile Include="ClientPackets\ClientBasePacket.cs" />
+    <Compile Include="ClientPackets\ConnectClient.cs" />
+    <Compile Include="ClientPackets\ConnectSwitch.cs" />
+    <Compile Include="ClientPackets\Game\AimUnit.cs" />
+    <Compile Include="ClientPackets\Game\ClientGameBasePacket.cs" />
+    <Compile Include="ClientPackets\Game\ModeSniper.cs" />
+    <Compile Include="ClientPackets\Game\MoveUnit.cs" />
+    <Compile Include="ClientPackets\Game\ReadyGame.cs" />
+    <Compile Include="ClientPackets\Game\RequestChangeWeaponset.cs" />
+    <Compile Include="ClientPackets\Game\RequestPalette.cs" />
+    <Compile Include="ClientPackets\Game\RequestRegain.cs" />
+    <Compile Include="ClientPackets\Game\SelectBase.cs" />
+    <Compile Include="ClientPackets\Game\StartAttack.cs" />
+    <Compile Include="ClientPackets\Game\StopAttack.cs" />
+    <Compile Include="ClientPackets\Game\UnAimUnit.cs" />
+    <Compile Include="ClientPackets\Inventory\RequestInventory.cs" />
+    <Compile Include="ClientPackets\Inventory\RequestOperator.cs" />
+    <Compile Include="ClientPackets\Lobby\EnterGame.cs" />
+    <Compile Include="ClientPackets\Lobby\RequestSearchGame.cs" />
+    <Compile Include="ClientPackets\Log.cs" />
+    <Compile Include="ClientPackets\ProtocolVersion.cs" />
+    <Compile Include="ClientPackets\RequestGoodsData.cs" />
+    <Compile Include="ClientPackets\Room\ListUser.cs" />
+    <Compile Include="ClientPackets\Room\Ready.cs" />
+    <Compile Include="ClientPackets\Room\StartGame.cs" />
+    <Compile Include="ClientPackets\SelectOperator.cs" />
+    <Compile Include="ClientPackets\ServerTime.cs" />
+    <Compile Include="ClientPackets\SwitchServer.cs" />
+    <Compile Include="ClientPackets\SyncMoney.cs" />
+    <Compile Include="ClientPackets\UnknownPacket.cs" />
+    <Compile Include="ClientPackets\ValidateClient.cs" />
+    <Compile Include="DataTypeObjects\Bridge\AvatarInfoDto.cs" />
+    <Compile Include="DataTypeObjects\Bridge\BestInfoDto.cs" />
+    <Compile Include="DataTypeObjects\Bridge\StatsInfoDto.cs" />
+    <Compile Include="DataTypeObjects\ConnectClientDto.cs" />
+    <Compile Include="DataTypeObjects\ConnectSwitchDto.cs" />
+    <Compile Include="DataTypeObjects\Game\AimUnitDto.cs" />
+    <Compile Include="DataTypeObjects\Game\UnitPositionAndAimDto.cs" />
+    <Compile Include="DataTypeObjects\Game\ModeSniperDto.cs" />
+    <Compile Include="DataTypeObjects\Game\MoveUnitDto.cs" />
+    <Compile Include="DataTypeObjects\Game\ReadyGameDto.cs" />
+    <Compile Include="DataTypeObjects\Game\ChangeWeaponsetDto.cs" />
+    <Compile Include="DataTypeObjects\Game\PaletteDto.cs" />
+    <Compile Include="DataTypeObjects\Game\RespawnDto.cs" />
+    <Compile Include="DataTypeObjects\Game\SelectBaseDto.cs" />
+    <Compile Include="DataTypeObjects\Game\StartAttackDto.cs" />
+    <Compile Include="DataTypeObjects\Game\StopAttackDto.cs" />
+    <Compile Include="DataTypeObjects\Game\UnAimUnitDto.cs" />
+    <Compile Include="DataTypeObjects\Inventory\InventoryDto.cs" />
+    <Compile Include="DataTypeObjects\Inventory\OperatorDto.cs" />
+    <Compile Include="DataTypeObjects\Lobby\EnterGameDto.cs" />
+    <Compile Include="DataTypeObjects\Lobby\SearchGameDto.cs" />
+    <Compile Include="DataTypeObjects\LogDto.cs" />
+    <Compile Include="DataTypeObjects\ProtocolVersionDto.cs" />
+    <Compile Include="DataTypeObjects\ShopDataDto.cs" />
+    <Compile Include="DataTypeObjects\Room\ListUserDto.cs" />
+    <Compile Include="DataTypeObjects\Room\ReadyDto.cs" />
+    <Compile Include="DataTypeObjects\Room\StartGameDto.cs" />
+    <Compile Include="DataTypeObjects\SelectOperatorDto.cs" />
+    <Compile Include="DataTypeObjects\ServerTimeDto.cs" />
+    <Compile Include="DataTypeObjects\SwitchServerDto.cs" />
+    <Compile Include="DataTypeObjects\SyncMoneyDto.cs" />
+    <Compile Include="DataTypeObjects\UnknownPacketDto.cs" />
+    <Compile Include="DataTypeObjects\ValidateClientDto.cs" />
+    <Compile Include="PacketHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,5 +119,6 @@
       <Name>SteelX.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

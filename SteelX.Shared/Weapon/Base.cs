@@ -1,15 +1,14 @@
 ﻿namespace SteelX.Shared
 {
 	/// <summary>
+	/// Represents a single weapon in the game
 	/// </summary>
-	//ToDo: In-Game weapons should use [2][2] (to track ammo, and other misc data)
-	//Use bool to check for Weapon[n][IsEquipped && IsTwoHanded]
-	public class Weapon
+	/// Mostly used in runtime
+	public class Weapon : Part
 	{
 		#region Variables
 		public Weaponz WeaponId { get; private set; }
 		public WeaponTypes Class { get { return GetWeapType(WeaponId); } }
-
 
 		/// <summary>
 		/// Name of the set, this part belongs to
@@ -38,7 +37,7 @@
 		public float Accuracy	{ get; private set; }
 		public float Reload		{ get; private set; }
 		public float Overheat	{ get; private set; }
-		public int BuyPrice		{ get; private set; }
+		//public int BuyPrice		{ get; private set; }
 		/// <summary>
 		/// </summary>
 		/// ToDo: When in hands of player, price is buy multiplied by (durability divided by max durability)
@@ -46,15 +45,47 @@
 		/// If value is null, then option does not exist
 		/// Index[1] : Credits
 		/// Index[2] : Coins
-		public virtual int SellPrice	{ get { return 0; } } //abstract
+		//public virtual int SellPrice	{ get { return 0; } } //abstract
 		/// <summary>
 		/// Rank required to purchase or equip part
 		/// </summary>
-		public byte RankRequired { get; set; }
+		public byte RankRequired		{ get; set; }
 		/// <summary>
-		/// 
 		/// </summary>
-		public int Description { get; set; }
+		public int Description			{ get; set; }
+
+		/// <summary>
+		/// The target of this weapon
+		/// </summary>
+		public uint? TargetId				{ get; set; }
+		public Mechanaught Target			{ get; set; }
+
+		/// <summary>
+		/// The current level of overheat this weapon has
+		/// </summary>
+		public float CurrentOverheat	{ get; private set; }
+
+		// From weapon
+		public float OverheatPerShot	{ get; private set; }
+		// From weapon
+		public float NormalRecovery		{ get; private set; }
+		// From arms of unit
+		public float OverheatRecovery	{ get; private set; } 
+		// From arms of unit
+		public float MaxOverheat		{ get; private set; }
+
+		// Automatic weapons
+		public bool IsAutomatic			{ get { return Class == WeaponTypes.SMGs; } }
+		// Used for automatic weapons
+		public float ReloadTime			{ get; private set; }
+		public bool IsAttacking			{ get; protected set; }
+		public float CurrentReloadTime	{ get; private set; }
+		public int NumberOfShots		{ get; private set; }
+
+		/// <summary>
+		/// Is this weapon overheated?
+		/// </summary>
+		public bool IsOverheated		{ get; private set; }
 		#endregion
 
 		#region Constructor
@@ -90,14 +121,6 @@
 		#endregion
 
 		#region Methods
-		internal Weapon GetWeapon(Weaponz ID)
-		{
-			foreach (Weapon weap in Database)
-			{
-				if (weap.WeaponId == ID) return weap;
-			}
-			throw new System.Exception("Part ID doesnt exist in the database. Please check Arms constructor.");
-		}
 		public static WeaponTypes GetWeapType(Weaponz weap)
 		{
 			//if (WeaponId == Weapon.NONE)
@@ -110,14 +133,86 @@
 					return WeaponTypes.NONE;
 			}
 		}
-		#endregion
 
-		#region Database
-		private static readonly Weapon[] Database;
-		static Weapon()
+		/// <summary>
+		/// Called when the weapon is fired to increase its reload timer
+		/// </summary>
+		public void AddReloadTime()
 		{
-			Database = new Weapon[] {
-			};
+			//Console.WriteLine("Added {0} reload time", ReloadTime);
+			CurrentReloadTime = ReloadTime;
+		}
+
+		/// <summary>
+		/// Checks if the weapon is ready to fire again
+		/// </summary>
+		/// <param name="delta"></param>
+		/// <returns></returns>
+		public bool ShouldAttack(float delta)
+		{
+			if (IsAttacking)
+			{
+				if (CurrentReloadTime <= 0)
+				{
+					// Yes, attack
+					return true;
+				}
+				else
+				{
+					CurrentReloadTime = CurrentReloadTime - ReloadTime * delta / 1000;
+				}
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Adds overheat to the weapon
+		/// </summary>
+		//TODO: Calculate this
+		public bool AddOverheat()
+		{
+			CurrentOverheat += OverheatPerShot;
+
+			//TODO: From unit config?
+			if (CurrentOverheat >= MaxOverheat)
+			{
+				IsOverheated = true;
+				IsAttacking = false;
+				CurrentOverheat = MaxOverheat;
+
+				return true;
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Tick overheat and see if we need to update the client
+		/// </summary>
+		/// <param name="delta">Time in MS since last tick</param>
+		public bool ShouldUpdateOverheat(float delta)
+		{
+			if (CurrentOverheat > 0)
+			{
+				CurrentOverheat -= (IsOverheated ? OverheatRecovery : NormalRecovery) * delta / 1000;
+
+				if (CurrentOverheat <= 0)
+				{
+					CurrentOverheat = 0;
+
+					if (IsOverheated)
+					{
+						IsOverheated = false;
+
+						// Do update
+						return true;
+					}
+				}
+			}
+
+			// Do not update
+			return false;
 		}
 		#endregion
 	}

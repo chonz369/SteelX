@@ -1,6 +1,6 @@
 ﻿namespace SteelX.Shared
 {
-	public struct ShopEntry
+	public struct ShopEntity
 	{
 		public int Id						{ get; private set; }
 		public int CreditPrice 				{ get; private set; }
