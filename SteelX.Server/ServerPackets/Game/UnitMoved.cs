@@ -47,7 +47,7 @@ namespace SteelX.Server.Packets.Game
 			
 			WriteByte(_unit.Movement);
 			WriteByte(_unit.UnknownMovementFlag);
-			WriteByte(_unit.Boosting);
+			WriteByte(_unit.Boosting? (byte)1 : (byte)0);
 			
 			WriteFloat(_unit.WorldPosition.X);
 			WriteFloat(_unit.WorldPosition.Y);

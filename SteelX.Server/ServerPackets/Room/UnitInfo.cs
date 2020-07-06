@@ -50,7 +50,7 @@ namespace SteelX.Server.Packets.Room
 			
 			WriteString(_unit.Name);
 			
-			this.WritePartInfo(_unit.Head);
+			/*this.WritePartInfo(_unit.Head);
 			this.WritePartInfo(_unit.Chest);
 			this.WritePartInfo(_unit.Arms);
 			this.WritePartInfo(_unit.Legs);
@@ -60,7 +60,7 @@ namespace SteelX.Server.Packets.Room
 			this.WritePartInfo(_unit.WeaponSet1Right);
 			
 			this.WritePartInfo(_unit.WeaponSet2Left);
-			this.WritePartInfo(_unit.WeaponSet2Right);
+			this.WritePartInfo(_unit.WeaponSet2Right);*/
 			
 			WriteInt(0); // Unknown - skills count?
 		}

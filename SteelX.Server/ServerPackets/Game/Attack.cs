@@ -52,7 +52,7 @@ namespace SteelX.Server.Packets.Game
 			WriteUInt(_unit.Id); // Attacker Id - maybe passed as an index?
 			WriteInt(_arm); // Arm?
 			WriteUInt(targetId); // Victim id?
-			WriteInt(_weapon.Damage * _weapon.NumberOfShots); // Damage
+			WriteInt((int)_weapon.Damage * _weapon.NumberOfShots); // Damage
 			
 			// If packet type of 0x62 -
 			WriteUInt(0); // Unknown
@@ -71,13 +71,14 @@ namespace SteelX.Server.Packets.Game
 			//WriteUInt(_unit.Id); // Unknown
 			//WriteInt(10); // Unknown
 
-			if (_weapon.RecoilDistance > 0)
+			//ToDo: Redo Float to Vector Math
+			/*if (_weapon.RecoilDistance > 0)
 			{
-				var direction = new Vector((float)Math.Cos(_unit.AimX), (float)Math.Sin(_unit.AimX), 0);
+				Vector direction = new Vector((float)Math.Cos(_unit.AimX), (float)Math.Sin(_unit.AimX), 0);
 				direction *= _weapon.RecoilDistance;
 
 				_unit.WorldPosition += direction;
-			}
+			}*/
 			
 			WriteShort(_unit.AimY); // Attacker - AimX
 			WriteShort(_unit.AimX); // Attacker - AimY

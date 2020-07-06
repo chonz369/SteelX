@@ -68,7 +68,8 @@ namespace SteelX.Shared.Packets
 		/// Sends a response to this packet
 		/// </summary>
 		/// <param name="msg"></param>
-		protected void SendPacket(ServerBasePacket msg)
+		//protected void SendPacket(ServerBasePacket msg)
+		protected void SendPacket(byte[] msg)
 		{
 			GetClient().SendPacket(msg);
 		}

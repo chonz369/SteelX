@@ -52,7 +52,7 @@ namespace SteelX.Server.Packets.Inventory
 			WriteInt(0); // Slot position (1st, 2nd, etc)
 			WriteInt(2000); // Unknown - Unit HP?
 			
-			this.WritePartInfo(_unit.Head);
+			/*this.WritePartInfo(_unit.Head);
 			this.WritePartInfo(_unit.Chest);
 			this.WritePartInfo(_unit.Arms);
 			this.WritePartInfo(_unit.Legs);
@@ -62,7 +62,7 @@ namespace SteelX.Server.Packets.Inventory
 			this.WritePartInfo(_unit.WeaponSet1Right);
 			
 			this.WritePartInfo(_unit.WeaponSet2Left);
-			this.WritePartInfo(_unit.WeaponSet2Right);
+			this.WritePartInfo(_unit.WeaponSet2Right);*/
 		}
 	}
 }

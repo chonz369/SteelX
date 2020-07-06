@@ -11,7 +11,8 @@ namespace SteelX.Server.Managers
 	/// This class handles rooms, user switches, etc
 	/// </summary>
 	//TODO: See what needs to go into database and what can stay in memory
-	public static class RoomManager
+	//ToDo: Rename to RoomCollection, since it functions closer to that than a manager
+	public static class RoomManager //: ICollection
 	{
 		/// <summary>
 		/// All current rooms
@@ -24,9 +25,9 @@ namespace SteelX.Server.Managers
 		/// <returns></returns>
 		public static int CreateRoom(GameInstance room)
 		{
-			var id = Rooms.AddNext(room);
+			int id = Rooms.AddNext(room);
 
-			room.Id = id;
+			//room.Id = id;
 
 			return id;
 		}

@@ -48,7 +48,7 @@ namespace SteelX.Server.Packets.Game
 
 		protected override void WriteImpl()
 		{
-			var targetId = _weapon.Target?.Id ?? 0xFFFFFFFF;
+			uint targetId = _weapon.Target?.Id ?? 0xFFFFFFFF;
 			
 			WriteInt(_serverTime); // Unknown
 			WriteInt(targetId == -1 ? 2 : 1); // Result code
@@ -57,7 +57,7 @@ namespace SteelX.Server.Packets.Game
 			
 			// Maybe grouped?
 			WriteUInt(targetId); // Victim id?
-			WriteInt(_weapon.Damage); // Damage
+			WriteInt((int)_weapon.Damage); // Damage
 			
 			// All ye who enter here beware - no mans land!
 			WriteByte((byte)PUSH); // Should push back?
@@ -100,7 +100,8 @@ namespace SteelX.Server.Packets.Game
 			WriteFloat(0); // Unknown
 			WriteFloat(0); // Unknown
 			
-			WriteInt(_weapon.ComboStep); // COMBO STEP
+			//WriteInt(_weapon.WeaponId == Weaponz.NONE? 0 : _weapon.ComboStep); // COMBO STEP
+			WriteInt(0); // COMBO STEP
 			
 			// Standard
 			// Test
@@ -116,13 +117,13 @@ namespace SteelX.Server.Packets.Game
 			
 			WriteShort(_unit.AimX); // Attacker - AimY
 
-			if (RESULT == 1)
+			/*if (RESULT == 1)
 			{
 				_unit.WorldPosition.X += 115.9111f;
 				_unit.WorldPosition.Z -= 31.05829f;
 			}
 			else
-				_unit.WorldPosition.X += 120.0f;
+				_unit.WorldPosition.X += 120.0f;*/
 			//_unit.WorldPosition.Y += 100.0f;
 			//_unit.WorldPosition.Z += (AIR == 1 ? -50.0f : 0.0f);
 			

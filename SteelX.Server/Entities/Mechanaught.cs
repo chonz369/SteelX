@@ -1,4 +1,5 @@
 ﻿using SteelX.Shared;
+using SteelX.Shared.Utility;
 
 namespace SteelX.Server
 {
@@ -13,7 +14,7 @@ namespace SteelX.Server
 		/// <summary>
 		/// The inventory this unit is part of
 		/// </summary>
-		public uint UserInventoryId { get; set; }
+		/*public uint UserInventoryId { get; set; }
 
 		/// <summary>
 		/// The team this unit is on
@@ -87,7 +88,7 @@ namespace SteelX.Server
 		/// <summary>
 		/// The position of this unit in the world
 		/// </summary>
-		public Vector3 WorldPosition;
+		public Vector WorldPosition;
 
 		//TODO: Possibly replace X and Y with some sort of vector?
 
@@ -99,21 +100,26 @@ namespace SteelX.Server
 		/// <summary>
 		/// The y aim of this unit
 		/// </summary>
-		public short AimY { get; set; }
+		public short AimY { get; set; }*/
+
+		/// <summary>
+		/// The `x,y` aim of this unit
+		/// </summary>
+		public Point Aim { get; set; }
 		#endregion
 
 		#region Constructor
-		public Mechanaught() 
+		public Mechanaught()  : base()
 		{
-			Arm		= Parts.AGM001; //new Arms(Parts.AGM001);
-			Leg		= Parts.LGM001; //new Legs(Parts.LGM001);
-			Core	= Parts.CGM001; //new Cores(Parts.CGM001);
-			Head	= Parts.HGM001; //new Heads(Parts.HGM001);
-			Booster	= Parts.PGM001; //new Boosters(Parts.PGM001);
+			//Arm		= Parts.AGM001; //new Arms(Parts.AGM001);
+			//Leg		= Parts.LGM001; //new Legs(Parts.LGM001);
+			//Core		= Parts.CGM001; //new Cores(Parts.CGM001);
+			//Head		= Parts.HGM001; //new Heads(Parts.HGM001);
+			//Booster	= Parts.PGM001; //new Boosters(Parts.PGM001);
 		}
-		public Mechanaught(MechData mech) : this()
+		public Mechanaught(MechData mech) //: base(mech)
 		{
-			Mech = mech;
+			//Mech = mech;
 		}
 		//public Mechanaught(Mech mech) : this()
 		//{
@@ -123,7 +129,10 @@ namespace SteelX.Server
 		//	Head = new Heads(mech.Head);
 		//	Booster = new Boosters(mech.Booster);
 		//}
-		public Mechanaught LoadOut(MechWeapon weap, byte set = 1)
+		#endregion
+
+		#region Methods
+		/*public Mechanaught LoadOut(MechWeapon weap, byte set = 1)
 		{
 			SetWeapons(weap, set);
 			return this;
@@ -132,7 +141,7 @@ namespace SteelX.Server
 		{
 			Weapons[loadout, 1] = new Weapon(weap.LH);
 			Weapons[loadout, 2] = new Weapon(weap.RH);
-		}
+		}*/
 		#endregion
 	}
 }

@@ -32,8 +32,8 @@ namespace SteelX.Server.Packets.Inventory
 
 		protected override void WriteImpl()
 		{
-			WriteUInt(Inventory.User.Coins);
-			WriteUInt(Inventory.User.Credits);
+			//WriteUInt(Inventory.User.Coins);
+			//WriteUInt(Inventory.User.Credits);
 		}
 	}
 }

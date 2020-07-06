@@ -18,17 +18,17 @@ namespace SteelX.Server
 		/// <summary>
 		/// Pilot info for each user (weapon and ability progression)
 		/// </summary>
-		//public DbSet<PilotInfo> PilotInfos { get; set; }
+		//public ICollection<PilotInfo> PilotInfos { get; set; }
 
 		/// <summary>
 		/// Stats for all users
 		/// </summary>
-		public DbSet<UserStats> UserStats { get; set; }
+		public ICollection<UserStats> UserStats { get; set; }
 
 		/// <summary>
 		/// All user inventories (items)
 		/// </summary>
-		public DbSet<UserInventory> Inventories { get; set; }
+		public ICollection<UserInventory> Inventories { get; set; }
 
 		/// <summary>
 		/// All parts in the system
@@ -48,7 +48,7 @@ namespace SteelX.Server
 		/// <summary>
 		/// The currently active rooms on the system
 		/// </summary>
-		//public DbSet<RoomInfo> Rooms { get; set; }
+		//public ICollection<RoomInfo> Rooms { get; set; }
 		#endregion
 
 		#region Constructor

@@ -57,7 +57,8 @@
 		/// <summary>
 		/// The target of this weapon
 		/// </summary>
-		public uint? Target				{ get; set; }
+		public uint? TargetId				{ get; set; }
+		public Mechanaught Target			{ get; set; }
 
 		/// <summary>
 		/// The current level of overheat this weapon has

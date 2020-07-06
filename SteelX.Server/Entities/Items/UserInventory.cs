@@ -1,3 +1,4 @@
+using SteelX.Shared;
 using System.Collections.Generic;
 
 namespace SteelX.Server
@@ -27,12 +28,12 @@ namespace SteelX.Server
 		/// <summary>
 		/// This user's units
 		/// </summary>
-		public List<Unit> Units { get; private set; }
+		public ICollection<Mechanaught> Units { get; private set; }
 
 		/// <summary>
 		/// This users parts
 		/// </summary>
-		public List<Part> Parts { get; private set; }
+		public ICollection<Part> Parts { get; private set; }
 
 		/// <summary>
 		/// Number of unit slots this user has
@@ -81,12 +82,12 @@ namespace SteelX.Server
 		/// <summary>
 		/// This user's units
 		/// </summary>
-		public List<Unit> Units { get; private set; }
+		public ICollection<Mechanaught> Units { get; private set; }
 
 		/// <summary>
 		/// This users parts
 		/// </summary>
-		public List<Part> Parts { get; private set; }
+		public ICollection<Part> Parts { get; private set; }
 
 		/// <summary>
 		/// Number of unit slots this user has
@@ -130,13 +131,13 @@ namespace SteelX.Server
 		/// <summary>
 		/// This user's units
 		/// </summary>
-		public List<Unit> Units { get; private set; }
+		public ICollection<Mechanaught> Units { get; private set; }
 
 		/// <summary>
 		/// This users parts
 		/// </summary>
 		/// using array of item ids from inventory
 		//public uint[] ItemId { get; private set; }
-		public List<Part> Parts { get; private set; }
+		public ICollection<Part> Parts { get; private set; }
 	}
 }

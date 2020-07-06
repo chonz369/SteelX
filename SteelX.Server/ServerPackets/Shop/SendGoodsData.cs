@@ -47,7 +47,7 @@ namespace SteelX.Server.Packets.Shop
 				WriteUInt(good.CoinPrice);
 				WriteUInt(0); // Unknown
 				
-				WriteString(good.ItemNameCode);
+				/*WriteString(good.ItemNameCode);
 				WriteString(good.ItemDescCode);
 				
 				WriteInt(good.Templates.Length);
@@ -60,7 +60,7 @@ namespace SteelX.Server.Packets.Shop
 					WriteInt((int)good.ContractType);
 					WriteUInt(good.ContractValue);
 					WriteInt(0); // Unknown
-				}
+				}*/
 			}
 		}
 	}

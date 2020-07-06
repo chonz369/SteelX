@@ -74,7 +74,7 @@ namespace SteelX.Shared.Game
 		/// <summary>
 		/// The users in this room
 		/// </summary>
-		public List<Player> Users { get { return _sessions.Values.Select(s => s.User).ToList(); } }
+		public virtual List<Player> Users { get { return _sessions.Values.Select(s => s.User).ToList(); } }
 		#endregion
 		
 		/*#region MESSAGING		

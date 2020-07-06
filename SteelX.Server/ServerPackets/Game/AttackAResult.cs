@@ -61,7 +61,7 @@ namespace SteelX.Server.Packets.Game
 				WriteUInt(0x04000000); // Result
 			
 			WriteUInt(targetId); // Target id
-			WriteInt(_weapon.Damage); // Damage
+			WriteInt((int)_weapon.Damage); // Damage
 			
 			// Results look to be:
 			// 0x01000000 - Hit

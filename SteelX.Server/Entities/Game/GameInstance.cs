@@ -19,49 +19,19 @@ namespace SteelX.Server.Game
 	/// A single game instance
 	/// Handles all data for scoring, user updates, game events, etc
 	/// </summary>
-	public class GameInstance
+	public class GameInstance : Shared.Game.GameInstance
 	{
-		#region GAME PROPERTIES
-		/// <summary>
-		/// The unique Id of this room/game
-		/// </summary>
-		public int Id { get; set; }
-		
-		/// <summary>
-		/// Type of game this room is
-		/// </summary>
-		public GameTypes GameType { get; set; }
-
-		/// <summary>
-		/// Create a name for the room, or match, you are setting up.
-		/// </summary>
-		public string RoomName { get; set; }
-		
+		#region Variables
 		/// <summary>
 		/// The master of this room
 		/// </summary>
-		public Player Master { get { return Users.FirstOrDefault(u => u.Id == MasterId); } }
-		
-		/// <summary>
-		/// The Id of the master of this room
-		/// </summary>
-		public uint MasterId { get; set; }
-		
-		/// <summary>
-		/// The game template id for this game
-		/// </summary>
-		public uint GameTemplate { get; set; }
-	   
-		/// <summary>
-		/// The max number of users who can be in this room
-		/// </summary>
-		public int Capacity { get; set; }
+		public Player Master { get { return (Server.Player)Users.FirstOrDefault(u => ((Server.Player)u).Id == MasterId); } }
 
 		/// <summary>
 		/// Dictionary of all sessions in this room
 		/// </summary>
 		//private readonly ConcurrentDictionary<Guid, GameSession> _sessions = new ConcurrentDictionary<Guid, GameSession>();
-		private readonly Dictionary<Guid, GameSession> _sessions = new Dictionary<Guid, GameSession>();
+		private readonly Dictionary<string, GameSession> _sessions = new Dictionary<string, GameSession>();
 		
 		/// <summary>
 		/// Dictionary of all units in this room
@@ -72,7 +42,7 @@ namespace SteelX.Server.Game
 		/// <summary>
 		/// The users in this room
 		/// </summary>
-		public List<Server.Player> Users { get { return _sessions.Values.Select(s => (Server.Player)s.User).ToList(); } }
+		//public override List<Server.Player> Users { get { return _sessions.Values.Select(s => (Server.Player)s.User).ToList(); } }
 		#endregion
 		
 		#region MESSAGING		
@@ -80,7 +50,7 @@ namespace SteelX.Server.Game
 		/// Multicasts a packet to all users in this room
 		/// </summary>
 		/// <param name="packet"></param>
-		public void MulticastPacket(ServerBasePacket packet, int count = 1)
+		public void MulticastPacket(Server.Packets.ServerBasePacket packet, int count = 1)
 		{
 			byte[] data;
 			if (count == 1)
@@ -99,10 +69,11 @@ namespace SteelX.Server.Game
 			
 			// Multicast data to all sessions
 			foreach (var session in _sessions.Values)
-				session.SendAsync(data);
+				//session.SendAsync(data);
+				session.SendPacket(data);
 			
 			//TODO: Add config here - if debug
-			Console.WriteLine("[S] 0x{0:x2} {1} >>> room: {2}", Color.Green, packet.GetId(), packet.GetType(), Id);
+			//Console.WriteLine("[S] 0x{0:x2} {1} >>> room: {2}", Colors.Green, packet.GetId(), packet.GetType(), Id);
 		}		
 		#endregion
 		
@@ -122,14 +93,15 @@ namespace SteelX.Server.Game
 		#region JOINING / LEAVING
 		/// <summary>
 		/// Gets the team for a new user
+		/// </summary>
+		/// <returns>
 		/// If survival (deathmatch) each user is on their own team
 		/// If coop, users all on team 0
 		/// Otherwise, users are on either team 0 or team 1
-		/// </summary>
-		/// <returns></returns>
+		/// </returns>
 		private uint GetTeamForNewUser()
 		{
-			if (GameType == GameTypes.Survival)
+			if (GameType == GameTypes.Deathmatch)//Survival
 			{
 				int numSessions = _sessions.Count;
 
@@ -142,8 +114,8 @@ namespace SteelX.Server.Game
 			else
 			{
 				// Figure out which team has more users and add them to the other team
-				int numUsersTeamZero = _sessions.Values.Select(s => s.User.Team).Count(t => t == 0);
-				int numUsersTeamOne = _sessions.Values.Select(s => s.User.Team).Count(t => t == 1);
+				int numUsersTeamZero = _sessions.Values.Select(s => ((Server.Player)s.User).Team).Count(t => t == 0);
+				int numUsersTeamOne = _sessions.Values.Select(s => ((Server.Player)s.User).Team).Count(t => t == 1);
 
 				// If more users on team zero, they go to team one
 				// Otherwise, team zero
@@ -171,21 +143,22 @@ namespace SteelX.Server.Game
 			// Success
 			
 			// Setup team
-			session.User.Team = GetTeamForNewUser();
+			//session.User.Team = GetTeamForNewUser();
 			
 			// Reset ready flag
-			session.User.IsReady = false;
+			//session.User.IsReady = false;
 			session.IsGameReady = false;
 			
 			// Announce user to room
 			MulticastPacket(new UserEnter(this, (Server.Player)session.User));
-			MulticastPacket(new Server.Packets.Room.UnitInfo((Server.Player)session.User, session.User.DefaultUnit));
+			MulticastPacket(new Server.Packets.Room.UnitInfo((Server.Player)session.User, ((Server.Player)session.User).DefaultUnit));
 			
 			// Add to session list
-			_sessions.TryAdd(session.Id, session);
+			//_sessions.TryAdd(session.Id, session);
+			_sessions.Add(session.Id.ToString(), session);
 			
 			// Assign to the client
-			session.GameInstance = this;
+			//session.GameInstance = this;
 			
 			return new GameEntered(GameEnteredResult.Success, this);
 		}
@@ -194,10 +167,11 @@ namespace SteelX.Server.Game
 		/// Removes a session from this room
 		/// </summary>
 		/// <param name="id"></param>
-		public void RemoveSession(Guid id)
+		public void RemoveSession(string id)
 		{
 			// Unregister session by Id
-			_sessions.TryRemove(id, out GameSession temp);
+			//_sessions.TryRemove(id, out GameSession temp);
+			_sessions.Remove(id);
 		}
 
 		/// <summary>
@@ -211,12 +185,12 @@ namespace SteelX.Server.Game
 			
 			// Send user info
 			MulticastPacket(new Server.Packets.Game.UserInfo(this, (Server.Player)session.User));
-			
+
 			// Load user stats here, so they are not loaded during gameplay
-			session.User.DefaultUnit.CalculateStats();
+			//((Server.Player)session.User).DefaultUnit.CalculateStats();
 			
 			// Spawn user default unit
-			SpawnUnit(session.User.DefaultUnit, session.User);
+			SpawnUnit(((Server.Player)session.User).DefaultUnit, (Server.Player)session.User);
 			
 			// Check if everyone is ready, if so, start
 			CheckAllUsersReady();
@@ -257,10 +231,10 @@ namespace SteelX.Server.Game
 
 			// Set the current unit to the user
 			//TODO: Do we need this?
-			user.CurrentUnit = unit;
+			//user.CurrentUnit = unit;
 
 			//TODO: Calculate HP
-			unit.Health = unit.HP;
+			//unit.Health = unit.HP;
 			
 			// Reset death flag
 			//unit.Alive = true;
@@ -286,7 +260,7 @@ namespace SteelX.Server.Game
 		public void UpdateUnitPosition(Mechanaught unit)
 		{
 			// Update user unit info
-			MulticastPacket(new UnitMoved(unit));
+			//MulticastPacket(new UnitMoved(unit));
 			
 			// Fall death
 			//if (unit.WorldPosition.Z <= 2100 && unit.Alive)
@@ -303,7 +277,7 @@ namespace SteelX.Server.Game
 		//TODO: Find out how to handle killer / victim packets
 		public void KillUnit(Mechanaught unit, Mechanaught killer = null)
 		{
-			unit.Health = 0;
+			//unit.Health = 0;
 			//unit.Alive = false;
 			
 			MulticastPacket(new UnitDestroyed(unit, killer));
@@ -371,13 +345,13 @@ namespace SteelX.Server.Game
 			if (weapon.Target == null) return;
 			
 			// Check for kill
-			weapon.Target.Health -= weapon.Damage*weapon.NumberOfShots;
+			//weapon.Target.Health -= weapon.Damage*weapon.NumberOfShots;
 
 			// Kill unit
 			//TODO: Are more status updates needed?
 			if (weapon.Target.Health <= 0)
 			{
-				KillUnit(weapon.Target, attacker);
+				KillUnit((Server.Mechanaught)weapon.Target, attacker);
 			}
 		}		
 		#endregion

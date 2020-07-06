@@ -17,7 +17,7 @@ namespace SteelX.Server.Packets
 		/// </summary>
 		/// <param name="packet"></param>
 		/// <param name="info"></param>
-		public static void WritePilotInfo(this ServerBasePacket packet, PilotInfo info)
+		public static void WritePilotInfo(this ServerBasePacket packet, Pilot info)
 		{
 			packet.WriteInt(info.AbilityPointsAvailable);
 
@@ -31,7 +31,7 @@ namespace SteelX.Server.Packets
 			packet.WriteByte(0); // Unknown
 			packet.WriteByte(0); // Unknown
 
-			packet.WriteInt(info.MeleeLevel);
+			packet.WriteInt(info.FightLevel); //.MeleeLevel);
 			packet.WriteInt(info.RangedLevel);
 			packet.WriteInt(info.SiegeLevel);
 			packet.WriteInt(info.RocketLevel);
@@ -55,11 +55,11 @@ namespace SteelX.Server.Packets
 				packet.WriteUInt(part.TemplateId);
 
 				packet.WriteUShort(part.Parameters);
-				packet.WriteUShort(part.Type);
+				packet.WriteUShort((ushort)part.Type);
 
-				packet.WriteByte(part.Color.R);
-				packet.WriteByte(part.Color.G);
-				packet.WriteByte(part.Color.B);
+				packet.WriteByte(0); //part.Color.R);
+				packet.WriteByte(0); //part.Color.G);
+				packet.WriteByte(0); //part.Color.B);
 
 				packet.WriteByte(1); // Unknown
 				packet.WriteByte(1); // Unknown
@@ -117,12 +117,12 @@ namespace SteelX.Server.Packets
 			//TODO: Move this to helper or maybe even room info obj
 			packet.WriteString("StringA"); // Room / session code?
 
-			packet.WriteInt(room.Id); // Unknown
+			packet.WriteUInt(room.Id); // Unknown
 			packet.WriteInt(0); // Unknown
 			packet.WriteInt((int)room.GameType);
 
 
-			packet.WriteString(room.Name);
+			packet.WriteString(room.RoomName);
 			packet.WriteString("StringB"); // Unknown
 			packet.WriteString("StringC"); // Unknown
 			packet.WriteString(room.Master != null ? room.Master.CallSign : "UNKNOWN");

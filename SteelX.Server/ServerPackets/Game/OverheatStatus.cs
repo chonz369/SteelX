@@ -14,11 +14,12 @@ namespace SteelX.Server.Packets.Game
 		private readonly int _slot;
 		private readonly Mechanaught _unit;
 
-		public OverheatStatus(Mechanaught unit, int arm, int slot, Weapon weapon)
+		//public OverheatStatus(Mechanaught unit, int arm, int slot, Weapon weapon)
+		public OverheatStatus(Mechanaught unit, int arm, Weapon weapon)
 		{
 			_unit = unit;
 			_arm = arm;
-			_slot = slot;
+			//_slot = slot;
 			_weapon = weapon;
 		}
 

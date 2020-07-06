@@ -9,7 +9,7 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class UnitStopped : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 
 		public override Shared.PacketTypes PacketType
 		{
@@ -19,7 +19,7 @@ namespace SteelX.Server.Packets.Game
 			}
 		}
 
-		public UnitStopped(Unit unit)
+		public UnitStopped(Mechanaught unit)
 		{
 			_unit = unit;
 		}

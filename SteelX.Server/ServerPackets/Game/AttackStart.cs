@@ -50,7 +50,7 @@ namespace SteelX.Server.Packets.Game
 			WriteUInt(_unit.Id); // Attacker Id - maybe passed as an index?
 			WriteInt(_arm); // Arm?
 			WriteUInt(targetId); // Victim id?
-			WriteInt(_weapon.Damage * _weapon.NumberOfShots); // Damage
+			WriteInt((int)_weapon.Damage * _weapon.NumberOfShots); // Damage
 			
 			// If packet type of 0x62 -
 			WriteUInt(0); // Unknown

@@ -11,7 +11,7 @@ namespace SteelX.Server.Packets.Game
 	/// </summary>
 	public class AttackA : ServerBasePacket
 	{
-		private readonly Unit _unit;
+		private readonly Mechanaught _unit;
 		private readonly int _arm;
 		private readonly Weapon _weapon;
 
@@ -23,7 +23,7 @@ namespace SteelX.Server.Packets.Game
 			}
 		}
 
-		public AttackA(Unit unit, int arm, Weapon weapon)
+		public AttackA(Mechanaught unit, int arm, Weapon weapon)
 		{
 			_unit = unit;
 			_arm = arm;
@@ -42,9 +42,9 @@ namespace SteelX.Server.Packets.Game
 
 		protected override void WriteImpl()
 		{
-			var targetId = _weapon.Target?.Id ?? 0;
-			Console.WriteLine("IFO TYPE: {0}", _weapon.IfoType);
-			
+			//uint targetId = _weapon.Target?.Id ?? 0;
+			//Console.WriteLine("IFO TYPE: {0}", _weapon.IfoType);
+
 			WriteInt(0); // Time?
 			WriteInt(1); // Result code - For hit, crit, sheild
 			WriteUInt(_unit.Id); // Attacker Id - maybe passed as an index?

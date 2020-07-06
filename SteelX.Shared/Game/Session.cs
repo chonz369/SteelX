@@ -14,9 +14,13 @@ namespace SteelX.Shared
 	/// The game session represents a single connected user
 	/// </summary>
 	/// The user may or may not be logged in
-	//ToDo: Change to Interface?
+	//ToDo: Change to Interface and merge with Server.Player?
 	public abstract class GameSession //: TcpSession
 	{
+		/// <summary>
+		/// </summary>
+		public uint Id { get; set; }
+		
 		/// <summary>
 		/// The user logged into this session
 		/// </summary>
@@ -69,7 +73,8 @@ namespace SteelX.Shared
 		/// Send a packet from this client
 		/// </summary>
 		/// <param name="packet"></param>
-		public abstract void SendPacket(ServerBasePacket packet);
+		//public abstract void SendPacket(ServerBasePacket packet);
+		public abstract void SendPacket(byte[] packet);
 		//{
 		//	byte[] data = packet.Write();
 		//	

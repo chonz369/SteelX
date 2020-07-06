@@ -40,10 +40,10 @@ namespace SteelX.Server.Packets.Bridge
 		{
 			WriteInt(0); // Unknown - Id?
 			WriteString("StringAA"); // Unknown
-			
+
 			// Write clan info if they are in one
 			//TODO: Not sure how to handle empty strings
-			WriteString(_user.Clan == null ? " " : _user.Clan.Name);
+			WriteString(_user.ClanId == null ? " " : " "); //_user.Clan.Name); ToDo: GetClan(id).Name
 			
 			WriteUInt(_user.Coins);
 			WriteString(_user.CallSign);
@@ -52,7 +52,7 @@ namespace SteelX.Server.Packets.Bridge
 			WriteInt(0); // Unknown
 			WriteUInt(_user.Level);
 			WriteInt(0); // Unknown
-			WriteUInt(_user.Rank);
+			WriteUInt((uint)_user.Rank);
 			
 			WriteUInt(_user.Experience);
 			WriteUInt(_user.Credits);

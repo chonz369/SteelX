@@ -38,11 +38,11 @@ namespace SteelX.Shared.Packets
 			WriteImpl();
 			
 			// Account for header
-			var size = _data.Count + 3;
+			var size = _data.Count + PacketHandler.HeaderSize;
 			
 			// Add size and header
-			_data.Insert(0, GetId());
-			_data.InsertRange(0, BitConverter.GetBytes((short)size));
+			_data.Insert(0, GetId()); //+1 @ position [2]
+			_data.InsertRange(0, BitConverter.GetBytes((short)size)); //+2 @ position [0,1]
 			
 			return _data.ToArray();
 		}

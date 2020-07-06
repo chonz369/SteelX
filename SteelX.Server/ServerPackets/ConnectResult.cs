@@ -61,8 +61,8 @@ namespace SteelX.Server.Packets
 			{
 				WriteUInt(_user.Id);
 				WriteString("UNKNOWN"); // Unknown string. Possibly clan name?
-				WriteString(_user.Username);
-				WriteString(_user.Nickname);
+				WriteString("Username");
+				WriteString("Nickname");
 				WriteUInt(_user.Level);
 				
 				for (var i = 0; i < 256; i++)

@@ -62,7 +62,7 @@ namespace SteelX.Server.Packets.Lobby
 					WriteInt(60); // Expulsion time -or- sessionId?
 					break;
 				case GameEnteredResult.Success:
-					WriteInt(_room.Id);
+					WriteUInt(_room.Id);
 					this.WriteRoomInfo(_room);
 					break;
 				default:

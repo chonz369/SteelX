@@ -37,7 +37,7 @@ namespace SteelX.Server.Packets.Game
 		protected override void WriteImpl()
 		{
 			WriteUInt(_unit.Id); // Unit Id
-			WriteInt(_unit.CurrentWeaponSet); // Slot
+			//WriteInt(_unit.CurrentWeaponSet); // Slot
 			WriteFloat(_unit.GetWeaponByArm(0).CurrentOverheat); // Current overheat
 			WriteFloat(_unit.GetWeaponByArm(1) != null ? _unit.GetWeaponByArm(1).CurrentOverheat : 0); // Current overheat
 			

@@ -99,7 +99,7 @@ namespace SteelX.Server
 		/// </summary>
 		//TODO: Update this when they change default unit
 		//public MechData ActiveMech { get; }
-		public long DefaultUnit { get; }
+		public Mechanaught DefaultUnit { get; }
 		public long DefaultUnitId { get; protected set; }
 
 		/// <summary>

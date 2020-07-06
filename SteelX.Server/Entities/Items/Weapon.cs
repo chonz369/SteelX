@@ -5,9 +5,9 @@ namespace SteelX.Server
 {
 	/// <summary>
 	/// Represents a single weapon in the game
-	/// Mostly used in runtime
 	/// </summary>
-	public class Weapon : Part
+	/// Mostly used in runtime
+	public class Weapon : Shared.Weapon //Part
 	{
 		/// <summary>
 		/// The target of this weapon
